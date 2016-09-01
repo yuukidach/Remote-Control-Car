@@ -1,0 +1,16 @@
+--cpu Cortex-M3
+".\objects\startup_stm32f10x_hd.o"
+".\objects\core_cm3.o"
+".\objects\system_stm32f10x.o"
+".\objects\delay.o"
+".\objects\controller.o"
+".\objects\main.o"
+".\objects\usart1.o"
+".\objects\stm32f10x_it.o"
+".\objects\stm32f10x_gpio.o"
+".\objects\stm32f10x_usart.o"
+".\objects\stm32f10x_rcc.o"
+--library_type=microlib --strict --scatter ".\Objects\Controller_of_Mars_Exploration.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\Controller_of_Mars_Exploration.map" -o .\Objects\Controller_of_Mars_Exploration.axf
