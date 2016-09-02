@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
   * @author  			 Yuuki_Dach
-  * @version 			 V1.0.0
-  * @date          31-August-2016
+  * @version 			 V1.0.1
+  * @date          01-September-2016
   * @description   Functions of controller. 
   ******************************************************************************
   * @attention
@@ -42,13 +42,13 @@ uint8_t PS2_Mask[]={
 	
 void Controller_Config(void){
 	GPIO_InitTypeDef GPIO_InitStructure;
-	RCC_APB2PeriphClockCmd( RCC_APB2Periph_GPIOB, ENABLE);
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
+	RCC_APB2PeriphClockCmd( PS2_CLK_GPIO, ENABLE);
+	GPIO_InitStructure.GPIO_Pin = PS2_DO | PS2_CS | PS2_CLK;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
 	
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12;
+	GPIO_InitStructure.GPIO_Pin = PS2_DI;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
 	
@@ -70,16 +70,16 @@ void sendCmd2PS2(uint8_t command){
 	
 	for(ref = 0x01; ref < 0x0100; ref <<= 1){
 		if(ref & command)
-			GPIO_SetBits(GPIOB, PS2_DO);
+			GPIO_SetBits(PS2_GPIO, PS2_DO);
 		else 
-			GPIO_ResetBits(GPIOB, PS2_DO);
+			GPIO_ResetBits(PS2_GPIO, PS2_DO);
 		
-		GPIO_SetBits(GPIOB, PS2_CLK);
+		GPIO_SetBits(PS2_GPIO, PS2_CLK);
 		delay_us(2);
-		GPIO_ResetBits(GPIOB, PS2_CLK);
+		GPIO_ResetBits(PS2_GPIO, PS2_CLK);
 		delay_us(2);
-		GPIO_SetBits(GPIOB, PS2_CLK);
-		if(GPIO_ReadInputDataBit(GPIOB, PS2_DI))
+		GPIO_SetBits(PS2_GPIO, PS2_CLK);
+		if(GPIO_ReadInputDataBit(PS2_GPIO, PS2_DI))
 			PS2_Data[1] = ref | PS2_Data[1];
 	}
 	delay_us(16);
@@ -90,31 +90,31 @@ void sendCmd2MCU(void){
 	__IO uint16_t ref = 0x01;
 	__IO uint8_t byte = 0;
 	
-	GPIO_ResetBits(GPIOB, PS2_CS);
+	GPIO_ResetBits(PS2_GPIO, PS2_CS);
 	sendCmd2PS2( PS2_Cmd[PS2_START]);
 	sendCmd2PS2( PS2_Cmd[PS2_REQUEST_DATA]);
 	
 	for( byte = 2; byte < 9; ++byte){
 		for(ref = 0x01; ref < 0x0100; ref <<= 1){
-			GPIO_SetBits(GPIOB, PS2_CLK);
+			GPIO_SetBits(PS2_GPIO, PS2_CLK);
 			delay_us(2);
-			GPIO_ResetBits(GPIOB, PS2_CLK);
+			GPIO_ResetBits(PS2_GPIO, PS2_CLK);
 			delay_us(2);
-			GPIO_SetBits(GPIOB, PS2_CLK);
-			if(GPIO_ReadInputDataBit(GPIOB, PS2_DI))
+			GPIO_SetBits(PS2_GPIO, PS2_CLK);
+			if(GPIO_ReadInputDataBit(PS2_GPIO, PS2_DI))
 				PS2_Data[byte] = ref | PS2_Data[byte];
 		}
 		delay_us(16);
 	}
-	GPIO_SetBits(GPIOB, PS2_CS);
+	GPIO_SetBits(PS2_GPIO, PS2_CS);
 }
 
 
 uint8_t isStickMode(void){
-	GPIO_ResetBits(GPIOB, PS2_CS);
+	GPIO_ResetBits(PS2_GPIO, PS2_CS);
 	sendCmd2PS2( PS2_Cmd[PS2_START]);
 	sendCmd2PS2( PS2_Cmd[PS2_REQUEST_DATA]);
-	GPIO_SetBits(GPIOB, PS2_CS);
+	GPIO_SetBits(PS2_GPIO, PS2_CS);
 	
 	if(PS2_Data[1] == 0x41) return YES;
 	else return NO;
@@ -149,20 +149,20 @@ void clrPS2Buff(void){
 
 
 void shortPoll(void){
-	GPIO_ResetBits(GPIOB, PS2_CS);
+	GPIO_ResetBits(PS2_GPIO, PS2_CS);
 	delay_us(16);
 	sendCmd2PS2(0x01);  
 	sendCmd2PS2(0x42);
 	sendCmd2PS2(0x00);
 	sendCmd2PS2(0x00);
 	sendCmd2PS2(0x00);
-	GPIO_SetBits(GPIOB, PS2_CS);
+	GPIO_SetBits(PS2_GPIO, PS2_CS);
 	delay_us(16);	
 }
 
 
 void enterSettings(void){
-	GPIO_ResetBits(GPIOB, PS2_CS);
+	GPIO_ResetBits(PS2_GPIO, PS2_CS);
 	delay_us(16);
 	sendCmd2PS2(0x01);   
 	sendCmd2PS2(0x43);  
@@ -173,42 +173,42 @@ void enterSettings(void){
 	sendCmd2PS2(0x00);
 	sendCmd2PS2(0x00);
 	sendCmd2PS2(0x00);
-	GPIO_SetBits(GPIOB, PS2_CS);
+	GPIO_SetBits(PS2_GPIO, PS2_CS);
 	delay_us(16);
 }
 
 
 void turnOnModeChange(void){
-	GPIO_ResetBits(GPIOB, PS2_CS);
+	GPIO_ResetBits(PS2_GPIO, PS2_CS);
 	sendCmd2PS2(0x01);
 	sendCmd2PS2(0x44);
 	sendCmd2PS2(0x00);
-	sendCmd2PS2(0x01);		//analog=0x01;digital=0x00  软件设置发送模式
+	sendCmd2PS2(0x01);		//stick mode = 0x01; button mode = 0x00  设置发送模式
 	sendCmd2PS2(0xee);		//Ox03锁存设置，即不可通过按键“MODE”设置模式。 0xee不锁存
 	sendCmd2PS2(0x00);
 	sendCmd2PS2(0x00);
 	sendCmd2PS2(0x00);
 	sendCmd2PS2(0x00);
-	GPIO_SetBits(GPIOB, PS2_CS);
+	GPIO_SetBits(PS2_GPIO, PS2_CS);
 	delay_us(16);
 }
 
 
-void turnOnVibrationMode(void){
-	GPIO_ResetBits(GPIOB, PS2_CS);
+void turnOnVibrationMode(void){    
+	GPIO_ResetBits(PS2_GPIO, PS2_CS);
 	delay_us(16);
 	sendCmd2PS2(0x01);  
 	sendCmd2PS2(0x4d);  
 	sendCmd2PS2(0x00);
 	sendCmd2PS2(0x00);
 	sendCmd2PS2(0x01);
-	GPIO_SetBits(GPIOB, PS2_CS);
+	GPIO_SetBits(PS2_GPIO, PS2_CS);
 	delay_us(16);	
 }
 
 
 void saveChangesAndExit(void){
-  GPIO_ResetBits(GPIOB, PS2_CS);
+  GPIO_ResetBits(PS2_GPIO, PS2_CS);
 	delay_us(16);
 	sendCmd2PS2(0x01); 
 	sendCmd2PS2(0x43);  
@@ -219,13 +219,14 @@ void saveChangesAndExit(void){
 	sendCmd2PS2(0x5a);
 	sendCmd2PS2(0x5a);
 	sendCmd2PS2(0x5a);
-	GPIO_SetBits(GPIOB, PS2_CS);
+	GPIO_SetBits(PS2_GPIO, PS2_CS);
 	delay_us(16);
 }
 
 
-void PS2_Vibration(u8 motor1, u8 motor2){
-	GPIO_ResetBits(GPIOB, PS2_CS);
+//After the vibration begins, we must have a 1000ms delay.
+void PS2_Vibration(u8 motor1, u8 motor2){    
+	GPIO_ResetBits(PS2_GPIO, PS2_CS);
 	delay_us(16);
   sendCmd2PS2(0x01); 
 	sendCmd2PS2(0x42);  
@@ -236,7 +237,7 @@ void PS2_Vibration(u8 motor1, u8 motor2){
 	sendCmd2PS2(0x00);
 	sendCmd2PS2(0x00);
 	sendCmd2PS2(0x00);
-	GPIO_SetBits(GPIOB, PS2_CS);
+	GPIO_SetBits(PS2_GPIO, PS2_CS);
 	delay_us(16);  
 }
 

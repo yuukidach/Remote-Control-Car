@@ -8,4 +8,5 @@
 .\objects\stm32f10x_rcc.o: .\FWlib\inc\stm32f10x_gpio.h
 .\objects\stm32f10x_rcc.o: .\CMSIS\stm32f10x.h
 .\objects\stm32f10x_rcc.o: .\FWlib\inc\stm32f10x_rcc.h
+.\objects\stm32f10x_rcc.o: .\FWlib\inc\stm32f10x_tim.h
 .\objects\stm32f10x_rcc.o: .\FWlib\inc\stm32f10x_usart.h

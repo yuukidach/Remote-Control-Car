@@ -1,33 +1,39 @@
+/**
+  ******************************************************************************
+  * @author  			 Yuuki_Dach
+  * @version 			 V1.0.3
+  * @date          01-September-2016
+  * @description   Main.c
+  ******************************************************************************
+  * @attention
+  *
+  * THIS IS THE MAIN.C FILE IN THIS PROJECTS. IT CONTIANS MAIN FUNCTION. OUR CAR
+	* NEED TO BE CONTROLLED BY OURSELVES AT FIRST. AFTER WE COMPLETE THE TASK
+	* WE NEED TO DO. IT WILL BE AUTO-CONTROLLED AND DO THE REST WORK. AS FOR MORE
+	* SPECIFIC DESCRIPTIONS OF THE TASKS, YOU CAN FIND THEM IN "大赛章程.pdf".
+  *
+  * <h2><center>&copy; COPYRIGHT 2016 Yuuki_Dach</center></h2>
+  ******************************************************************************
+  */
+
 #include "controller.h"
 #include "delay.h"
-#include "usart1.h"
-
-uint8_t a;
+//#include "usart1.h"
+#include "movement.h"
 
 int main(void){
 	delay_init(72);
-	USART1_Config();
+	//USART1_Config();
 	Controller_Config();
+	Tire_Config();
+	tireEnable(LEFT_TIRE_GPIO,  LEFT_TIRE_ENA );
+	tireEnable(RIGHT_TIRE_GPIO, RIGHT_TIRE_ENA);
 	
 	while(1){
-		a = getButtonData();
-		printf("%d %d wocaocao\r\n", a, isStickMode());
-		if(isStickMode()){
-			delay_ms(50);
-			printf("%5d%5d%5d%5d\n",getStickData(PSS_LX),getStickData(PSS_LY),
-														  getStickData(PSS_RX),getStickData(PSS_RY));			
-		} else {
-			a = getButtonData();
-			delay_ms(50);
-			printf("%5d\n",a);
-			
-			if(a == 11){
-				PS2_Vibration(0xFF,0x00);  //发出震动后必须有延时
-				delay_ms(1000);
-			} else if(a == 12){
-				PS2_Vibration(0x00,0xFF);  //发出震动后必须有延时
-				delay_ms(1000);
-			}
-		}
+    getButtonData();
+		tireGoto(getStickData(PSS_LX), getStickData(PSS_LY));
 	}
 }
+
+/******************* (C) COPYRIGHT 2016 Yuuki_Dach *************END OF FILE****/
+

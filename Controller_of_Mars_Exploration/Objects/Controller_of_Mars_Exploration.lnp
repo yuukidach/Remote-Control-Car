@@ -7,9 +7,11 @@
 ".\objects\main.o"
 ".\objects\usart1.o"
 ".\objects\stm32f10x_it.o"
+".\objects\movement.o"
 ".\objects\stm32f10x_gpio.o"
 ".\objects\stm32f10x_usart.o"
 ".\objects\stm32f10x_rcc.o"
+".\objects\stm32f10x_tim.o"
 --library_type=microlib --strict --scatter ".\Objects\Controller_of_Mars_Exploration.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

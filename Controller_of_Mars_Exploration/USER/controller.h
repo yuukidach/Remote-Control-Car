@@ -1,14 +1,14 @@
 /**
   ******************************************************************************
   * @author  			 Yuuki_Dach
-  * @version 			 V1.0.0
-  * @date          31-August-2016
-  * @description   Head file of controller.c 
+  * @version 			 V1.0.1
+  * @date          01-September-2016
+  * @description   Header file of controller.c 
   ******************************************************************************
   * @attention
   *
   * THIS IS THE HEAD FILE OF CONTROLLER.C. IF YOU WANT TO USE THE C FILE. PLEASE
-	* ADD THIS HEAD FILE INTO YOUR PROJECT.
+	* ADD THIS HEADER FILE INTO YOUR PROJECT.
   *
   * <h2><center>&copy; COPYRIGHT 2016 Yuuki_Dach</center></h2>
   ******************************************************************************
@@ -22,12 +22,15 @@
 #define YES 1
 #define NO 0
 
+#define PS2_GPIO GPIOB
+#define PS2_CLK_GPIO RCC_APB2Periph_GPIOB
+
 #define PS2_START 0
 #define PS2_REQUEST_DATA 1
 
-#define PS2_DI GPIO_Pin_12
-#define PS2_DO GPIO_Pin_13
-#define PS2_CS GPIO_Pin_14
+#define PS2_DI  GPIO_Pin_12
+#define PS2_DO  GPIO_Pin_13
+#define PS2_CS  GPIO_Pin_14
 #define PS2_CLK GPIO_Pin_15
 
 #define PSB_SELECT      0
