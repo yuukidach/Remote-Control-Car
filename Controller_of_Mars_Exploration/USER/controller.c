@@ -1,3 +1,20 @@
+/**
+  ******************************************************************************
+  * @author  			 Yuuki_Dach
+  * @version 			 V1.0.0
+  * @date          31-August-2016
+  * @description   Functions of controller. 
+  ******************************************************************************
+  * @attention
+  *
+  * OUR CONTROLLER IS PS2 WHICH HAS A HIGH COST-EFFECTIVE. ITS INSTRUCTIONS CAN
+	* BE DOWNLOADED FROM THE INTERNET. OR YOU CAN FIND SOME OF THEM IN MY GITHUB'S
+	* PROJECTS FILES. MY GITHUB IS: https://github.com/yuukidach .
+  *
+  * <h2><center>&copy; COPYRIGHT 2016 Yuuki_Dach</center></h2>
+  ******************************************************************************
+  */
+
 #include "controller.h"
 #include "delay.h"
 
@@ -223,3 +240,4 @@ void PS2_Vibration(u8 motor1, u8 motor2){
 	delay_us(16);  
 }
 
+/******************* (C) COPYRIGHT 2016 Yuuki_Dach *************END OF FILE****/

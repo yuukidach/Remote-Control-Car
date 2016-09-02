@@ -1,3 +1,19 @@
+/**
+  ******************************************************************************
+  * @author  			 Yuuki_Dach
+  * @version 			 V1.0.0
+  * @date          31-August-2016
+  * @description   Head file of controller.c 
+  ******************************************************************************
+  * @attention
+  *
+  * THIS IS THE HEAD FILE OF CONTROLLER.C. IF YOU WANT TO USE THE C FILE. PLEASE
+	* ADD THIS HEAD FILE INTO YOUR PROJECT.
+  *
+  * <h2><center>&copy; COPYRIGHT 2016 Yuuki_Dach</center></h2>
+  ******************************************************************************
+  */
+	
 #ifndef __CONTROLLER_H
 #define __CONTROLLER_H
 
@@ -58,3 +74,5 @@ void saveChangesAndExit(void);
 void PS2_Vibration(u8 motor1, u8 motor2);
 
 #endif /*__CONTROLLER_H*/
+
+/******************* (C) COPYRIGHT 2016 Yuuki_Dach *************END OF FILE****/
