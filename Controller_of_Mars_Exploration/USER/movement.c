@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
   * @author  			 Yuuki_Dach
-  * @version 			 V1.0.0
+  * @version 			 V1.0.1
   * @date          01-September-2016
   * @description   Header file of movement.c 
   ******************************************************************************
@@ -93,17 +93,22 @@ void tireGoto(uint8_t x, uint8_t y){
 	goSpeed = y - 128;		
 	turnSpeed = x - 128;
 	
-	if(turnSpeed >= 0){
+	if(turnSpeed > 0){
 		if(goSpeed >= 0)
-			setSpeed(goSpeed + turnSpeed, 0, 0, turnSpeed);
+			setSpeed(0, goSpeed + turnSpeed, turnSpeed, 0);
 		else
-			setSpeed(0, -goSpeed + turnSpeed, turnSpeed, 0);		
+			setSpeed(-goSpeed + turnSpeed, 0, 0, turnSpeed);		
+	}else if(turnSpeed < 0){
+		if(goSpeed >= 0)
+			setSpeed(-turnSpeed, 0, 0, goSpeed - turnSpeed);
+		else
+			setSpeed(0, -turnSpeed, -goSpeed - turnSpeed, 0);
 	}else{
-		if(goSpeed >= 0)
-			setSpeed(0, -turnSpeed, goSpeed - turnSpeed, 0);
+    if(goSpeed >= 0)
+			setSpeed(0, goSpeed, 0, goSpeed);
 		else
-			setSpeed(turnSpeed, 0, 0, -goSpeed - turnSpeed);
-	}
+			setSpeed(-goSpeed, 0, -goSpeed, 0);	
+  }
 }
 
 /******************* (C) COPYRIGHT 2016 Yuuki_Dach *************END OF FILE****/

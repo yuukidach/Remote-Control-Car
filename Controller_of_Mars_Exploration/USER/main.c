@@ -18,7 +18,7 @@
 
 #include "controller.h"
 #include "delay.h"
-//#include "usart1.h"
+#include "usart1.h"
 #include "movement.h"
 
 int main(void){
@@ -32,6 +32,8 @@ int main(void){
 	while(1){
     getButtonData();
 		tireGoto(getStickData(PSS_LX), getStickData(PSS_LY));
+    //printf("\r\n%5d%5d\r\n", getStickData(PSS_RX), getStickData(PSS_RY));
+    delay_ms(50);
 	}
 }
 

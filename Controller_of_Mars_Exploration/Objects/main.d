@@ -11,4 +11,6 @@
 .\objects\main.o: .\FWlib\inc\stm32f10x_tim.h
 .\objects\main.o: .\FWlib\inc\stm32f10x_usart.h
 .\objects\main.o: USER\delay.h
+.\objects\main.o: USER\usart1.h
+.\objects\main.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: USER\movement.h
