@@ -2,11 +2,11 @@ Remote Control Car
 ===
 >For Yuyuan Cup.
 
-语言: [中文](https://github.com/yuukidach/Remote-Control-Car/blob/master/README.md)
+璇█: [涓枃](https://github.com/yuukidach/Remote-Control-Car/blob/master/README.md)
 
 ## Description
 
-This project is my entry for the Yuyuan Cup, which is a important competition in my school. And the project requirements can be find in "大赛要求.pdf".   
+This project is my entry for the Yuyuan Cup, which is a important competition in my school. And the project requirements can be find in "澶ц禌瑕佹眰.pdf".   
 
 ## Functions
 1. Use PS2 to control the car's movement direction;
