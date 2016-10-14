@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
   * @author  			 Yuuki_Dach
-  * @version 			 V1.0.1
-  * @date          01-September-2016
+  * @version 			 V1.0.2
+  * @date          14-October-2016
   * @description   Functions of controller. 
   ******************************************************************************
   * @attention
@@ -135,7 +135,7 @@ uint8_t getButtonData(void){
 	buttonValue = (PS2_Data[4] << 8) | PS2_Data[3];
 	for(idx = 0; idx < 16; ++idx){
 		if((buttonValue & (1<<PS2_Mask[idx]) ) == PRESSED)
-			return idx+1;
+			return idx;
 	}
 	return 0;
 }

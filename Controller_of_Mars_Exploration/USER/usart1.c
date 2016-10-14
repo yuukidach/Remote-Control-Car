@@ -2,11 +2,6 @@
  * 文件名  ：usart1.c
  * 描述    ：将printf函数重定向到USART1。这样就可以用printf函数将单片机的数据
  *           打印到PC上的超级终端或串口调试助手。         
- * 实验平台：野火STM32开发板
- * 硬件连接：------------------------
- *          | PA9  - USART1(Tx)      |
- *          | PA10 - USART1(Rx)      |
- *           ------------------------
  * 库版本  ：ST3.5.0
  * 作者    ：wildfire team 
  * 论坛    ：http://www.amobbs.com/forum-1008-1.html

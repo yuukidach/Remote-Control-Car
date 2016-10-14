@@ -23,17 +23,20 @@
 
 int main(void){
 	delay_init(72);
-	//USART1_Config();
+	USART1_Config();
 	Controller_Config();
 	Tire_Config();
-	tireEnable(LEFT_TIRE_GPIO,  LEFT_TIRE_ENA );
+	tireEnable(LEFT_TIRE_GPIO , LEFT_TIRE_ENA );
 	tireEnable(RIGHT_TIRE_GPIO, RIGHT_TIRE_ENA);
-	
 	while(1){
-    getButtonData();
-		tireGoto(getStickData(PSS_LX), getStickData(PSS_LY));
-    //printf("\r\n%5d%5d\r\n", getStickData(PSS_RX), getStickData(PSS_RY));
-    delay_ms(50);
+		tireGoto(getButtonData());
+//    printf("\r\n%5d%5d%5d%5d%5d%5d\r\n", GPIO_ReadOutputDataBit(GPIOA, GPIO_Pin_5),
+//                                         GPIO_ReadOutputDataBit(GPIOA, GPIO_Pin_6),
+//                                         GPIO_ReadOutputDataBit(GPIOA, GPIO_Pin_7),
+//                                         GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_2),
+//                                         GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_0),
+//                                         GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_1));
+//    delay_ms(50);
 	}
 }
 

@@ -1,22 +1,30 @@
-Remote-Control-Car
+Remote Control Car
 ===
->For Yuyuan Cup.
+language: [English](https://github.com/yuukidach/Remote-Control-Car/blob/master/README.en.md)
 
-## Description
+## 描述
+这是我参加比赛的一个参赛作品，比赛要求能在“大赛要求.pdf”里看到
 
-This project is our entry for the Yuyuan Cup, which is a important competition in my school. And the project requirements can be find in "大赛要求.pdf".   
+## 功能
+1. 利用PS2控制小车行进方向;
+	
+	因为PS2的摇杆不好用，所以我这里利用按钮来操作。当然，如果你喜欢用摇杆的话也是可以用的。当摇杆被推到极限以后，作用和按钮的效果是一样的。
 
-&emsp;&emsp;It need to be remote controlled by a controller, which I use PS2 controller to do this. And it can also be auto-controlled by itself to do some specific works.
+## 材料
+1. STM32F103 
 
-&emsp;&emsp;All of those are based on STM32.  
+2. PS2
 
-## Update Records
+3. L298N
 
-2016.09.01  
-This is the beginning of the projects. We test on the controller first. And we will keep on, until the project has been finished.   
+4. 直流电机 x 2 
 
-2016.09.02  
-Add movement.c and movement.h, which are used to control the motor of the car.  
+5. 电池 11.1V
 
-2016.09.03  
-Fix the problem in movement.c, which may cause the car to go to wrong directions.
+6. 杜邦线 x n
+
+7. 面包板
+
+8. 小车底盘（带两个轮子和两个全向轮）
+
+9. 开关
