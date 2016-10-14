@@ -1,6 +1,6 @@
 Remote Control Car
 ===
-language: [English](https://github.com/yuukidach/Remote-Control-Car/blob/master/README[en].md)
+language: [English](https://github.com/yuukidach/Remote-Control-Car/blob/master/README.en.md)
 
 ## 描述
 这是我参加比赛的一个参赛作品，比赛要求能在“大赛要求.pdf”里看到
