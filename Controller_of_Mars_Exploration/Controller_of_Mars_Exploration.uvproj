@@ -173,7 +173,7 @@
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -357,7 +357,7 @@
             <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
-            <uC99>0</uC99>
+            <uC99>1</uC99>
             <useXO>0</useXO>
             <VariousControls>
               <MiscControls></MiscControls>
@@ -466,6 +466,16 @@
               <FileType>1</FileType>
               <FilePath>.\USER\movement.c</FilePath>
             </File>
+            <File>
+              <FileName>pca9685.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\pca9685.c</FilePath>
+            </File>
+            <File>
+              <FileName>mechanical_arm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\mechanical_arm.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -490,6 +500,11 @@
               <FileName>stm32f10x_tim.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\FWlib\src\stm32f10x_tim.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FWlib\src\stm32f10x_i2c.c</FilePath>
             </File>
           </Files>
         </Group>

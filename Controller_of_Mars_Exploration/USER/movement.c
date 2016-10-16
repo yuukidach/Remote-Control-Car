@@ -3,7 +3,7 @@
   * @author  			 Yuuki_Dach
   * @version 			 V1.0.4
   * @date          14-October-2016
-  * @description   Header file of movement.c 
+  * @description   Functions of our car's tires(motors).
   ******************************************************************************
   * @attention
   *
@@ -34,6 +34,9 @@ void Tire_Config(void){
 	
 	TIM3_GPIO_Config();
 	TIM3_Mode_Config();
+  
+  tireEnable(LEFT_TIRE_GPIO , LEFT_TIRE_ENA );
+	tireEnable(RIGHT_TIRE_GPIO, RIGHT_TIRE_ENA);
 }
 
 

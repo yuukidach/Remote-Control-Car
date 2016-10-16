@@ -3,7 +3,7 @@
   * @author  			 Yuuki_Dach
   * @version 			 V1.0.1
   * @date          14-October-2016
-  * @description   Functions of our car's tires(motors).
+  * @description   Header file of movement.c 
   ******************************************************************************
   * @attention
   *
@@ -22,18 +22,16 @@
 #define RIGHT_TIRE_GPIO  GPIOA
 #define LEFT_TIRE_GPIO   GPIOB
 
-#define RIGHT_TIRE_ENA  GPIO_Pin_5
-#define RIGHT_TIRE_IN1  GPIO_Pin_6
-#define RIGHT_TIRE_IN2	GPIO_Pin_7
+#define RIGHT_TIRE_ENA   GPIO_Pin_5
+#define RIGHT_TIRE_IN1   GPIO_Pin_6
+#define RIGHT_TIRE_IN2	 GPIO_Pin_7
 
-#define LEFT_TIRE_ENA GPIO_Pin_2
-#define LEFT_TIRE_IN1 GPIO_Pin_0
-#define LEFT_TIRE_IN2 GPIO_Pin_1
+#define LEFT_TIRE_ENA    GPIO_Pin_2
+#define LEFT_TIRE_IN1    GPIO_Pin_0
+#define LEFT_TIRE_IN2    GPIO_Pin_1
 
 #define tireEnable(x,y)  GPIO_SetBits  (x, y)
 #define tireDisable(x,y) GPIO_ResetBits(x, y)
-
-#define max(x, y) (x)>(y) ? (x) : (y)
 
 void Tire_Config(void);
 void TIM3_GPIO_Config(void);

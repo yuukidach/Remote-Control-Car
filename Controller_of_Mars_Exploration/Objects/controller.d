@@ -7,6 +7,7 @@
 .\objects\controller.o: .\USER\stm32f10x_conf.h
 .\objects\controller.o: .\FWlib\inc\stm32f10x_gpio.h
 .\objects\controller.o: .\CMSIS\stm32f10x.h
+.\objects\controller.o: .\FWlib\inc\stm32f10x_i2c.h
 .\objects\controller.o: .\FWlib\inc\stm32f10x_rcc.h
 .\objects\controller.o: .\FWlib\inc\stm32f10x_tim.h
 .\objects\controller.o: .\FWlib\inc\stm32f10x_usart.h

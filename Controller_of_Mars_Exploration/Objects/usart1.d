@@ -7,6 +7,7 @@
 .\objects\usart1.o: .\USER\stm32f10x_conf.h
 .\objects\usart1.o: .\FWlib\inc\stm32f10x_gpio.h
 .\objects\usart1.o: .\CMSIS\stm32f10x.h
+.\objects\usart1.o: .\FWlib\inc\stm32f10x_i2c.h
 .\objects\usart1.o: .\FWlib\inc\stm32f10x_rcc.h
 .\objects\usart1.o: .\FWlib\inc\stm32f10x_tim.h
 .\objects\usart1.o: .\FWlib\inc\stm32f10x_usart.h

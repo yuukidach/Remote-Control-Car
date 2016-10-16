@@ -20,23 +20,22 @@
 #include "delay.h"
 #include "usart1.h"
 #include "movement.h"
+#include "mechanical_arm.h"
 
 int main(void){
 	delay_init(72);
-	USART1_Config();
+//	USART1_Config();
 	Controller_Config();
 	Tire_Config();
-	tireEnable(LEFT_TIRE_GPIO , LEFT_TIRE_ENA );
-	tireEnable(RIGHT_TIRE_GPIO, RIGHT_TIRE_ENA);
+  Arm_Config();
 	while(1){
 		tireGoto(getButtonData());
-//    printf("\r\n%5d%5d%5d%5d%5d%5d\r\n", GPIO_ReadOutputDataBit(GPIOA, GPIO_Pin_5),
-//                                         GPIO_ReadOutputDataBit(GPIOA, GPIO_Pin_6),
-//                                         GPIO_ReadOutputDataBit(GPIOA, GPIO_Pin_7),
-//                                         GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_2),
-//                                         GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_0),
-//                                         GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_1));
-//    delay_ms(50);
+    for(int i = 1; i <= 0xfff; ++i)
+      PCA9685_SetOutput(PCA_ADDRESS, 0, 0, i);
+    delay_ms(1000);
+    for(int i = 0xfff; i > 0; --i)
+      PCA9685_SetOutput(PCA_ADDRESS, 0, 0, i);
+    delay_ms(1000);
 	}
 }
 

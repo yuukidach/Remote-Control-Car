@@ -7,6 +7,7 @@
 .\objects\main.o: .\USER\stm32f10x_conf.h
 .\objects\main.o: .\FWlib\inc\stm32f10x_gpio.h
 .\objects\main.o: .\CMSIS\stm32f10x.h
+.\objects\main.o: .\FWlib\inc\stm32f10x_i2c.h
 .\objects\main.o: .\FWlib\inc\stm32f10x_rcc.h
 .\objects\main.o: .\FWlib\inc\stm32f10x_tim.h
 .\objects\main.o: .\FWlib\inc\stm32f10x_usart.h
@@ -14,3 +15,5 @@
 .\objects\main.o: USER\usart1.h
 .\objects\main.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: USER\movement.h
+.\objects\main.o: USER\mechanical_arm.h
+.\objects\main.o: USER\pca9685.h

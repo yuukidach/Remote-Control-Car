@@ -1,0 +1,14 @@
+.\objects\mechanical_arm.o: USER\mechanical_arm.c
+.\objects\mechanical_arm.o: USER\mechanical_arm.h
+.\objects\mechanical_arm.o: USER\pca9685.h
+.\objects\mechanical_arm.o: .\CMSIS\stm32f10x.h
+.\objects\mechanical_arm.o: .\CMSIS\core_cm3.h
+.\objects\mechanical_arm.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\mechanical_arm.o: .\CMSIS\system_stm32f10x.h
+.\objects\mechanical_arm.o: .\USER\stm32f10x_conf.h
+.\objects\mechanical_arm.o: .\FWlib\inc\stm32f10x_gpio.h
+.\objects\mechanical_arm.o: .\CMSIS\stm32f10x.h
+.\objects\mechanical_arm.o: .\FWlib\inc\stm32f10x_i2c.h
+.\objects\mechanical_arm.o: .\FWlib\inc\stm32f10x_rcc.h
+.\objects\mechanical_arm.o: .\FWlib\inc\stm32f10x_tim.h
+.\objects\mechanical_arm.o: .\FWlib\inc\stm32f10x_usart.h

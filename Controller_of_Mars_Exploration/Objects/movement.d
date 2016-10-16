@@ -7,6 +7,7 @@
 .\objects\movement.o: .\USER\stm32f10x_conf.h
 .\objects\movement.o: .\FWlib\inc\stm32f10x_gpio.h
 .\objects\movement.o: .\CMSIS\stm32f10x.h
+.\objects\movement.o: .\FWlib\inc\stm32f10x_i2c.h
 .\objects\movement.o: .\FWlib\inc\stm32f10x_rcc.h
 .\objects\movement.o: .\FWlib\inc\stm32f10x_tim.h
 .\objects\movement.o: .\FWlib\inc\stm32f10x_usart.h
