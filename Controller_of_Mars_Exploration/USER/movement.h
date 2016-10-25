@@ -19,24 +19,31 @@
 #include "stm32f10x.h"
 #include "delay.h"
 
+#define FORWARDS  0
+#define BACKWARDS 1
+#define TURNLEFT  2
+#define TURNRIGHT 3
+
 #define RIGHT_TIRE_GPIO  GPIOA
 #define LEFT_TIRE_GPIO   GPIOB
 
-#define RIGHT_TIRE_ENA   GPIO_Pin_5
-#define RIGHT_TIRE_IN1   GPIO_Pin_6
-#define RIGHT_TIRE_IN2	 GPIO_Pin_7
-
-#define LEFT_TIRE_ENA    GPIO_Pin_2
+#define LEFT_TIRE_ENA    4
 #define LEFT_TIRE_IN1    GPIO_Pin_0
 #define LEFT_TIRE_IN2    GPIO_Pin_1
 
-#define tireEnable(x,y)  GPIO_SetBits  (x, y)
-#define tireDisable(x,y) GPIO_ResetBits(x, y)
+#define RIGHT_TIRE_ENA   5
+#define RIGHT_TIRE_IN1   GPIO_Pin_6
+#define RIGHT_TIRE_IN2	 GPIO_Pin_7
 
 void Tire_Config(void);
-void TIM3_GPIO_Config(void);
-void TIM3_Mode_Config(void);
-void setSpeed(int L1, int L2, int R1, int R2);
+//void TIM3_GPIO_Config(void);
+//void TIM3_Mode_Config(void);
+void setForwards(void);
+void setBackwards(void);
+void setTurnLeft(void);
+void setTurnRight(void);
+void setSpeed(int towards, int PWM_Setl, int PWM_Setr);
+void stopTheCar(void);
 void tireGoto(uint8_t direction);
 
 #endif /* __MOVEMENT_H */

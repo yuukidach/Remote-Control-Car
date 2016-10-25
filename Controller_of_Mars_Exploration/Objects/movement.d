@@ -15,3 +15,5 @@
 .\objects\movement.o: USER\controller.h
 .\objects\movement.o: USER\usart1.h
 .\objects\movement.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\movement.o: USER\pca9685.h
+.\objects\movement.o: USER\mechanical_arm.h

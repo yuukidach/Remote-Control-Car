@@ -26,16 +26,10 @@ int main(void){
 	delay_init(72);
 //	USART1_Config();
 	Controller_Config();
-	Tire_Config();
   Arm_Config();
+	Tire_Config();
 	while(1){
 		tireGoto(getButtonData());
-    for(int i = 1; i <= 0xfff; ++i)
-      PCA9685_SetOutput(PCA_ADDRESS, 0, 0, i);
-    delay_ms(1000);
-    for(int i = 0xfff; i > 0; --i)
-      PCA9685_SetOutput(PCA_ADDRESS, 0, 0, i);
-    delay_ms(1000);
 	}
 }
 

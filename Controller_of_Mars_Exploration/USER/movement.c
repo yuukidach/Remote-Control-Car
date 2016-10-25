@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
   * @author  			 Yuuki_Dach
-  * @version 			 V1.0.4
-  * @date          14-October-2016
+  * @version 			 V1.0.5
+  * @date          25-October-2016
   * @description   Functions of our car's tires(motors).
   ******************************************************************************
   * @attention
@@ -18,28 +18,31 @@
 #include "movement.h"
 #include "controller.h"
 #include "usart1.h"
+#include "pca9685.h"
+#include "mechanical_arm.h"
 
 void Tire_Config(void){
 	GPIO_InitTypeDef GPIO_InitStructure;
   
   RCC_APB2PeriphClockCmd( RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOB, ENABLE);
 	
-	GPIO_InitStructure.GPIO_Pin = LEFT_TIRE_ENA;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_Pin = LEFT_TIRE_IN1 | LEFT_TIRE_IN2;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;	
 	GPIO_Init( LEFT_TIRE_GPIO, &GPIO_InitStructure);
 	
-	GPIO_InitStructure.GPIO_Pin = RIGHT_TIRE_ENA;
+	GPIO_InitStructure.GPIO_Pin = RIGHT_TIRE_IN1 | RIGHT_TIRE_IN2;
 	GPIO_Init( RIGHT_TIRE_GPIO, &GPIO_InitStructure);
 	
-	TIM3_GPIO_Config();
-	TIM3_Mode_Config();
+  Arm_Config();
+ 
+//	TIM3_GPIO_Config();
+//	TIM3_Mode_Config();
   
-  tireEnable(LEFT_TIRE_GPIO , LEFT_TIRE_ENA );
-	tireEnable(RIGHT_TIRE_GPIO, RIGHT_TIRE_ENA);
+  stopTheCar();
 }
 
-
+/*
 void TIM3_GPIO_Config(void){
 	GPIO_InitTypeDef GPIO_InitStructure;
 	
@@ -86,23 +89,73 @@ void TIM3_Mode_Config(void){
   TIM_ARRPreloadConfig( TIM3, ENABLE);
   TIM_Cmd( TIM3, ENABLE);
 }
+*/
+
+/**
+ * @brief	Sets speed of motors
+ * @param	towards: FORWARDS or BACKWARDS
+ * @param	PWM_Set: The PWM of motors(from 0 to 100);
+ * @retval	None
+ */
+void setSpeed(int towards, int PWM_Setl, int PWM_Setr){
+  switch (towards) {
+    case FORWARDS : setForwards();  break;
+    case BACKWARDS: setBackwards(); break;
+    case TURNLEFT : setTurnLeft();  break;
+    case TURNRIGHT: setTurnRight(); break;
+  }
+  PCA9685_SetOutput(PCA_ADDRESS, LEFT_TIRE_ENA , 0, 0xfff*PWM_Setl/100);
+  PCA9685_SetOutput(PCA_ADDRESS, RIGHT_TIRE_ENA, 0, 0xfff*PWM_Setr/100);
+}
 
 
-void setSpeed(int R1,int R2, int L1, int L2){
-  TIM3->CCR1 = R1;
-  TIM3->CCR2 = R2;
-  TIM3->CCR3 = L1;
-  TIM3->CCR4 = L2;
+void setForwards(void) {
+  GPIO_SetBits(LEFT_TIRE_GPIO, LEFT_TIRE_IN1);
+  GPIO_SetBits(RIGHT_TIRE_GPIO, RIGHT_TIRE_IN1);
+  GPIO_ResetBits(LEFT_TIRE_GPIO, LEFT_TIRE_IN2);
+  GPIO_ResetBits(RIGHT_TIRE_GPIO, RIGHT_TIRE_IN2);
+}
+
+
+void setBackwards(void) {
+  GPIO_SetBits(LEFT_TIRE_GPIO, LEFT_TIRE_IN2);
+  GPIO_SetBits(RIGHT_TIRE_GPIO, RIGHT_TIRE_IN2);
+  GPIO_ResetBits(LEFT_TIRE_GPIO, LEFT_TIRE_IN1);
+  GPIO_ResetBits(RIGHT_TIRE_GPIO, RIGHT_TIRE_IN1);
+}
+
+
+void setTurnLeft(void) {
+  GPIO_SetBits(LEFT_TIRE_GPIO, LEFT_TIRE_IN1);
+  GPIO_SetBits(RIGHT_TIRE_GPIO, RIGHT_TIRE_IN2);
+  GPIO_ResetBits(LEFT_TIRE_GPIO, LEFT_TIRE_IN2);
+  GPIO_ResetBits(RIGHT_TIRE_GPIO, RIGHT_TIRE_IN1);
+}
+
+
+void setTurnRight(void) {
+  GPIO_SetBits(LEFT_TIRE_GPIO, LEFT_TIRE_IN2);
+  GPIO_SetBits(RIGHT_TIRE_GPIO, RIGHT_TIRE_IN1);
+  GPIO_ResetBits(LEFT_TIRE_GPIO, LEFT_TIRE_IN1);
+  GPIO_ResetBits(RIGHT_TIRE_GPIO, RIGHT_TIRE_IN2);
+}
+
+
+void stopTheCar(void) {
+  GPIO_ResetBits(LEFT_TIRE_GPIO, LEFT_TIRE_IN1);
+  GPIO_ResetBits(RIGHT_TIRE_GPIO, RIGHT_TIRE_IN1);
+  GPIO_ResetBits(LEFT_TIRE_GPIO, LEFT_TIRE_IN2);
+  GPIO_ResetBits(RIGHT_TIRE_GPIO, RIGHT_TIRE_IN2);
 }
 
 
 void tireGoto(uint8_t dir){
   switch (dir) {
-    case PSB_PAD_UP   : setSpeed(0  , 500, 0  , 500); break;
-    case PSB_PAD_DOWN : setSpeed(500, 0  , 500, 0  ); break;
-    case PSB_PAD_RIGHT: setSpeed(100, 0  ,   0, 500); break;
-    case PSB_PAD_LEFT : setSpeed(0  , 500, 100,   0); break;
-    default: setSpeed(0, 0, 0, 0);
+    case PSB_PAD_UP   : setSpeed(FORWARDS , 70, 70); break;
+    case PSB_PAD_DOWN : setSpeed(BACKWARDS, 70, 70); break;
+    case PSB_PAD_RIGHT: setSpeed(TURNRIGHT, 70, 70); break;
+    case PSB_PAD_LEFT : setSpeed(TURNLEFT , 70, 70); break;
+    default: stopTheCar();
   }
 }
 

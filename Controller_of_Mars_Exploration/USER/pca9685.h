@@ -1,3 +1,19 @@
+/**
+  ******************************************************************************
+  * @author  			 Yuuki_Dach
+  * @version 			 V1.0.0
+  * @date          16-October-2016
+  * @description   Header of mechanical_arm.c
+  ******************************************************************************
+  * @attention
+  *
+  * HERE ARE SOME BASIC DEFINITONS AND FUNCTION DECLARATIONS OF THE PCA9685
+  *
+  * <h2><center>&copy; COPYRIGHT 2016 Yuuki_Dach</center></h2>
+  ******************************************************************************
+  */
+	
+
 #ifndef __PCA9685_H
 #define __PCA9685_H
 
