@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * PCA9865 IS USED IS AN I2C-BUS CONTROLLED 16-CHANNEL CONTROLLER.
+  * PCA9865 IS USED AS AN I2C-BUS CONTROLLED 16-CHANNEL CONTROLLER.
   *
   * <h2><center>&copy; COPYRIGHT 2016 Yuuki_Dach</center></h2>
   ******************************************************************************
@@ -20,7 +20,7 @@ void PCA9685_I2C_GPIO_Config(void) {
   GPIO_InitTypeDef GPIO_InitStructure;
   
   RCC_APB2PeriphClockCmd(I2C_GPIO_CLK, ENABLE);
-  RCC_APB1PeriphClockCmd(I2C_CLK , ENABLE);
+  RCC_APB1PeriphClockCmd(I2C_CLK, ENABLE);
   
   GPIO_InitStructure.GPIO_Pin = I2C_SCL | I2C_SDA;
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
@@ -97,8 +97,6 @@ uint8_t PCA9685_Init(PCA9685_Init_TypeDef *PCA9685_InitStruct) {
 	
 	if (PCA9685_I2C_HasSlaveAtAddress(PCA9685_InitStruct->Address)) {
     // Only when Sleep is 1 then we can set its frequency
-		// Sleep function does not work for some reason
-		//PCA9685_Sleep(PCA9685_InitStruct->Address);
 		PCA9685_I2C_BeginTransmission(PCA9685_InitStruct->Address);
 		PCA9685_I2C_Write(MODE1);
 		PCA9685_I2C_Write(1 << MODE1_SLEEP);

@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
   * @author  			 Yuuki_Dach
-  * @version 			 V1.0.1
-  * @date          01-September-2016
+  * @version 			 V1.0.2
+  * @date          30-October-2016
   * @description   Header file of controller.c 
   ******************************************************************************
   * @attention
@@ -22,16 +22,16 @@
 #define YES 1
 #define NO 0
 
-#define PS2_GPIO GPIOB
-#define PS2_CLK_GPIO RCC_APB2Periph_GPIOB
+#define PS2_GPIO         GPIOE
+#define PS2_CLK_GPIO     RCC_APB2Periph_GPIOE
 
-#define PS2_START 0
+#define PS2_START        0
 #define PS2_REQUEST_DATA 1
 
-#define PS2_DI  GPIO_Pin_12
-#define PS2_DO  GPIO_Pin_13
-#define PS2_CS  GPIO_Pin_14
-#define PS2_CLK GPIO_Pin_15
+#define PS2_DI  GPIO_Pin_1
+#define PS2_DO  GPIO_Pin_2
+#define PS2_CS  GPIO_Pin_3
+#define PS2_CLK GPIO_Pin_4
 
 #define PSB_SELECT      0
 #define PSB_L3          1
@@ -62,6 +62,7 @@
 
 #define PRESSED 0
 
+void controlModeConfirm_Config(void);
 void Controller_Config(void);
 void sendCmd2PS2(uint8_t command);
 void sendCmd2MCU(void);
@@ -75,6 +76,7 @@ void turnOnModeChange(void);
 void turnOnVibrationMode(void);
 void saveChangesAndExit(void);
 void PS2_Vibration(u8 motor1, u8 motor2);
+uint8_t isAutoControl(void);
 
 #endif /*__CONTROLLER_H*/
 

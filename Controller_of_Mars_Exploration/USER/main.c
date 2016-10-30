@@ -24,12 +24,21 @@
 
 int main(void){
 	delay_init(72);
-//	USART1_Config();
+	//USART1_Config();
 	Controller_Config();
-  Arm_Config();
 	Tire_Config();
+  Arm_Config();
 	while(1){
-		tireGoto(getButtonData());
+    if(!isAutoControl()){
+      tireGoto(getButtonData());
+    } else if (isAutoControl()){
+      for(int i = 1; i <= 0x444; ++i)
+      PCA9685_SetOutput(PCA_ADDRESS, 0, 0, i);
+      delay_ms(1000);
+      for(int i = 0x444; i > 0; --i)
+      PCA9685_SetOutput(PCA_ADDRESS, 0, 0, i);
+      delay_ms(1000); 
+    }    
 	}
 }
 

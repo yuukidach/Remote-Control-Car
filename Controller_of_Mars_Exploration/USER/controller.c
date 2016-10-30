@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
   * @author  			 Yuuki_Dach
-  * @version 			 V1.0.2
-  * @date          14-October-2016
+  * @version 			 V1.0.3
+  * @date          30-October-2016
   * @description   Functions of controller. 
   ******************************************************************************
   * @attention
@@ -18,6 +18,7 @@
 #include "controller.h"
 #include "delay.h"
 
+uint32_t cnt = 0;
 uint16_t buttonValue;
 uint8_t PS2_Cmd[2] = {0x01, 0x42};
 uint8_t PS2_Data[9] = {0x00};
@@ -39,18 +40,36 @@ uint8_t PS2_Mask[]={
     PSB_BLUE,
     PSB_PINK
 };
-	
+
+
+/**
+ * @brief	Configurate the LED of PE5 to show the status of the control mode.
+ * @param	None
+ * @retval None
+ */
+void controlModeConfirm_Config(void){
+  GPIO_InitTypeDef GPIO_InitStructure;
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOE, ENABLE);
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_Init(GPIOE, &GPIO_InitStructure);
+}
+
+
 void Controller_Config(void){
 	GPIO_InitTypeDef GPIO_InitStructure;
-	RCC_APB2PeriphClockCmd( PS2_CLK_GPIO, ENABLE);
+	RCC_APB2PeriphClockCmd(PS2_CLK_GPIO, ENABLE);
 	GPIO_InitStructure.GPIO_Pin = PS2_DO | PS2_CS | PS2_CLK;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_Init(GPIOB, &GPIO_InitStructure);
+	GPIO_Init(PS2_GPIO, &GPIO_InitStructure);
 	
 	GPIO_InitStructure.GPIO_Pin = PS2_DI;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;
-	GPIO_Init(GPIOB, &GPIO_InitStructure);
+	GPIO_Init(PS2_GPIO, &GPIO_InitStructure);
+  
+  controlModeConfirm_Config();
 	
 	shortPoll();
 	shortPoll();
@@ -239,6 +258,21 @@ void PS2_Vibration(u8 motor1, u8 motor2){
 	sendCmd2PS2(0x00);
 	GPIO_SetBits(PS2_GPIO, PS2_CS);
 	delay_us(16);  
+}
+
+
+uint8_t isAutoControl(void) {
+  if(getButtonData() == PSB_L1) {
+    for (int i = 0; i < 50; ++i) while(getButtonData() == PSB_L1);
+    ++cnt;
+  }
+  if (cnt % 2) {
+    GPIO_SetBits(GPIOE, GPIO_Pin_5);
+    return 1;
+  } else {
+    GPIO_ResetBits(GPIOE, GPIO_Pin_5);
+    return 0;
+  }
 }
 
 /******************* (C) COPYRIGHT 2016 Yuuki_Dach *************END OF FILE****/
