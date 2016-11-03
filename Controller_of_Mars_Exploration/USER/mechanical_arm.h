@@ -2,7 +2,7 @@
   ******************************************************************************
   * @author  			 Yuuki_Dach
   * @version 			 V1.0.0
-  * @date          16-October-2016
+  * @date          3-November-2016
   * @description   Functions of the mechanical arm
   ******************************************************************************
   * @attention
@@ -19,8 +19,14 @@
 #define __MECHANICAL_ARM_H
 
 #include "pca9685.h"
+#include "controller.h"
 
 void Arm_Config(void);
+void putArmHigh(void);
+void putArmLow(void);
+void handGrab(void);
+void handOpen(void);
+void armControl(uint8_t cmd);
 
 #endif /* __MECHANICAL_ARM_H */
 

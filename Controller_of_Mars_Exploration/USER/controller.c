@@ -19,6 +19,7 @@
 #include "delay.h"
 
 uint32_t cnt = 0;
+uint8_t part3Dir = 0;
 uint16_t buttonValue;
 uint8_t PS2_Cmd[2] = {0x01, 0x42};
 uint8_t PS2_Data[9] = {0x00};
@@ -275,4 +276,9 @@ uint8_t isAutoControl(void) {
   }
 }
 
+uint8_t getPart3Direction(void) {
+  if (getButtonData() == PSB_L2)
+    part3Dir = PART3RIGHT;
+  return part3Dir;
+}
 /******************* (C) COPYRIGHT 2016 Yuuki_Dach *************END OF FILE****/

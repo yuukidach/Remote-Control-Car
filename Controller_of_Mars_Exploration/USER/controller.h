@@ -22,6 +22,9 @@
 #define YES 1
 #define NO 0
 
+#define PART3LEFT  0
+#define PART3RIGHT 1
+
 #define PS2_GPIO         GPIOE
 #define PS2_CLK_GPIO     RCC_APB2Periph_GPIOE
 
@@ -77,6 +80,10 @@ void turnOnVibrationMode(void);
 void saveChangesAndExit(void);
 void PS2_Vibration(u8 motor1, u8 motor2);
 uint8_t isAutoControl(void);
+uint8_t getPart3Direction(void);
+
+void TIM3_GPIO_Config(void);
+void TIM3_Mode_Config(void);
 
 #endif /*__CONTROLLER_H*/
 

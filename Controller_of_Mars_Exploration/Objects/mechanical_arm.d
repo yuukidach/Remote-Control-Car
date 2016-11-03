@@ -12,3 +12,4 @@
 .\objects\mechanical_arm.o: .\FWlib\inc\stm32f10x_rcc.h
 .\objects\mechanical_arm.o: .\FWlib\inc\stm32f10x_tim.h
 .\objects\mechanical_arm.o: .\FWlib\inc\stm32f10x_usart.h
+.\objects\mechanical_arm.o: USER\controller.h

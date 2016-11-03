@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
   * @author  			 Yuuki_Dach
-  * @version 			 V1.1.0
-  * @date          30-October-2016
+  * @version 			 V1.2.0
+  * @date          3-November-2016
   * @description   Functions of our car's tires(motors).
   ******************************************************************************
   * @attention
@@ -24,16 +24,23 @@
 void Tire_Config(void){
 	GPIO_InitTypeDef GPIO_InitStructure;
   
-  RCC_APB2PeriphClockCmd(LEFT_TIRE_CLK_GPIO | RIGHT_TIRE_CLK_GPIO, ENABLE);
+  RCC_APB2PeriphClockCmd(LEFT1_TIRE_CLK_GPIO  | LEFT2_TIRE_CLK_GPIO | \
+                         RIGHT1_TIRE_CLK_GPIO | RIGHT1_TIRE_CLK_GPIO, ENABLE);
 	
-	GPIO_InitStructure.GPIO_Pin = LEFT_TIRE_IN1 | LEFT_TIRE_IN2;
+	GPIO_InitStructure.GPIO_Pin = LEFT1_TIRE_IN1 | LEFT1_TIRE_IN2;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;	
-	GPIO_Init(LEFT_TIRE_GPIO, &GPIO_InitStructure);
+	GPIO_Init(LEFT1_TIRE_GPIO, &GPIO_InitStructure);
+  
+  GPIO_InitStructure.GPIO_Pin = LEFT2_TIRE_IN1 | LEFT2_TIRE_IN2;
+  GPIO_Init(LEFT2_TIRE_GPIO, &GPIO_InitStructure);
 	
-	GPIO_InitStructure.GPIO_Pin = RIGHT_TIRE_IN1 | RIGHT_TIRE_IN2;
-	GPIO_Init(RIGHT_TIRE_GPIO, &GPIO_InitStructure);
-	
+	GPIO_InitStructure.GPIO_Pin = RIGHT1_TIRE_IN1 | RIGHT1_TIRE_IN2;
+	GPIO_Init(RIGHT1_TIRE_GPIO, &GPIO_InitStructure);
+  
+  GPIO_InitStructure.GPIO_Pin = RIGHT2_TIRE_IN1 | RIGHT2_TIRE_IN2;
+	GPIO_Init(RIGHT2_TIRE_GPIO, &GPIO_InitStructure);
+  
   Arm_Config();
   
   stopTheCar();
@@ -47,67 +54,69 @@ void Tire_Config(void){
  * @retval	None
  */
 void setSpeed(int towards, int PWM_Setl, int PWM_Setr){
-  switch (towards) {
-    case FORWARDS : setForwards();  break;
-    case BACKWARDS: setBackwards(); break;
-    case TURNLEFT : setTurnLeft();  break;
-    case TURNRIGHT: setTurnRight(); break;
-  }
   if (PWM_Setl <= 100 && PWM_Setr <= 100){
-    PCA9685_SetOutput(PCA_ADDRESS, LEFT_TIRE_ENA , 0, 0xfff*PWM_Setl/100);
-    PCA9685_SetOutput(PCA_ADDRESS, RIGHT_TIRE_ENA, 0, 0xfff*PWM_Setr/100);
+    PCA9685_SetOutput(PCA_ADDRESS, LEFT1_TIRE_ENA , 0, 0xfff*PWM_Setl/100);
+    PCA9685_SetOutput(PCA_ADDRESS, LEFT2_TIRE_ENA , 0, 0xfff*PWM_Setl/100);
+    PCA9685_SetOutput(PCA_ADDRESS, RIGHT1_TIRE_ENA, 0, 0xfff*PWM_Setr/100);
+    PCA9685_SetOutput(PCA_ADDRESS, RIGHT2_TIRE_ENA, 0, 0xfff*PWM_Setr/100);
+  }
+  switch (towards) {
+    case FORWARDS : setForwards() ; break;
+    case BACKWARDS: setBackwards(); break;
+    case TURNLEFT : setTurnLeft() ; break;
+    case TURNRIGHT: setTurnRight(); break;
   }
 }
 
 
 void setForwards(void) {
-  GPIO_SetBits(LEFT_TIRE_GPIO, LEFT_TIRE_IN1);
-  GPIO_SetBits(RIGHT_TIRE_GPIO, RIGHT_TIRE_IN1);
-  GPIO_ResetBits(LEFT_TIRE_GPIO, LEFT_TIRE_IN2);
-  GPIO_ResetBits(RIGHT_TIRE_GPIO, RIGHT_TIRE_IN2);
+  GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) & 0xff55);
+//  GPIO_ResetBits(LEFT1_TIRE_GPIO, LEFT1_TIRE_IN2);
+//  GPIO_ResetBits(LEFT2_TIRE_GPIO, LEFT2_TIRE_IN2);
+//  GPIO_ResetBits(RIGHT1_TIRE_GPIO, RIGHT1_TIRE_IN2);
+//  GPIO_ResetBits(RIGHT2_TIRE_GPIO, RIGHT2_TIRE_IN2);
+  GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) | 0x0055);
+//  GPIO_SetBits(LEFT1_TIRE_GPIO, LEFT1_TIRE_IN1);
+//  GPIO_SetBits(LEFT2_TIRE_GPIO, LEFT2_TIRE_IN1);
+//  GPIO_SetBits(RIGHT1_TIRE_GPIO, RIGHT1_TIRE_IN1);
+//  GPIO_SetBits(RIGHT2_TIRE_GPIO, RIGHT2_TIRE_IN1);  
 }
 
 
 void setBackwards(void) {
-  GPIO_SetBits(LEFT_TIRE_GPIO, LEFT_TIRE_IN2);
-  GPIO_SetBits(RIGHT_TIRE_GPIO, RIGHT_TIRE_IN2);
-  GPIO_ResetBits(LEFT_TIRE_GPIO, LEFT_TIRE_IN1);
-  GPIO_ResetBits(RIGHT_TIRE_GPIO, RIGHT_TIRE_IN1);
+  GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) & 0xffaa);
+  GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) | 0x00aa);
 }
 
 
 void setTurnLeft(void) {
-  GPIO_SetBits(LEFT_TIRE_GPIO, LEFT_TIRE_IN2);
-  GPIO_SetBits(RIGHT_TIRE_GPIO, RIGHT_TIRE_IN1);
-  GPIO_ResetBits(LEFT_TIRE_GPIO, LEFT_TIRE_IN1);
-  GPIO_ResetBits(RIGHT_TIRE_GPIO, RIGHT_TIRE_IN2);
+  GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) & 0xff5a);
+  GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) | 0x005a);
 }
 
 
 void setTurnRight(void) {
-  GPIO_SetBits(LEFT_TIRE_GPIO, LEFT_TIRE_IN1);
-  GPIO_SetBits(RIGHT_TIRE_GPIO, RIGHT_TIRE_IN2);
-  GPIO_ResetBits(LEFT_TIRE_GPIO, LEFT_TIRE_IN2);
-  GPIO_ResetBits(RIGHT_TIRE_GPIO, RIGHT_TIRE_IN1);
+  GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) & 0xffa5);
+  GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) | 0x00a5);
 }
 
 
 void stopTheCar(void) {
-  GPIO_ResetBits(LEFT_TIRE_GPIO, LEFT_TIRE_IN1);
-  GPIO_ResetBits(LEFT_TIRE_GPIO, LEFT_TIRE_IN2);
-  GPIO_ResetBits(RIGHT_TIRE_GPIO, RIGHT_TIRE_IN1);
-  GPIO_ResetBits(RIGHT_TIRE_GPIO, RIGHT_TIRE_IN2);
-  PCA9685_SetOutput(PCA_ADDRESS, LEFT_TIRE_ENA , 0xfff, 0);
-  PCA9685_SetOutput(PCA_ADDRESS, RIGHT_TIRE_ENA, 0xfff, 0);
+  GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) & 0xff00);
+  
+  PCA9685_SetOutput(PCA_ADDRESS, LEFT1_TIRE_ENA , 0xfff, 0x0);
+  PCA9685_SetOutput(PCA_ADDRESS, LEFT2_TIRE_ENA , 0xfff, 0x0);
+  PCA9685_SetOutput(PCA_ADDRESS, RIGHT1_TIRE_ENA, 0xfff, 0x0);
+  PCA9685_SetOutput(PCA_ADDRESS, RIGHT2_TIRE_ENA, 0xfff, 0x0);
 }
 
 
 void tireGoto(uint8_t dir){
   switch (dir) {
-    case PSB_PAD_UP   : setSpeed(FORWARDS , 50, 50); break;
-    case PSB_PAD_DOWN : setSpeed(BACKWARDS, 50, 50); break;
-    case PSB_PAD_RIGHT: setSpeed(TURNRIGHT, 50, 50); break;
-    case PSB_PAD_LEFT : setSpeed(TURNLEFT , 50, 50); break;
+    case PSB_PAD_UP   : setSpeed(FORWARDS , 25, 25); break;
+    case PSB_PAD_DOWN : setSpeed(BACKWARDS, 25, 25); break;
+    case PSB_PAD_RIGHT: setSpeed(TURNRIGHT, 25, 25); break;
+    case PSB_PAD_LEFT : setSpeed(TURNLEFT , 25, 25); break;
     default: stopTheCar();
   }
 }

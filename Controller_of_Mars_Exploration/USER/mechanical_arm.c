@@ -2,7 +2,7 @@
   ******************************************************************************
   * @author  			 Yuuki_Dach
   * @version 			 V1.0.1
-  * @date          14-October-2016
+  * @date          3-November-2016
   * @description   Functions of the mechanical arm
   ******************************************************************************
   * @attention
@@ -30,4 +30,35 @@ void Arm_Config(void) {
 }
 
 
+void putArmHigh(void) {
+  PCA9685_SetOutput(PCA_ADDRESS, 0, 0, 98); 
+  PCA9685_SetOutput(PCA_ADDRESS, 1, 0, 470); 
+  PCA9685_SetOutput(PCA_ADDRESS, 2, 0, 511); 
+}
+
+
+void putArmLow(void) {
+  PCA9685_SetOutput(PCA_ADDRESS, 0, 0, 420); 
+  PCA9685_SetOutput(PCA_ADDRESS, 1, 0, 230); //add the pwm will put the arm lower
+  PCA9685_SetOutput(PCA_ADDRESS, 2, 0, 511);
+}
+
+
+void handGrab(void) {
+  PCA9685_SetOutput(PCA_ADDRESS, 3, 0, 125); 
+}
+
+
+void handOpen(void) {
+  PCA9685_SetOutput(PCA_ADDRESS, 3, 0, 270);
+}
+
+void armControl(uint8_t cmd) {
+  switch (cmd) {
+    case PSB_TRIANGLE : putArmHigh(); break;
+    case PSB_CROSS    : putArmLow() ; break;
+    case PSB_R1       : handGrab()  ; break;
+    case PSB_R2       : handOpen()  ; break;
+  }
+}
 /******************* (C) COPYRIGHT 2016 Yuuki_Dach *************END OF FILE****/
