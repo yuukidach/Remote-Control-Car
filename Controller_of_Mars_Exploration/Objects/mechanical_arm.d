@@ -13,3 +13,4 @@
 .\objects\mechanical_arm.o: .\FWlib\inc\stm32f10x_tim.h
 .\objects\mechanical_arm.o: .\FWlib\inc\stm32f10x_usart.h
 .\objects\mechanical_arm.o: USER\controller.h
+.\objects\mechanical_arm.o: USER\delay.h

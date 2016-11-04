@@ -111,14 +111,70 @@ void stopTheCar(void) {
 }
 
 
-void tireGoto(uint8_t dir){
+void carGo(uint8_t dir){
   switch (dir) {
     case PSB_PAD_UP   : setSpeed(FORWARDS , 25, 25); break;
     case PSB_PAD_DOWN : setSpeed(BACKWARDS, 25, 25); break;
-    case PSB_PAD_RIGHT: setSpeed(TURNRIGHT, 25, 25); break;
-    case PSB_PAD_LEFT : setSpeed(TURNLEFT , 25, 25); break;
+    case PSB_PAD_RIGHT: setSpeed(TURNRIGHT, 30, 30); break;
+    case PSB_PAD_LEFT : setSpeed(TURNLEFT , 30, 30); break;
+    case PSB_CIRCLE   : setSpeed(TURNRIGHT, 30,  7); break;
+    case PSB_SQUARE   : setSpeed(TURNLEFT ,  7, 30); break;
     default: stopTheCar();
   }
+}
+
+
+void carGoWithStick(uint8_t lx, uint8_t ly) {
+  int slx = ((int)lx-128), sly = ((int)ly-128);
+  
+  if (sly < -2) {
+    if (slx <= 0) {
+      
+      if (slx <= -100) setSpeed(TURNLEFT , 30, 30);
+      else if (slx <= -20) setSpeed(FORWARDS , 30, 40);
+      else setSpeed(FORWARDS , 25, 25);
+      
+    } else {
+      
+      if (slx >= 100) setSpeed(TURNRIGHT, 30, 30);
+      else if (slx >= 20) setSpeed(FORWARDS , 40, 30);
+      else setSpeed(FORWARDS , 25, 25);
+    }
+    
+  } else if (sly > 2) {    
+    if (slx <= 0) {
+      
+      if (slx <= -100) setSpeed(TURNRIGHT , 30, 30);
+      else if (slx <= -20) setSpeed(BACKWARDS , 30, 40);
+      else setSpeed(BACKWARDS , 25, 25);
+      
+    } else {
+      
+      if (slx >= 100) setSpeed(TURNLEFT, 30, 30);
+      else if (slx >= 20) setSpeed(BACKWARDS , 40, 30);
+      else setSpeed(BACKWARDS , 25, 25);
+    }
+  } else stopTheCar();
+  
+/*  
+  if (sly < -2) {          // Go ahead
+    if (slx <= 0) {        // Turn left
+      if (slx <= sly) setSpeed(TURNLEFT, -slx+sly, -slx);
+      else setSpeed(FORWARDS, -slx, -sly);
+    } else {               // Turn Right
+      if (-slx <= sly) setSpeed(TURNRIGHT, slx, slx-sly);
+      else setSpeed(FORWARDS, slx, -sly);
+    }
+    
+  } else if (sly > 2) {    // Go backwards
+    if (slx <= 0) {        // Turn left
+      if (slx <= -sly) setSpeed(TURNRIGHT, -slx+sly, -slx);
+      else setSpeed(BACKWARDS, sly, -slx);
+    } else {               // Turn Right
+      if (slx <= sly) setSpeed (TURNLEFT, sly, sly-slx);
+      else setSpeed(BACKWARDS, sly, slx);
+    }
+  } else stopTheCar();*/
 }
 
 /******************* (C) COPYRIGHT 2016 Yuuki_Dach *************END OF FILE****/

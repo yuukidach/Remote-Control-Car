@@ -57,7 +57,8 @@ void setTurnLeft(void);
 void setTurnRight(void);
 void setSpeed(int towards, int PWM_Setl, int PWM_Setr);
 void stopTheCar(void);
-void tireGoto(uint8_t direction);
+void carGo(uint8_t direction);
+void carGoWithStick(uint8_t lx, uint8_t ly);
 
 #endif /* __MOVEMENT_H */
 

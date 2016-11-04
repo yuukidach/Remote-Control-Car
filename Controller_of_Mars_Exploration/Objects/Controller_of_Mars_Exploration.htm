@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\Controller_of_Mars_Exploration.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Controller_of_Mars_Exploration.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Thu Nov 03 21:54:26 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Fri Nov 04 22:03:15 2016
 <BR><P>
 <H3>Maximum Stack Usage =        132 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -98,7 +98,7 @@ Global Symbols
 <P><STRONG><a name="[48]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(.text)
 </UL>
-<P><STRONG><a name="[89]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[8c]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[49]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -108,15 +108,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[8a]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[8d]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[8b]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[8e]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[8c]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[8f]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[8d]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
+<P><STRONG><a name="[90]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
 
-<P><STRONG><a name="[8e]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[91]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
 <P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_stm32f10x_hd.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
@@ -311,7 +311,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[8f]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[92]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
 <P><STRONG><a name="[4c]"></a>Arm_Config</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, mechanical_arm.o(i.Arm_Config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 124<LI>Call Chain = Arm_Config &rArr; PCA9685_Init &rArr; PCA9685_I2C_Init &rArr; PCA9685_I2C_Mode_Config &rArr; I2C_Init &rArr; RCC_GetClocksFreq
@@ -349,52 +349,53 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = GPIO_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCA9685_I2C_GPIO_Config
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_Config
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tire_Config
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;controlModeConfirm_Config
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Controller_Config
 </UL>
 
-<P><STRONG><a name="[81]"></a>GPIO_ReadInputDataBit</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_ReadInputDataBit))
-<BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2PS2
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2MCU
+<P><STRONG><a name="[85]"></a>GPIO_ReadInputDataBit</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_ReadInputDataBit))
+<BR><BR>[Called By]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2PS2
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2MCU
 </UL>
 
-<P><STRONG><a name="[83]"></a>GPIO_ReadOutputData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_ReadOutputData))
+<P><STRONG><a name="[87]"></a>GPIO_ReadOutputData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_ReadOutputData))
 <BR><BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stopTheCar
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setTurnRight
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setTurnLeft
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setForwards
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setBackwards
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setTurnRight
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setTurnLeft
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setForwards
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setBackwards
 </UL>
 
-<P><STRONG><a name="[76]"></a>GPIO_ResetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_ResetBits))
+<P><STRONG><a name="[7b]"></a>GPIO_ResetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_ResetBits))
 <BR><BR>[Called By]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnOnVibrationMode
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnOnModeChange
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shortPoll
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2PS2
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2MCU
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2PS2
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2MCU
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;saveChangesAndExit
-<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isAutoControl
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isAutoControl
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enterSettings
 </UL>
 
-<P><STRONG><a name="[79]"></a>GPIO_SetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_SetBits))
+<P><STRONG><a name="[7e]"></a>GPIO_SetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_SetBits))
 <BR><BR>[Called By]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnOnVibrationMode
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnOnModeChange
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shortPoll
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2PS2
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2MCU
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2PS2
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2MCU
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;saveChangesAndExit
-<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isAutoControl
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isAutoControl
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enterSettings
 </UL>
 
-<P><STRONG><a name="[84]"></a>GPIO_Write</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_Write))
+<P><STRONG><a name="[88]"></a>GPIO_Write</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_Write))
 <BR><BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stopTheCar
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setTurnRight
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setTurnLeft
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setForwards
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setBackwards
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setTurnRight
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setTurnLeft
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setForwards
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setBackwards
 </UL>
 
 <P><STRONG><a name="[2]"></a>HardFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_it.o(i.HardFault_Handler))
@@ -554,12 +555,12 @@ Global Symbols
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCA9685_I2C_EndTransmission
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCA9685_I2C_BeginTransmission
 </UL>
-<BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putArmLow
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;handOpen
-<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;handGrab
+<BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putArmLow
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;handOpen
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;handGrab
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stopTheCar
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setSpeed
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putArmHigh
+<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setSpeed
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putArmHigh
 </UL>
 
 <P><STRONG><a name="[6b]"></a>PCA9685_WakeUp</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, pca9685.o(i.PCA9685_WakeUp))
@@ -582,6 +583,7 @@ Global Symbols
 
 <P><STRONG><a name="[50]"></a>RCC_APB2PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd))
 <BR><BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCA9685_I2C_GPIO_Config
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_Config
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tire_Config
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;controlModeConfirm_Config
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Controller_Config
@@ -591,6 +593,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = RCC_GetClocksFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Init
+<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
 </UL>
 
 <P><STRONG><a name="[6]"></a>SVC_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f10x_it.o(i.SVC_Handler))
@@ -617,28 +620,60 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
+<P><STRONG><a name="[71]"></a>USART1_Config</STRONG> (Thumb, 114 bytes, Stack size 24 bytes, usart1.o(i.USART1_Config))
+<BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = USART1_Config &rArr; USART_Init &rArr; RCC_GetClocksFreq
+</UL>
+<BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+</UL>
+<BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[73]"></a>USART_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_Cmd))
+<BR><BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_Config
+</UL>
+
+<P><STRONG><a name="[72]"></a>USART_Init</STRONG> (Thumb, 210 bytes, Stack size 56 bytes, stm32f10x_usart.o(i.USART_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = USART_Init &rArr; RCC_GetClocksFreq
+</UL>
+<BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
+</UL>
+<BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_Config
+</UL>
+
 <P><STRONG><a name="[5]"></a>UsageFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_it.o(i.UsageFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[90]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[93]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[91]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[94]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[92]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[95]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[71]"></a>armControl</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, mechanical_arm.o(i.armControl))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = armControl &rArr; putArmLow &rArr; PCA9685_SetOutput &rArr; PCA9685_I2C_Write &rArr; I2C_CheckEvent
+<P><STRONG><a name="[74]"></a>armControl</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, mechanical_arm.o(i.armControl))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = armControl &rArr; putArmLow &rArr; handOpen &rArr; PCA9685_SetOutput &rArr; PCA9685_I2C_Write &rArr; I2C_CheckEvent
 </UL>
-<BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putArmLow
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;handOpen
-<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;handGrab
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putArmHigh
+<BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putArmLow
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;handOpen
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;handGrab
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putArmHigh
+</UL>
+<BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[79]"></a>carGo</STRONG> (Thumb, 108 bytes, Stack size 8 bytes, movement.o(i.carGo))
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = carGo &rArr; setSpeed &rArr; PCA9685_SetOutput &rArr; PCA9685_I2C_Write &rArr; I2C_CheckEvent
+</UL>
+<BR>[Calls]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stopTheCar
+<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setSpeed
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[58]"></a>clrPS2Buff</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, controller.o(i.clrPS2Buff))
-<BR><BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getButtonData
+<BR><BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getButtonData
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Controller_Config
 </UL>
 
@@ -651,20 +686,22 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Controller_Config
 </UL>
 
-<P><STRONG><a name="[7e]"></a>delay_init</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, delay.o(i.delay_init))
+<P><STRONG><a name="[83]"></a>delay_init</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, delay.o(i.delay_init))
 <BR><BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[80]"></a>delay_ms</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, delay.o(i.delay_ms))
-<BR><BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<P><STRONG><a name="[84]"></a>delay_ms</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, delay.o(i.delay_ms))
+<BR><BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putArmLow
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putArmHigh
+<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[77]"></a>delay_us</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, delay.o(i.delay_us))
+<P><STRONG><a name="[7c]"></a>delay_us</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, delay.o(i.delay_us))
 <BR><BR>[Called By]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnOnVibrationMode
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnOnModeChange
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shortPoll
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2PS2
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2MCU
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2PS2
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2MCU
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;saveChangesAndExit
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enterSettings
 </UL>
@@ -672,187 +709,194 @@ Global Symbols
 <P><STRONG><a name="[54]"></a>enterSettings</STRONG> (Thumb, 86 bytes, Stack size 8 bytes, controller.o(i.enterSettings))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = enterSettings &rArr; sendCmd2PS2
 </UL>
-<BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2PS2
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
+<BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2PS2
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Controller_Config
 </UL>
 
-<P><STRONG><a name="[7a]"></a>getButtonData</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, controller.o(i.getButtonData))
+<P><STRONG><a name="[7f]"></a>getButtonData</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, controller.o(i.getButtonData))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = getButtonData &rArr; sendCmd2MCU &rArr; sendCmd2PS2
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2MCU
+<BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2MCU
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clrPS2Buff
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isAutoControl
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getPart3Direction
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isAutoControl
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getPart3Direction
 </UL>
 
-<P><STRONG><a name="[7c]"></a>getPart3Direction</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, controller.o(i.getPart3Direction))
+<P><STRONG><a name="[81]"></a>getPart3Direction</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, controller.o(i.getPart3Direction))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = getPart3Direction &rArr; getButtonData &rArr; sendCmd2MCU &rArr; sendCmd2PS2
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getButtonData
+<BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getButtonData
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[74]"></a>handGrab</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, mechanical_arm.o(i.handGrab))
+<P><STRONG><a name="[77]"></a>handGrab</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, mechanical_arm.o(i.handGrab))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = handGrab &rArr; PCA9685_SetOutput &rArr; PCA9685_I2C_Write &rArr; I2C_CheckEvent
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCA9685_SetOutput
 </UL>
-<BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;armControl
+<BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putArmLow
+<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;armControl
 </UL>
 
-<P><STRONG><a name="[75]"></a>handOpen</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, mechanical_arm.o(i.handOpen))
+<P><STRONG><a name="[78]"></a>handOpen</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, mechanical_arm.o(i.handOpen))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = handOpen &rArr; PCA9685_SetOutput &rArr; PCA9685_I2C_Write &rArr; I2C_CheckEvent
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCA9685_SetOutput
 </UL>
-<BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;armControl
+<BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putArmLow
+<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;armControl
 </UL>
 
-<P><STRONG><a name="[7d]"></a>isAutoControl</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, controller.o(i.isAutoControl))
+<P><STRONG><a name="[82]"></a>isAutoControl</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, controller.o(i.isAutoControl))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = isAutoControl &rArr; getButtonData &rArr; sendCmd2MCU &rArr; sendCmd2PS2
 </UL>
-<BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getButtonData
+<BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getButtonData
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 76 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 80 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 132<LI>Call Chain = main &rArr; Tire_Config &rArr; Arm_Config &rArr; PCA9685_Init &rArr; PCA9685_I2C_Init &rArr; PCA9685_I2C_Mode_Config &rArr; I2C_Init &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tireGoto
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putArmHigh
-<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;armControl
+<BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putArmHigh
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;carGo
+<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;armControl
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_Config
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tire_Config
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Arm_Config
-<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isAutoControl
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getPart3Direction
-<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getButtonData
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isAutoControl
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getPart3Direction
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getButtonData
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Controller_Config
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_init
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_init
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[72]"></a>putArmHigh</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, mechanical_arm.o(i.putArmHigh))
+<P><STRONG><a name="[75]"></a>putArmHigh</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, mechanical_arm.o(i.putArmHigh))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = putArmHigh &rArr; PCA9685_SetOutput &rArr; PCA9685_I2C_Write &rArr; I2C_CheckEvent
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCA9685_SetOutput
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 </UL>
-<BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;armControl
+<BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;armControl
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[73]"></a>putArmLow</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, mechanical_arm.o(i.putArmLow))
-<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = putArmLow &rArr; PCA9685_SetOutput &rArr; PCA9685_I2C_Write &rArr; I2C_CheckEvent
+<P><STRONG><a name="[76]"></a>putArmLow</STRONG> (Thumb, 90 bytes, Stack size 8 bytes, mechanical_arm.o(i.putArmLow))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = putArmLow &rArr; handOpen &rArr; PCA9685_SetOutput &rArr; PCA9685_I2C_Write &rArr; I2C_CheckEvent
 </UL>
-<BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCA9685_SetOutput
+<BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;handOpen
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;handGrab
+<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCA9685_SetOutput
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 </UL>
-<BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;armControl
+<BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;armControl
 </UL>
 
 <P><STRONG><a name="[57]"></a>saveChangesAndExit</STRONG> (Thumb, 86 bytes, Stack size 8 bytes, controller.o(i.saveChangesAndExit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = saveChangesAndExit &rArr; sendCmd2PS2
 </UL>
-<BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2PS2
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
+<BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2PS2
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Controller_Config
 </UL>
 
-<P><STRONG><a name="[7b]"></a>sendCmd2MCU</STRONG> (Thumb, 170 bytes, Stack size 16 bytes, controller.o(i.sendCmd2MCU))
+<P><STRONG><a name="[80]"></a>sendCmd2MCU</STRONG> (Thumb, 170 bytes, Stack size 16 bytes, controller.o(i.sendCmd2MCU))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = sendCmd2MCU &rArr; sendCmd2PS2
 </UL>
-<BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2PS2
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
+<BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2PS2
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getButtonData
+<BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getButtonData
 </UL>
 
-<P><STRONG><a name="[78]"></a>sendCmd2PS2</STRONG> (Thumb, 136 bytes, Stack size 16 bytes, controller.o(i.sendCmd2PS2))
+<P><STRONG><a name="[7d]"></a>sendCmd2PS2</STRONG> (Thumb, 136 bytes, Stack size 16 bytes, controller.o(i.sendCmd2PS2))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = sendCmd2PS2
 </UL>
-<BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
+<BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
 <BR>[Called By]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnOnVibrationMode
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnOnModeChange
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shortPoll
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2MCU
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2MCU
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;saveChangesAndExit
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enterSettings
 </UL>
 
-<P><STRONG><a name="[82]"></a>setBackwards</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, movement.o(i.setBackwards))
+<P><STRONG><a name="[86]"></a>setBackwards</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, movement.o(i.setBackwards))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = setBackwards
 </UL>
-<BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Write
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadOutputData
+<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Write
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadOutputData
 </UL>
-<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setSpeed
+<BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setSpeed
 </UL>
 
-<P><STRONG><a name="[85]"></a>setForwards</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, movement.o(i.setForwards))
+<P><STRONG><a name="[89]"></a>setForwards</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, movement.o(i.setForwards))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = setForwards
 </UL>
-<BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Write
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadOutputData
+<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Write
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadOutputData
 </UL>
-<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setSpeed
+<BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setSpeed
 </UL>
 
-<P><STRONG><a name="[86]"></a>setSpeed</STRONG> (Thumb, 160 bytes, Stack size 24 bytes, movement.o(i.setSpeed))
+<P><STRONG><a name="[7a]"></a>setSpeed</STRONG> (Thumb, 160 bytes, Stack size 24 bytes, movement.o(i.setSpeed))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = setSpeed &rArr; PCA9685_SetOutput &rArr; PCA9685_I2C_Write &rArr; I2C_CheckEvent
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCA9685_SetOutput
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setTurnRight
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setTurnLeft
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setForwards
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setBackwards
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setTurnRight
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setTurnLeft
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setForwards
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setBackwards
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tireGoto
+<BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;carGo
 </UL>
 
-<P><STRONG><a name="[87]"></a>setTurnLeft</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, movement.o(i.setTurnLeft))
+<P><STRONG><a name="[8a]"></a>setTurnLeft</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, movement.o(i.setTurnLeft))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = setTurnLeft
 </UL>
-<BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Write
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadOutputData
+<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Write
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadOutputData
 </UL>
-<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setSpeed
+<BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setSpeed
 </UL>
 
-<P><STRONG><a name="[88]"></a>setTurnRight</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, movement.o(i.setTurnRight))
+<P><STRONG><a name="[8b]"></a>setTurnRight</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, movement.o(i.setTurnRight))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = setTurnRight
 </UL>
-<BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Write
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadOutputData
+<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Write
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadOutputData
 </UL>
-<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setSpeed
+<BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setSpeed
 </UL>
 
 <P><STRONG><a name="[53]"></a>shortPoll</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, controller.o(i.shortPoll))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = shortPoll &rArr; sendCmd2PS2
 </UL>
-<BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2PS2
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
+<BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2PS2
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Controller_Config
 </UL>
@@ -861,29 +905,20 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = stopTheCar &rArr; PCA9685_SetOutput &rArr; PCA9685_I2C_Write &rArr; I2C_CheckEvent
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCA9685_SetOutput
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Write
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadOutputData
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Write
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadOutputData
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tireGoto
+<BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;carGo
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tire_Config
-</UL>
-
-<P><STRONG><a name="[7f]"></a>tireGoto</STRONG> (Thumb, 80 bytes, Stack size 8 bytes, movement.o(i.tireGoto))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = tireGoto &rArr; setSpeed &rArr; PCA9685_SetOutput &rArr; PCA9685_I2C_Write &rArr; I2C_CheckEvent
-</UL>
-<BR>[Calls]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stopTheCar
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setSpeed
-</UL>
-<BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[55]"></a>turnOnModeChange</STRONG> (Thumb, 80 bytes, Stack size 8 bytes, controller.o(i.turnOnModeChange))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = turnOnModeChange &rArr; sendCmd2PS2
 </UL>
-<BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2PS2
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
+<BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2PS2
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Controller_Config
 </UL>
@@ -891,10 +926,10 @@ Global Symbols
 <P><STRONG><a name="[56]"></a>turnOnVibrationMode</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, controller.o(i.turnOnVibrationMode))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = turnOnVibrationMode &rArr; sendCmd2PS2
 </UL>
-<BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2PS2
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
+<BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendCmd2PS2
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Controller_Config
 </UL>

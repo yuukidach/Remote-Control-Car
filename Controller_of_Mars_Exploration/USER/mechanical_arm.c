@@ -32,14 +32,21 @@ void Arm_Config(void) {
 
 void putArmHigh(void) {
   PCA9685_SetOutput(PCA_ADDRESS, 0, 0, 98); 
+  delay_ms(500);
   PCA9685_SetOutput(PCA_ADDRESS, 1, 0, 470); 
   PCA9685_SetOutput(PCA_ADDRESS, 2, 0, 511); 
 }
 
 
 void putArmLow(void) {
-  PCA9685_SetOutput(PCA_ADDRESS, 0, 0, 420); 
-  PCA9685_SetOutput(PCA_ADDRESS, 1, 0, 230); //add the pwm will put the arm lower
+  PCA9685_SetOutput(PCA_ADDRESS, 1, 0, 105);
+  delay_ms(700);
+  handGrab();
+  PCA9685_SetOutput(PCA_ADDRESS, 0, 0, 420);
+  delay_ms(600);
+  handOpen();
+  delay_ms(300);
+  PCA9685_SetOutput(PCA_ADDRESS, 1, 0, 270); //add the pwm will put the arm lower
   PCA9685_SetOutput(PCA_ADDRESS, 2, 0, 511);
 }
 
@@ -55,8 +62,8 @@ void handOpen(void) {
 
 void armControl(uint8_t cmd) {
   switch (cmd) {
-    case PSB_TRIANGLE : putArmHigh(); break;
-    case PSB_CROSS    : putArmLow() ; break;
+    case PSB_CROSS    : putArmHigh(); break;
+    case PSB_TRIANGLE : putArmLow() ; break;
     case PSB_R1       : handGrab()  ; break;
     case PSB_R2       : handOpen()  ; break;
   }

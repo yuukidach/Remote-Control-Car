@@ -26,19 +26,25 @@ uint8_t dir = PART3LEFT;
 
 int main(void){
 	delay_init(72);
-	//USART1_Config();
+
 	Controller_Config();
 	Tire_Config();
   Arm_Config();
+  USART1_Config();
+
   putArmHigh();
+
 	while(1){
-    if(!isAutoControl()){
-      tireGoto(getButtonData());
+   if(!isAutoControl()){
+      //if (isStickMode()) carGoWithStick(getStickData(PSS_LX), getStickData(PSS_LY));
+      carGo(getButtonData());
+
       armControl(getButtonData());
+
       dir = getPart3Direction();
     } else if (isAutoControl()){
       delay_ms(1000);
-    }    
+    } 
 	}
 }
 

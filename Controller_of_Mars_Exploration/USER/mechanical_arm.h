@@ -20,6 +20,7 @@
 
 #include "pca9685.h"
 #include "controller.h"
+#include "delay.h"
 
 void Arm_Config(void);
 void putArmHigh(void);

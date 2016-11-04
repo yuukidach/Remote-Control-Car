@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
   * @author  			 Yuuki_Dach
-  * @version 			 V1.0.3
-  * @date          30-October-2016
+  * @version 			 V1.1.0
+  * @date          4-November-2016
   * @description   Functions of controller. 
   ******************************************************************************
   * @attention
@@ -136,12 +136,13 @@ uint8_t isStickMode(void){
 	sendCmd2PS2( PS2_Cmd[PS2_REQUEST_DATA]);
 	GPIO_SetBits(PS2_GPIO, PS2_CS);
 	
-	if(PS2_Data[1] == 0x41) return YES;
-	else return NO;
+	if(PS2_Data[1] == 0x41) return NO;
+	else return YES;
 }
 
 
 uint8_t getStickData(uint8_t stick){
+  getButtonData();
 	return PS2_Data[stick];
 }
 
