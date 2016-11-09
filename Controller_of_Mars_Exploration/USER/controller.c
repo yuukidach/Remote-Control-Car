@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
   * @author  			 Yuuki_Dach
-  * @version 			 V1.1.0
-  * @date          4-November-2016
+  * @version 			 V1.1.1
+  * @date          7-November-2016
   * @description   Functions of controller. 
   ******************************************************************************
   * @attention
@@ -204,8 +204,9 @@ void turnOnModeChange(void){
 	sendCmd2PS2(0x01);
 	sendCmd2PS2(0x44);
 	sendCmd2PS2(0x00);
-	sendCmd2PS2(0x01);		//stick mode = 0x01; button mode = 0x00  设置发送模式
-	sendCmd2PS2(0xee);		//Ox03锁存设置，即不可通过按键“MODE”设置模式。 0xee不锁存
+	sendCmd2PS2(0x01);		// stick mode = 0x01; button mode = 0x00  Set the sent mode
+	sendCmd2PS2(0xee);		// Ox03: Latch settings. this means we cannot use button "MODE" to set the mode 
+                        // 0xee: Do not latch.
 	sendCmd2PS2(0x00);
 	sendCmd2PS2(0x00);
 	sendCmd2PS2(0x00);
@@ -268,7 +269,7 @@ uint8_t isAutoControl(void) {
     for (int i = 0; i < 50; ++i) while(getButtonData() == PSB_L1);
     ++cnt;
   }
-  if (cnt % 2) {
+  if (cnt & 0x1) {
     GPIO_SetBits(GPIOE, GPIO_Pin_5);
     return 1;
   } else {

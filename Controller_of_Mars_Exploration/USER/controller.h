@@ -58,7 +58,7 @@
 #define PSB_CROSS       14
 #define PSB_SQUARE      15
 
-#define PSS_RX 5                //”““°∏ÀX÷· ˝æ›
+#define PSS_RX 5                
 #define PSS_RY 6
 #define PSS_LX 7
 #define PSS_LY 8

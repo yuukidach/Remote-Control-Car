@@ -31,23 +31,35 @@ void Arm_Config(void) {
 
 
 void putArmHigh(void) {
-  PCA9685_SetOutput(PCA_ADDRESS, 0, 0, 98); 
-  delay_ms(500);
+  PCA9685_SetOutput(PCA_ADDRESS, 0, 0, 115); 
+  delay_ms(1000);
   PCA9685_SetOutput(PCA_ADDRESS, 1, 0, 470); 
-  PCA9685_SetOutput(PCA_ADDRESS, 2, 0, 511); 
+  PCA9685_SetOutput(PCA_ADDRESS, 2, 0, 505); 
 }
 
 
 void putArmLow(void) {
-  PCA9685_SetOutput(PCA_ADDRESS, 1, 0, 105);
+  PCA9685_SetOutput(PCA_ADDRESS, 1, 0, 300);
+  delay_ms(200);
+  PCA9685_SetOutput(PCA_ADDRESS, 1, 0, 250);
+  delay_ms(200);
+  for (int i = 200; i >= 105; i -= 6) {
+    PCA9685_SetOutput(PCA_ADDRESS, 1, 0, i);      // In order to put the arm down slowlier
+    delay_ms(35);
+  }
+//  delay_ms(50);
+//  PCA9685_SetOutput(PCA_ADDRESS, 1, 0, 150);
+//  delay_ms(50);
+//  PCA9685_SetOutput(PCA_ADDRESS, 1, 0, 105);
   delay_ms(700);
+  
   handGrab();
-  PCA9685_SetOutput(PCA_ADDRESS, 0, 0, 420);
+  PCA9685_SetOutput(PCA_ADDRESS, 0, 0, 460);
   delay_ms(600);
   handOpen();
   delay_ms(300);
-  PCA9685_SetOutput(PCA_ADDRESS, 1, 0, 270); //add the pwm will put the arm lower
-  PCA9685_SetOutput(PCA_ADDRESS, 2, 0, 511);
+  PCA9685_SetOutput(PCA_ADDRESS, 1, 0, 250); //add the pwm will put the arm lower
+  PCA9685_SetOutput(PCA_ADDRESS, 2, 0, 495);
 }
 
 
