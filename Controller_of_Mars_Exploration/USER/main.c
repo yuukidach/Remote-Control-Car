@@ -28,30 +28,30 @@
 
 uint8_t dir = PART3LEFT;
 
-int main(void){
-	delay_init(72);
+int main(void) {
+    delay_init(72);
 
-	Controller_Config();
-	Tire_Config();
-  Arm_Config();
+    Controller_Config();
+    Tire_Config();
+    Arm_Config();
   
-  #if(__DEBUG__ == __ON__)
-    USART1_Config();
-  #endif
+    #if (__DEBUG__ == __ON__)
+      USART1_Config();
+    #endif
 
-  putArmHigh();
+    putArmHigh();
 
-	while(1){
-    if(!isAutoControl()){
-      carGo(getButtonData());
-
-      armControl(getButtonData());
+    while(1){
+        if(!isAutoControl()){
+            carGo(getButtonData());
   
-      dir = getPart3Direction();
-    } else if (isAutoControl()){
-      delay_ms(1000);
-    } 
-	}
+            armControl(getButtonData());
+  
+            dir = getPart3Direction();
+        } else if (isAutoControl()){
+            delay_ms(1000);
+        } 
+    }
 }
 
 /******************* (C) COPYRIGHT 2016 Yuuki_Dach *************END OF FILE****/
