@@ -278,6 +278,13 @@ uint8_t isAutoControl(void) {
     }
 }
 
+/*
+ * @brief	Tell the car which direction to go during part 3.
+ *        The default return value is PART3LEFT(0), once it is change to PART3RIGHT(1), it cannot be changed back.
+ * @param	None
+ * @retval PART3RIGHT (1): Means turning right at part 3
+ *         PART3LEFT  (0): Means turning left at part 3
+ */
 uint8_t getPart3Direction(void) {
     if (getButtonData() == PSB_L2)
         part3Dir = PART3RIGHT;

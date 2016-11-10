@@ -47,7 +47,6 @@ void putArmLow(void) {
         PCA9685_SetOutput(PCA_ADDRESS, 1, 0, i);      // In order to put the arm down slowlier
         delay_ms(35);
     }
-//    delay_ms(700);
     
     handGrab();
     PCA9685_SetOutput(PCA_ADDRESS, 0, 0, 460);

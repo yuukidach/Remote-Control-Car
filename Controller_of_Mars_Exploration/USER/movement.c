@@ -17,7 +17,7 @@
 
 #include "movement.h"
 #include "controller.h"
-#include "usart1.h"
+#include "usartconf.h"
 #include "pca9685.h"
 #include "mechanical_arm.h"
 
@@ -112,18 +112,21 @@ void stopTheCar(void) {
 
 
 void carGo(uint8_t dir){
-    switch (dir) {
-        case PSB_PAD_UP   : setSpeed(FORWARDS , 40, 40); break;
+    switch (dir) {      
+        case PSB_PAD_UP   : setSpeed(FORWARDS , 25, 25); break;
         case PSB_PAD_DOWN : setSpeed(BACKWARDS, 25, 25); break;
         case PSB_PAD_RIGHT: setSpeed(TURNRIGHT, 30, 30); break;
         case PSB_PAD_LEFT : setSpeed(TURNLEFT , 30, 30); break;
-        case PSB_CIRCLE   : setSpeed(TURNRIGHT, 30,  7); break;
-        case PSB_SQUARE   : setSpeed(TURNLEFT ,  7, 30); break;
+        case PSB_CIRCLE   : setSpeed(TURNRIGHT, 31,  8); break;
+        case PSB_SQUARE   : setSpeed(TURNLEFT ,  8, 31); break;
         default: stopTheCar();
     }
 }
 
 
+/* @breif Use left stick to control the car
+ *        WARNING!!! Since the sticks of the PS2 are not accurate, I don't recommend users to use this function.
+ */
 void carGoWithStick(uint8_t lx, uint8_t ly) {
     int slx = ((int)lx-128), sly = ((int)ly-128);
     

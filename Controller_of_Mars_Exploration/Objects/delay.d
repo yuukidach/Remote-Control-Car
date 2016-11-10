@@ -5,9 +5,14 @@
 .\objects\delay.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\delay.o: .\CMSIS\system_stm32f10x.h
 .\objects\delay.o: .\USER\stm32f10x_conf.h
-.\objects\delay.o: .\FWlib\inc\stm32f10x_gpio.h
+.\objects\delay.o: .\FWlib\inc\stm32f10x_adc.h
 .\objects\delay.o: .\CMSIS\stm32f10x.h
+.\objects\delay.o: .\FWlib\inc\stm32f10x_dma.h
+.\objects\delay.o: .\FWlib\inc\stm32f10x_exti.h
+.\objects\delay.o: .\FWlib\inc\stm32f10x_flash.h
+.\objects\delay.o: .\FWlib\inc\stm32f10x_gpio.h
 .\objects\delay.o: .\FWlib\inc\stm32f10x_i2c.h
 .\objects\delay.o: .\FWlib\inc\stm32f10x_rcc.h
 .\objects\delay.o: .\FWlib\inc\stm32f10x_tim.h
 .\objects\delay.o: .\FWlib\inc\stm32f10x_usart.h
+.\objects\delay.o: .\FWlib\inc\misc.h

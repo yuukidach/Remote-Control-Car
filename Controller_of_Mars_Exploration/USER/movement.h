@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
-  * @author  			 Yuuki_Dach
-  * @version 			 V1.2.0
+  * @author  	   Yuuki_Dach
+  * @version       V1.2.0
   * @date          3-November-2016
   * @description   Header file of movement.c 
   ******************************************************************************

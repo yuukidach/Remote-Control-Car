@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @author  			 Yuuki_Dach
-  * @version 			 V1.0.3
-  * @date          01-September-2016
+  * @author  	   Yuuki_Dach
+  * @version 	   V1.1.0
+  * @date          10-November-2016
   * @description   Main.c
   ******************************************************************************
   * @attention
@@ -18,13 +18,18 @@
 
 #include "controller.h"
 #include "delay.h"
-#include "usart1.h"
+#include "usartconf.h"
 #include "movement.h"
 #include "mechanical_arm.h"
+#include "SysConfig.h"
+#include "WIFIControl.h"
+#include "ADCConfig.h"
+#include "AutoControl.h"
+#include "precompile.h"
 
 #define __ON__           1
 #define __OFF__          0
-#define __DEBUG__        (__OFF__)
+#define __DEBUG__        (__ON__)
 
 uint8_t dir = PART3LEFT;
 
@@ -34,22 +39,40 @@ int main(void) {
     Controller_Config();
     Tire_Config();
     Arm_Config();
-  
-    #if (__DEBUG__ == __ON__)
-      USART1_Config();
-    #endif
+    AutoControlConfig();
+
+#if (__DEBUG__ == __ON__)
+    USART1_Config();
+    NVIC_Config();
+    delay_ms(100);
+    WIFI_ConnectToServer();
+    delay_ms(100);
+    printf("\nis connected!\n");
+#endif
+
+    Ultrasonic_Init();
 
     putArmHigh();
 
     while(1){
         if(!isAutoControl()){
             carGo(getButtonData());
+          
+#if (__DEBUG__ == __ON__)          
+           uint8_t mode = getButtonData ( ) ;
+            if ( mode == PSB_START )
+                printf ( "7 : %u\r\n" , Ultrasonic_Trig ( GPIO_Pin_7 ) ) ;
+            else if ( mode == PSB_L2 )
+                printf ( "8 : %u\r\n" , Ultrasonic_Trig ( GPIO_Pin_8 ) ) ;
+            else if ( mode == PSB_R2 )
+                printf ( "9 : %u\r\n" , Ultrasonic_Trig ( GPIO_Pin_9 ) ) ;
+#endif
   
-            armControl(getButtonData());
-  
+            //armControl(getButtonData());  
             dir = getPart3Direction();
+            
         } else if (isAutoControl()){
-            delay_ms(1000);
+            Final_Charge (PART3RIGHT); // dir == PART3LEFT(0) or PART3RIGHT(1)
         } 
     }
 }

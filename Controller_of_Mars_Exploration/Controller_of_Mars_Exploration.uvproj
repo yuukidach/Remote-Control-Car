@@ -452,11 +452,6 @@
               <FilePath>.\USER\main.c</FilePath>
             </File>
             <File>
-              <FileName>usart1.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\usart1.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f10x_it.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\USER\stm32f10x_it.c</FilePath>
@@ -475,6 +470,46 @@
               <FileName>mechanical_arm.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\USER\mechanical_arm.c</FilePath>
+            </File>
+            <File>
+              <FileName>ADCConfig.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\ADCConfig.c</FilePath>
+            </File>
+            <File>
+              <FileName>AutoControl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\AutoControl.c</FilePath>
+            </File>
+            <File>
+              <FileName>SysConfig.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\SysConfig.c</FilePath>
+            </File>
+            <File>
+              <FileName>TIM.C</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\TIM.C</FilePath>
+            </File>
+            <File>
+              <FileName>WifiControl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\WifiControl.c</FilePath>
+            </File>
+            <File>
+              <FileName>UsartConf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\UsartConf.c</FilePath>
+            </File>
+            <File>
+              <FileName>ultrasonic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\ultrasonic.c</FilePath>
+            </File>
+            <File>
+              <FileName>final_charge.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\final_charge.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -505,6 +540,31 @@
               <FileName>stm32f10x_i2c.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\FWlib\src\stm32f10x_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FWlib\src\stm32f10x_adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FWlib\src\stm32f10x_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>misc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FWlib\src\misc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FWlib\src\stm32f10x_flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_exti.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FWlib\src\stm32f10x_exti.c</FilePath>
             </File>
           </Files>
         </Group>
