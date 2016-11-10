@@ -92,7 +92,6 @@ Section Cross References
     main.o(i.main) refers to controller.o(i.Controller_Config) for Controller_Config
     main.o(i.main) refers to movement.o(i.Tire_Config) for Tire_Config
     main.o(i.main) refers to mechanical_arm.o(i.Arm_Config) for Arm_Config
-    main.o(i.main) refers to usart1.o(i.USART1_Config) for USART1_Config
     main.o(i.main) refers to mechanical_arm.o(i.putArmHigh) for putArmHigh
     main.o(i.main) refers to controller.o(i.isAutoControl) for isAutoControl
     main.o(i.main) refers to controller.o(i.getButtonData) for getButtonData
@@ -244,6 +243,7 @@ Removing Unused input sections from the image.
     Removing controller.o(i.PS2_Vibration), (96 bytes).
     Removing controller.o(i.getStickData), (20 bytes).
     Removing controller.o(i.isStickMode), (64 bytes).
+    Removing usart1.o(i.USART1_Config), (124 bytes).
     Removing usart1.o(i.USART1_printf), (262 bytes).
     Removing usart1.o(i.fputc), (36 bytes).
     Removing usart1.o(i.itoa), (98 bytes).
@@ -267,12 +267,14 @@ Removing Unused input sections from the image.
     Removing stm32f10x_usart.o(i.USART_ClearITPendingBit), (30 bytes).
     Removing stm32f10x_usart.o(i.USART_ClockInit), (34 bytes).
     Removing stm32f10x_usart.o(i.USART_ClockStructInit), (12 bytes).
+    Removing stm32f10x_usart.o(i.USART_Cmd), (24 bytes).
     Removing stm32f10x_usart.o(i.USART_DMACmd), (18 bytes).
     Removing stm32f10x_usart.o(i.USART_DeInit), (156 bytes).
     Removing stm32f10x_usart.o(i.USART_GetFlagStatus), (26 bytes).
     Removing stm32f10x_usart.o(i.USART_GetITStatus), (84 bytes).
     Removing stm32f10x_usart.o(i.USART_HalfDuplexCmd), (24 bytes).
     Removing stm32f10x_usart.o(i.USART_ITConfig), (74 bytes).
+    Removing stm32f10x_usart.o(i.USART_Init), (216 bytes).
     Removing stm32f10x_usart.o(i.USART_IrDACmd), (24 bytes).
     Removing stm32f10x_usart.o(i.USART_IrDAConfig), (18 bytes).
     Removing stm32f10x_usart.o(i.USART_LINBreakDetectLengthConfig), (18 bytes).
@@ -435,7 +437,7 @@ Removing Unused input sections from the image.
     Removing stm32f10x_i2c.o(i.I2C_StructInit), (30 bytes).
     Removing stm32f10x_i2c.o(i.I2C_TransmitPEC), (24 bytes).
 
-197 unused section(s) (total 8202 bytes) removed from the image.
+200 unused section(s) (total 8566 bytes) removed from the image.
 
 ==============================================================================
 
@@ -445,19 +447,19 @@ Image Symbol Table
 
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
     CMSIS\\core_cm3.c                        0x00000000   Number         0  core_cm3.o ABSOLUTE
     CMSIS\core_cm3.c                         0x00000000   Number         0  core_cm3.o ABSOLUTE
     CMSIS\startup_stm32f10x_hd.s             0x00000000   Number         0  startup_stm32f10x_hd.o ABSOLUTE
@@ -536,41 +538,38 @@ Image Symbol Table
     i.SysTick_Handler                        0x080009c0   Section        0  stm32f10x_it.o(i.SysTick_Handler)
     i.SystemInit                             0x080009c4   Section        0  system_stm32f10x.o(i.SystemInit)
     i.Tire_Config                            0x08000a24   Section        0  movement.o(i.Tire_Config)
-    i.USART1_Config                          0x08000a80   Section        0  usart1.o(i.USART1_Config)
-    i.USART_Cmd                              0x08000afc   Section        0  stm32f10x_usart.o(i.USART_Cmd)
-    i.USART_Init                             0x08000b14   Section        0  stm32f10x_usart.o(i.USART_Init)
-    i.UsageFault_Handler                     0x08000bec   Section        0  stm32f10x_it.o(i.UsageFault_Handler)
-    i.__scatterload_copy                     0x08000bf0   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x08000bfe   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x08000c00   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i.armControl                             0x08000c0e   Section        0  mechanical_arm.o(i.armControl)
-    i.carGo                                  0x08000c3e   Section        0  movement.o(i.carGo)
-    i.clrPS2Buff                             0x08000cac   Section        0  controller.o(i.clrPS2Buff)
-    i.controlModeConfirm_Config              0x08000cc4   Section        0  controller.o(i.controlModeConfirm_Config)
-    i.delay_init                             0x08000cf0   Section        0  delay.o(i.delay_init)
-    i.delay_ms                               0x08000d30   Section        0  delay.o(i.delay_ms)
-    i.delay_us                               0x08000d6c   Section        0  delay.o(i.delay_us)
-    i.enterSettings                          0x08000da8   Section        0  controller.o(i.enterSettings)
-    i.getButtonData                          0x08000e04   Section        0  controller.o(i.getButtonData)
-    i.getPart3Direction                      0x08000e50   Section        0  controller.o(i.getPart3Direction)
-    i.handGrab                               0x08000e6c   Section        0  mechanical_arm.o(i.handGrab)
-    i.handOpen                               0x08000e7c   Section        0  mechanical_arm.o(i.handOpen)
-    i.isAutoControl                          0x08000e90   Section        0  controller.o(i.isAutoControl)
-    i.main                                   0x08000ee4   Section        0  main.o(i.main)
-    i.putArmHigh                             0x08000f38   Section        0  mechanical_arm.o(i.putArmHigh)
-    i.putArmLow                              0x08000f6c   Section        0  mechanical_arm.o(i.putArmLow)
-    i.saveChangesAndExit                     0x08000fc8   Section        0  controller.o(i.saveChangesAndExit)
-    i.sendCmd2MCU                            0x08001024   Section        0  controller.o(i.sendCmd2MCU)
-    i.sendCmd2PS2                            0x080010dc   Section        0  controller.o(i.sendCmd2PS2)
-    i.setBackwards                           0x0800116c   Section        0  movement.o(i.setBackwards)
-    i.setForwards                            0x0800119c   Section        0  movement.o(i.setForwards)
-    i.setSpeed                               0x080011cc   Section        0  movement.o(i.setSpeed)
-    i.setTurnLeft                            0x0800126c   Section        0  movement.o(i.setTurnLeft)
-    i.setTurnRight                           0x0800129c   Section        0  movement.o(i.setTurnRight)
-    i.shortPoll                              0x080012cc   Section        0  controller.o(i.shortPoll)
-    i.stopTheCar                             0x08001310   Section        0  movement.o(i.stopTheCar)
-    i.turnOnModeChange                       0x08001364   Section        0  controller.o(i.turnOnModeChange)
-    i.turnOnVibrationMode                    0x080013b8   Section        0  controller.o(i.turnOnVibrationMode)
+    i.UsageFault_Handler                     0x08000a80   Section        0  stm32f10x_it.o(i.UsageFault_Handler)
+    i.__scatterload_copy                     0x08000a84   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x08000a92   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x08000a94   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i.armControl                             0x08000aa2   Section        0  mechanical_arm.o(i.armControl)
+    i.carGo                                  0x08000ad2   Section        0  movement.o(i.carGo)
+    i.clrPS2Buff                             0x08000b40   Section        0  controller.o(i.clrPS2Buff)
+    i.controlModeConfirm_Config              0x08000b58   Section        0  controller.o(i.controlModeConfirm_Config)
+    i.delay_init                             0x08000b84   Section        0  delay.o(i.delay_init)
+    i.delay_ms                               0x08000bc4   Section        0  delay.o(i.delay_ms)
+    i.delay_us                               0x08000c00   Section        0  delay.o(i.delay_us)
+    i.enterSettings                          0x08000c3c   Section        0  controller.o(i.enterSettings)
+    i.getButtonData                          0x08000c98   Section        0  controller.o(i.getButtonData)
+    i.getPart3Direction                      0x08000ce4   Section        0  controller.o(i.getPart3Direction)
+    i.handGrab                               0x08000d00   Section        0  mechanical_arm.o(i.handGrab)
+    i.handOpen                               0x08000d10   Section        0  mechanical_arm.o(i.handOpen)
+    i.isAutoControl                          0x08000d24   Section        0  controller.o(i.isAutoControl)
+    i.main                                   0x08000d78   Section        0  main.o(i.main)
+    i.putArmHigh                             0x08000dc8   Section        0  mechanical_arm.o(i.putArmHigh)
+    i.putArmLow                              0x08000dfc   Section        0  mechanical_arm.o(i.putArmLow)
+    i.saveChangesAndExit                     0x08000e84   Section        0  controller.o(i.saveChangesAndExit)
+    i.sendCmd2MCU                            0x08000ee0   Section        0  controller.o(i.sendCmd2MCU)
+    i.sendCmd2PS2                            0x08000f98   Section        0  controller.o(i.sendCmd2PS2)
+    i.setBackwards                           0x08001028   Section        0  movement.o(i.setBackwards)
+    i.setForwards                            0x08001058   Section        0  movement.o(i.setForwards)
+    i.setSpeed                               0x08001088   Section        0  movement.o(i.setSpeed)
+    i.setTurnLeft                            0x08001128   Section        0  movement.o(i.setTurnLeft)
+    i.setTurnRight                           0x08001158   Section        0  movement.o(i.setTurnRight)
+    i.shortPoll                              0x08001188   Section        0  controller.o(i.shortPoll)
+    i.stopTheCar                             0x080011cc   Section        0  movement.o(i.stopTheCar)
+    i.turnOnModeChange                       0x08001220   Section        0  controller.o(i.turnOnModeChange)
+    i.turnOnVibrationMode                    0x08001274   Section        0  controller.o(i.turnOnVibrationMode)
     .data                                    0x20000000   Section        4  delay.o(.data)
     fac_us                                   0x20000000   Data           1  delay.o(.data)
     fac_ms                                   0x20000002   Data           2  delay.o(.data)
@@ -709,43 +708,40 @@ Image Symbol Table
     SysTick_Handler                          0x080009c1   Thumb Code     2  stm32f10x_it.o(i.SysTick_Handler)
     SystemInit                               0x080009c5   Thumb Code    78  system_stm32f10x.o(i.SystemInit)
     Tire_Config                              0x08000a25   Thumb Code    88  movement.o(i.Tire_Config)
-    USART1_Config                            0x08000a81   Thumb Code   114  usart1.o(i.USART1_Config)
-    USART_Cmd                                0x08000afd   Thumb Code    24  stm32f10x_usart.o(i.USART_Cmd)
-    USART_Init                               0x08000b15   Thumb Code   210  stm32f10x_usart.o(i.USART_Init)
-    UsageFault_Handler                       0x08000bed   Thumb Code     4  stm32f10x_it.o(i.UsageFault_Handler)
-    __scatterload_copy                       0x08000bf1   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x08000bff   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x08000c01   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    armControl                               0x08000c0f   Thumb Code    48  mechanical_arm.o(i.armControl)
-    carGo                                    0x08000c3f   Thumb Code   108  movement.o(i.carGo)
-    clrPS2Buff                               0x08000cad   Thumb Code    20  controller.o(i.clrPS2Buff)
-    controlModeConfirm_Config                0x08000cc5   Thumb Code    38  controller.o(i.controlModeConfirm_Config)
-    delay_init                               0x08000cf1   Thumb Code    56  delay.o(i.delay_init)
-    delay_ms                                 0x08000d31   Thumb Code    56  delay.o(i.delay_ms)
-    delay_us                                 0x08000d6d   Thumb Code    56  delay.o(i.delay_us)
-    enterSettings                            0x08000da9   Thumb Code    86  controller.o(i.enterSettings)
-    getButtonData                            0x08000e05   Thumb Code    62  controller.o(i.getButtonData)
-    getPart3Direction                        0x08000e51   Thumb Code    22  controller.o(i.getPart3Direction)
-    handGrab                                 0x08000e6d   Thumb Code    16  mechanical_arm.o(i.handGrab)
-    handOpen                                 0x08000e7d   Thumb Code    18  mechanical_arm.o(i.handOpen)
-    isAutoControl                            0x08000e91   Thumb Code    74  controller.o(i.isAutoControl)
-    main                                     0x08000ee5   Thumb Code    80  main.o(i.main)
-    putArmHigh                               0x08000f39   Thumb Code    52  mechanical_arm.o(i.putArmHigh)
-    putArmLow                                0x08000f6d   Thumb Code    90  mechanical_arm.o(i.putArmLow)
-    saveChangesAndExit                       0x08000fc9   Thumb Code    86  controller.o(i.saveChangesAndExit)
-    sendCmd2MCU                              0x08001025   Thumb Code   170  controller.o(i.sendCmd2MCU)
-    sendCmd2PS2                              0x080010dd   Thumb Code   136  controller.o(i.sendCmd2PS2)
-    setBackwards                             0x0800116d   Thumb Code    44  movement.o(i.setBackwards)
-    setForwards                              0x0800119d   Thumb Code    44  movement.o(i.setForwards)
-    setSpeed                                 0x080011cd   Thumb Code   160  movement.o(i.setSpeed)
-    setTurnLeft                              0x0800126d   Thumb Code    44  movement.o(i.setTurnLeft)
-    setTurnRight                             0x0800129d   Thumb Code    44  movement.o(i.setTurnRight)
-    shortPoll                                0x080012cd   Thumb Code    62  controller.o(i.shortPoll)
-    stopTheCar                               0x08001311   Thumb Code    78  movement.o(i.stopTheCar)
-    turnOnModeChange                         0x08001365   Thumb Code    80  controller.o(i.turnOnModeChange)
-    turnOnVibrationMode                      0x080013b9   Thumb Code    62  controller.o(i.turnOnVibrationMode)
-    Region$$Table$$Base                      0x080013fc   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x0800141c   Number         0  anon$$obj.o(Region$$Table)
+    UsageFault_Handler                       0x08000a81   Thumb Code     4  stm32f10x_it.o(i.UsageFault_Handler)
+    __scatterload_copy                       0x08000a85   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x08000a93   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x08000a95   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    armControl                               0x08000aa3   Thumb Code    48  mechanical_arm.o(i.armControl)
+    carGo                                    0x08000ad3   Thumb Code   108  movement.o(i.carGo)
+    clrPS2Buff                               0x08000b41   Thumb Code    20  controller.o(i.clrPS2Buff)
+    controlModeConfirm_Config                0x08000b59   Thumb Code    38  controller.o(i.controlModeConfirm_Config)
+    delay_init                               0x08000b85   Thumb Code    56  delay.o(i.delay_init)
+    delay_ms                                 0x08000bc5   Thumb Code    56  delay.o(i.delay_ms)
+    delay_us                                 0x08000c01   Thumb Code    56  delay.o(i.delay_us)
+    enterSettings                            0x08000c3d   Thumb Code    86  controller.o(i.enterSettings)
+    getButtonData                            0x08000c99   Thumb Code    62  controller.o(i.getButtonData)
+    getPart3Direction                        0x08000ce5   Thumb Code    22  controller.o(i.getPart3Direction)
+    handGrab                                 0x08000d01   Thumb Code    16  mechanical_arm.o(i.handGrab)
+    handOpen                                 0x08000d11   Thumb Code    18  mechanical_arm.o(i.handOpen)
+    isAutoControl                            0x08000d25   Thumb Code    74  controller.o(i.isAutoControl)
+    main                                     0x08000d79   Thumb Code    76  main.o(i.main)
+    putArmHigh                               0x08000dc9   Thumb Code    52  mechanical_arm.o(i.putArmHigh)
+    putArmLow                                0x08000dfd   Thumb Code   134  mechanical_arm.o(i.putArmLow)
+    saveChangesAndExit                       0x08000e85   Thumb Code    86  controller.o(i.saveChangesAndExit)
+    sendCmd2MCU                              0x08000ee1   Thumb Code   170  controller.o(i.sendCmd2MCU)
+    sendCmd2PS2                              0x08000f99   Thumb Code   136  controller.o(i.sendCmd2PS2)
+    setBackwards                             0x08001029   Thumb Code    44  movement.o(i.setBackwards)
+    setForwards                              0x08001059   Thumb Code    44  movement.o(i.setForwards)
+    setSpeed                                 0x08001089   Thumb Code   160  movement.o(i.setSpeed)
+    setTurnLeft                              0x08001129   Thumb Code    44  movement.o(i.setTurnLeft)
+    setTurnRight                             0x08001159   Thumb Code    44  movement.o(i.setTurnRight)
+    shortPoll                                0x08001189   Thumb Code    62  controller.o(i.shortPoll)
+    stopTheCar                               0x080011cd   Thumb Code    78  movement.o(i.stopTheCar)
+    turnOnModeChange                         0x08001221   Thumb Code    80  controller.o(i.turnOnModeChange)
+    turnOnVibrationMode                      0x08001275   Thumb Code    62  controller.o(i.turnOnVibrationMode)
+    Region$$Table$$Base                      0x080012b8   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x080012d8   Number         0  anon$$obj.o(Region$$Table)
     cnt                                      0x20000004   Data           4  controller.o(.data)
     part3Dir                                 0x20000008   Data           1  controller.o(.data)
     buttonValue                              0x2000000a   Data           2  controller.o(.data)
@@ -763,9 +759,9 @@ Memory Map of the image
 
   Image Entry point : 0x08000131
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00001450, Max: 0x00040000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x0000130c, Max: 0x00040000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x0000141c, Max: 0x00040000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x000012d8, Max: 0x00040000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -829,45 +825,42 @@ Memory Map of the image
     0x080009c2   0x00000002   PAD
     0x080009c4   0x00000060   Code   RO           27    i.SystemInit        system_stm32f10x.o
     0x08000a24   0x0000005c   Code   RO          362    i.Tire_Config       movement.o
-    0x08000a80   0x0000007c   Code   RO          263    i.USART1_Config     usart1.o
-    0x08000afc   0x00000018   Code   RO          672    i.USART_Cmd         stm32f10x_usart.o
-    0x08000b14   0x000000d8   Code   RO          679    i.USART_Init        stm32f10x_usart.o
-    0x08000bec   0x00000004   Code   RO          307    i.UsageFault_Handler  stm32f10x_it.o
-    0x08000bf0   0x0000000e   Code   RO         1821    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x08000bfe   0x00000002   Code   RO         1822    i.__scatterload_null  mc_w.l(handlers.o)
-    0x08000c00   0x0000000e   Code   RO         1823    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x08000c0e   0x00000030   Code   RO          513    i.armControl        mechanical_arm.o
-    0x08000c3e   0x0000006c   Code   RO          363    i.carGo             movement.o
-    0x08000caa   0x00000002   PAD
-    0x08000cac   0x00000018   Code   RO          125    i.clrPS2Buff        controller.o
-    0x08000cc4   0x0000002c   Code   RO          126    i.controlModeConfirm_Config  controller.o
-    0x08000cf0   0x00000040   Code   RO           83    i.delay_init        delay.o
-    0x08000d30   0x0000003c   Code   RO           84    i.delay_ms          delay.o
-    0x08000d6c   0x0000003c   Code   RO           85    i.delay_us          delay.o
-    0x08000da8   0x0000005c   Code   RO          127    i.enterSettings     controller.o
-    0x08000e04   0x0000004c   Code   RO          128    i.getButtonData     controller.o
-    0x08000e50   0x0000001c   Code   RO          129    i.getPart3Direction  controller.o
-    0x08000e6c   0x00000010   Code   RO          514    i.handGrab          mechanical_arm.o
-    0x08000e7c   0x00000012   Code   RO          515    i.handOpen          mechanical_arm.o
-    0x08000e8e   0x00000002   PAD
-    0x08000e90   0x00000054   Code   RO          131    i.isAutoControl     controller.o
-    0x08000ee4   0x00000054   Code   RO          232    i.main              main.o
-    0x08000f38   0x00000034   Code   RO          516    i.putArmHigh        mechanical_arm.o
-    0x08000f6c   0x0000005a   Code   RO          517    i.putArmLow         mechanical_arm.o
-    0x08000fc6   0x00000002   PAD
-    0x08000fc8   0x0000005c   Code   RO          133    i.saveChangesAndExit  controller.o
-    0x08001024   0x000000b8   Code   RO          134    i.sendCmd2MCU       controller.o
-    0x080010dc   0x00000090   Code   RO          135    i.sendCmd2PS2       controller.o
-    0x0800116c   0x00000030   Code   RO          365    i.setBackwards      movement.o
-    0x0800119c   0x00000030   Code   RO          366    i.setForwards       movement.o
-    0x080011cc   0x000000a0   Code   RO          367    i.setSpeed          movement.o
-    0x0800126c   0x00000030   Code   RO          368    i.setTurnLeft       movement.o
-    0x0800129c   0x00000030   Code   RO          369    i.setTurnRight      movement.o
-    0x080012cc   0x00000044   Code   RO          136    i.shortPoll         controller.o
-    0x08001310   0x00000054   Code   RO          370    i.stopTheCar        movement.o
-    0x08001364   0x00000054   Code   RO          137    i.turnOnModeChange  controller.o
-    0x080013b8   0x00000044   Code   RO          138    i.turnOnVibrationMode  controller.o
-    0x080013fc   0x00000020   Data   RO         1819    Region$$Table       anon$$obj.o
+    0x08000a80   0x00000004   Code   RO          307    i.UsageFault_Handler  stm32f10x_it.o
+    0x08000a84   0x0000000e   Code   RO         1821    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x08000a92   0x00000002   Code   RO         1822    i.__scatterload_null  mc_w.l(handlers.o)
+    0x08000a94   0x0000000e   Code   RO         1823    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x08000aa2   0x00000030   Code   RO          513    i.armControl        mechanical_arm.o
+    0x08000ad2   0x0000006c   Code   RO          363    i.carGo             movement.o
+    0x08000b3e   0x00000002   PAD
+    0x08000b40   0x00000018   Code   RO          125    i.clrPS2Buff        controller.o
+    0x08000b58   0x0000002c   Code   RO          126    i.controlModeConfirm_Config  controller.o
+    0x08000b84   0x00000040   Code   RO           83    i.delay_init        delay.o
+    0x08000bc4   0x0000003c   Code   RO           84    i.delay_ms          delay.o
+    0x08000c00   0x0000003c   Code   RO           85    i.delay_us          delay.o
+    0x08000c3c   0x0000005c   Code   RO          127    i.enterSettings     controller.o
+    0x08000c98   0x0000004c   Code   RO          128    i.getButtonData     controller.o
+    0x08000ce4   0x0000001c   Code   RO          129    i.getPart3Direction  controller.o
+    0x08000d00   0x00000010   Code   RO          514    i.handGrab          mechanical_arm.o
+    0x08000d10   0x00000012   Code   RO          515    i.handOpen          mechanical_arm.o
+    0x08000d22   0x00000002   PAD
+    0x08000d24   0x00000054   Code   RO          131    i.isAutoControl     controller.o
+    0x08000d78   0x00000050   Code   RO          232    i.main              main.o
+    0x08000dc8   0x00000034   Code   RO          516    i.putArmHigh        mechanical_arm.o
+    0x08000dfc   0x00000086   Code   RO          517    i.putArmLow         mechanical_arm.o
+    0x08000e82   0x00000002   PAD
+    0x08000e84   0x0000005c   Code   RO          133    i.saveChangesAndExit  controller.o
+    0x08000ee0   0x000000b8   Code   RO          134    i.sendCmd2MCU       controller.o
+    0x08000f98   0x00000090   Code   RO          135    i.sendCmd2PS2       controller.o
+    0x08001028   0x00000030   Code   RO          365    i.setBackwards      movement.o
+    0x08001058   0x00000030   Code   RO          366    i.setForwards       movement.o
+    0x08001088   0x000000a0   Code   RO          367    i.setSpeed          movement.o
+    0x08001128   0x00000030   Code   RO          368    i.setTurnLeft       movement.o
+    0x08001158   0x00000030   Code   RO          369    i.setTurnRight      movement.o
+    0x08001188   0x00000044   Code   RO          136    i.shortPoll         controller.o
+    0x080011cc   0x00000054   Code   RO          370    i.stopTheCar        movement.o
+    0x08001220   0x00000054   Code   RO          137    i.turnOnModeChange  controller.o
+    0x08001274   0x00000044   Code   RO          138    i.turnOnVibrationMode  controller.o
+    0x080012b8   0x00000020   Data   RO         1819    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00000440, Max: 0x0000c000, ABSOLUTE)
@@ -891,24 +884,22 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-      1088         96          0         26          9       7924   controller.o
+      1088         96          0         26          9       7912   controller.o
          0          0          0          0          0       4496   core_cm3.o
        184         16          0          4          0     204851   delay.o
-        84          4          0          1          0       2989   main.o
-       268          0          0          0          0       3009   mechanical_arm.o
-       636         38          0          0          0       4124   movement.o
+        80          4          0          1          0       2985   main.o
+       312          0          0          0          0       3097   mechanical_arm.o
+       636         38          0          0          0       4112   movement.o
        666         48          0          0          0       6623   pca9685.o
         36          8        304          0       1024        844   startup_stm32f10x_hd.o
        316          0          0          0          0       4715   stm32f10x_gpio.o
        438         14          0          0          0       7108   stm32f10x_i2c.o
         26          0          0          0          0       4062   stm32f10x_it.o
        276         32          0         20          0       4450   stm32f10x_rcc.o
-       240          6          0          0          0       2821   stm32f10x_usart.o
-       328         28          0          0          0      33121   system_stm32f10x.o
-       124         10          0          0          0        612   usart1.o
+       328         28          0          0          0      27065   system_stm32f10x.o
 
     ----------------------------------------------------------------------
-      4726        300        336         52       1036     291749   Object Totals
+      4402        284        336         52       1036     282320   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         16          0          0          1          3          0   (incl. Padding)
 
@@ -947,15 +938,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      4812        316        336         52       1036     288277   Grand Totals
-      4812        316        336         52       1036     288277   ELF Image Totals
-      4812        316        336         52          0          0   ROM Totals
+      4488        300        336         52       1036     279004   Grand Totals
+      4488        300        336         52       1036     279004   ELF Image Totals
+      4488        300        336         52          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 5148 (   5.03kB)
+    Total RO  Size (Code + RO Data)                 4824 (   4.71kB)
     Total RW  Size (RW Data + ZI Data)              1088 (   1.06kB)
-    Total ROM Size (Code + RO Data + RW Data)       5200 (   5.08kB)
+    Total ROM Size (Code + RO Data + RW Data)       4876 (   4.76kB)
 
 ==============================================================================
 

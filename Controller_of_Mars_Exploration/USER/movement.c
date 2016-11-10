@@ -22,28 +22,28 @@
 #include "mechanical_arm.h"
 
 void Tire_Config(void){
-	GPIO_InitTypeDef GPIO_InitStructure;
-  
-  RCC_APB2PeriphClockCmd(LEFT1_TIRE_CLK_GPIO  | LEFT2_TIRE_CLK_GPIO | \
-                         RIGHT1_TIRE_CLK_GPIO | RIGHT1_TIRE_CLK_GPIO, ENABLE);
-	
-	GPIO_InitStructure.GPIO_Pin = LEFT1_TIRE_IN1 | LEFT1_TIRE_IN2;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;	
-	GPIO_Init(LEFT1_TIRE_GPIO, &GPIO_InitStructure);
-  
-  GPIO_InitStructure.GPIO_Pin = LEFT2_TIRE_IN1 | LEFT2_TIRE_IN2;
-  GPIO_Init(LEFT2_TIRE_GPIO, &GPIO_InitStructure);
-	
-	GPIO_InitStructure.GPIO_Pin = RIGHT1_TIRE_IN1 | RIGHT1_TIRE_IN2;
-	GPIO_Init(RIGHT1_TIRE_GPIO, &GPIO_InitStructure);
-  
-  GPIO_InitStructure.GPIO_Pin = RIGHT2_TIRE_IN1 | RIGHT2_TIRE_IN2;
-	GPIO_Init(RIGHT2_TIRE_GPIO, &GPIO_InitStructure);
-  
-  Arm_Config();
-  
-  stopTheCar();
+    GPIO_InitTypeDef GPIO_InitStructure;
+    
+    RCC_APB2PeriphClockCmd(LEFT1_TIRE_CLK_GPIO  | LEFT2_TIRE_CLK_GPIO | \
+                           RIGHT1_TIRE_CLK_GPIO | RIGHT1_TIRE_CLK_GPIO, ENABLE);
+    
+    GPIO_InitStructure.GPIO_Pin = LEFT1_TIRE_IN1 | LEFT1_TIRE_IN2;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;	
+    GPIO_Init(LEFT1_TIRE_GPIO, &GPIO_InitStructure);
+    
+    GPIO_InitStructure.GPIO_Pin = LEFT2_TIRE_IN1 | LEFT2_TIRE_IN2;
+    GPIO_Init(LEFT2_TIRE_GPIO, &GPIO_InitStructure);
+    
+    GPIO_InitStructure.GPIO_Pin = RIGHT1_TIRE_IN1 | RIGHT1_TIRE_IN2;
+    GPIO_Init(RIGHT1_TIRE_GPIO, &GPIO_InitStructure);
+    
+    GPIO_InitStructure.GPIO_Pin = RIGHT2_TIRE_IN1 | RIGHT2_TIRE_IN2;
+    GPIO_Init(RIGHT2_TIRE_GPIO, &GPIO_InitStructure);
+    
+    Arm_Config();
+    
+    stopTheCar();
 }
 
 
@@ -54,127 +54,107 @@ void Tire_Config(void){
  * @retval	None
  */
 void setSpeed(int towards, int PWM_Setl, int PWM_Setr){
-  if (PWM_Setl <= 100 && PWM_Setr <= 100){
-    PCA9685_SetOutput(PCA_ADDRESS, LEFT1_TIRE_ENA , 0, 0xfff*PWM_Setl/100);
-    PCA9685_SetOutput(PCA_ADDRESS, LEFT2_TIRE_ENA , 0, 0xfff*PWM_Setl/100);
-    PCA9685_SetOutput(PCA_ADDRESS, RIGHT1_TIRE_ENA, 0, 0xfff*PWM_Setr/100);
-    PCA9685_SetOutput(PCA_ADDRESS, RIGHT2_TIRE_ENA, 0, 0xfff*PWM_Setr/100);
-  }
-  switch (towards) {
-    case FORWARDS : setForwards() ; break;
-    case BACKWARDS: setBackwards(); break;
-    case TURNLEFT : setTurnLeft() ; break;
-    case TURNRIGHT: setTurnRight(); break;
-  }
+    if (PWM_Setl <= 100 && PWM_Setr <= 100){
+        PCA9685_SetOutput(PCA_ADDRESS, LEFT1_TIRE_ENA , 0, 0xfff*PWM_Setl/100);
+        PCA9685_SetOutput(PCA_ADDRESS, LEFT2_TIRE_ENA , 0, 0xfff*PWM_Setl/100);
+        PCA9685_SetOutput(PCA_ADDRESS, RIGHT1_TIRE_ENA, 0, 0xfff*PWM_Setr/100);
+        PCA9685_SetOutput(PCA_ADDRESS, RIGHT2_TIRE_ENA, 0, 0xfff*PWM_Setr/100);
+    }
+    switch (towards) {
+        case FORWARDS : setForwards() ; break;
+        case BACKWARDS: setBackwards(); break;
+        case TURNLEFT : setTurnLeft() ; break;
+        case TURNRIGHT: setTurnRight(); break;
+    }
 }
 
 
 void setForwards(void) {
-  GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) & 0xff55);
-//  GPIO_ResetBits(LEFT1_TIRE_GPIO, LEFT1_TIRE_IN2);
-//  GPIO_ResetBits(LEFT2_TIRE_GPIO, LEFT2_TIRE_IN2);
-//  GPIO_ResetBits(RIGHT1_TIRE_GPIO, RIGHT1_TIRE_IN2);
-//  GPIO_ResetBits(RIGHT2_TIRE_GPIO, RIGHT2_TIRE_IN2);
-  GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) | 0x0055);
-//  GPIO_SetBits(LEFT1_TIRE_GPIO, LEFT1_TIRE_IN1);
-//  GPIO_SetBits(LEFT2_TIRE_GPIO, LEFT2_TIRE_IN1);
-//  GPIO_SetBits(RIGHT1_TIRE_GPIO, RIGHT1_TIRE_IN1);
-//  GPIO_SetBits(RIGHT2_TIRE_GPIO, RIGHT2_TIRE_IN1);  
+    GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) & 0xff55);
+    // GPIO_ResetBits(LEFT1_TIRE_GPIO, LEFT1_TIRE_IN2);
+    // GPIO_ResetBits(LEFT2_TIRE_GPIO, LEFT2_TIRE_IN2);
+    // GPIO_ResetBits(RIGHT1_TIRE_GPIO, RIGHT1_TIRE_IN2);
+    // GPIO_ResetBits(RIGHT2_TIRE_GPIO, RIGHT2_TIRE_IN2);
+    GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) | 0x0055);
+    // GPIO_SetBits(LEFT1_TIRE_GPIO, LEFT1_TIRE_IN1);
+    // GPIO_SetBits(LEFT2_TIRE_GPIO, LEFT2_TIRE_IN1);
+    // GPIO_SetBits(RIGHT1_TIRE_GPIO, RIGHT1_TIRE_IN1);
+    // GPIO_SetBits(RIGHT2_TIRE_GPIO, RIGHT2_TIRE_IN1);  
 }
 
 
 void setBackwards(void) {
-  GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) & 0xffaa);
-  GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) | 0x00aa);
+    GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) & 0xffaa);
+    GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) | 0x00aa);
 }
 
 
 void setTurnLeft(void) {
-  GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) & 0xff5a);
-  GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) | 0x005a);
+    GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) & 0xff5a);
+    GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) | 0x005a);
 }
 
 
 void setTurnRight(void) {
-  GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) & 0xffa5);
-  GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) | 0x00a5);
+    GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) & 0xffa5);
+    GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) | 0x00a5);
 }
 
 
 void stopTheCar(void) {
-  GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) & 0xff00);
-  
-  PCA9685_SetOutput(PCA_ADDRESS, LEFT1_TIRE_ENA , 0xfff, 0x0);
-  PCA9685_SetOutput(PCA_ADDRESS, LEFT2_TIRE_ENA , 0xfff, 0x0);
-  PCA9685_SetOutput(PCA_ADDRESS, RIGHT1_TIRE_ENA, 0xfff, 0x0);
-  PCA9685_SetOutput(PCA_ADDRESS, RIGHT2_TIRE_ENA, 0xfff, 0x0);
+    GPIO_Write(GPIOD, GPIO_ReadOutputData(GPIOD) & 0xff00);
+    
+    PCA9685_SetOutput(PCA_ADDRESS, LEFT1_TIRE_ENA , 0xfff, 0x0);
+    PCA9685_SetOutput(PCA_ADDRESS, LEFT2_TIRE_ENA , 0xfff, 0x0);
+    PCA9685_SetOutput(PCA_ADDRESS, RIGHT1_TIRE_ENA, 0xfff, 0x0);
+    PCA9685_SetOutput(PCA_ADDRESS, RIGHT2_TIRE_ENA, 0xfff, 0x0);
 }
 
 
 void carGo(uint8_t dir){
-  switch (dir) {
-    case PSB_PAD_UP   : setSpeed(FORWARDS , 25, 25); break;
-    case PSB_PAD_DOWN : setSpeed(BACKWARDS, 25, 25); break;
-    case PSB_PAD_RIGHT: setSpeed(TURNRIGHT, 30, 30); break;
-    case PSB_PAD_LEFT : setSpeed(TURNLEFT , 30, 30); break;
-    case PSB_CIRCLE   : setSpeed(TURNRIGHT, 30,  7); break;
-    case PSB_SQUARE   : setSpeed(TURNLEFT ,  7, 30); break;
-    default: stopTheCar();
-  }
+    switch (dir) {
+        case PSB_PAD_UP   : setSpeed(FORWARDS , 40, 40); break;
+        case PSB_PAD_DOWN : setSpeed(BACKWARDS, 25, 25); break;
+        case PSB_PAD_RIGHT: setSpeed(TURNRIGHT, 30, 30); break;
+        case PSB_PAD_LEFT : setSpeed(TURNLEFT , 30, 30); break;
+        case PSB_CIRCLE   : setSpeed(TURNRIGHT, 30,  7); break;
+        case PSB_SQUARE   : setSpeed(TURNLEFT ,  7, 30); break;
+        default: stopTheCar();
+    }
 }
 
 
 void carGoWithStick(uint8_t lx, uint8_t ly) {
-  int slx = ((int)lx-128), sly = ((int)ly-128);
-  
-  if (sly < -2) {
-    if (slx <= 0) {
-      
-      if (slx <= -100) setSpeed(TURNLEFT , 30, 30);
-      else if (slx <= -20) setSpeed(FORWARDS , 30, 40);
-      else setSpeed(FORWARDS , 25, 25);
-      
-    } else {
-      
-      if (slx >= 100) setSpeed(TURNRIGHT, 30, 30);
-      else if (slx >= 20) setSpeed(FORWARDS , 40, 30);
-      else setSpeed(FORWARDS , 25, 25);
-    }
+    int slx = ((int)lx-128), sly = ((int)ly-128);
     
-  } else if (sly > 2) {    
-    if (slx <= 0) {
+    if (sly < -2) {
+        if (slx <= 0) {
+          
+            if (slx <= -100) setSpeed(TURNLEFT , 30, 30);
+            else if (slx <= -20) setSpeed(FORWARDS , 30, 40);
+            else setSpeed(FORWARDS , 25, 25);
+          
+        } else {
+          
+            if (slx >= 100) setSpeed(TURNRIGHT, 30, 30);
+            else if (slx >= 20) setSpeed(FORWARDS , 40, 30);
+            else setSpeed(FORWARDS , 25, 25);
+        }
       
-      if (slx <= -100) setSpeed(TURNRIGHT , 30, 30);
-      else if (slx <= -20) setSpeed(BACKWARDS , 30, 40);
-      else setSpeed(BACKWARDS , 25, 25);
-      
-    } else {
-      
-      if (slx >= 100) setSpeed(TURNLEFT, 30, 30);
-      else if (slx >= 20) setSpeed(BACKWARDS , 40, 30);
-      else setSpeed(BACKWARDS , 25, 25);
-    }
-  } else stopTheCar();
-  
-/*  
-  if (sly < -2) {          // Go ahead
-    if (slx <= 0) {        // Turn left
-      if (slx <= sly) setSpeed(TURNLEFT, -slx+sly, -slx);
-      else setSpeed(FORWARDS, -slx, -sly);
-    } else {               // Turn Right
-      if (-slx <= sly) setSpeed(TURNRIGHT, slx, slx-sly);
-      else setSpeed(FORWARDS, slx, -sly);
-    }
-    
-  } else if (sly > 2) {    // Go backwards
-    if (slx <= 0) {        // Turn left
-      if (slx <= -sly) setSpeed(TURNRIGHT, -slx+sly, -slx);
-      else setSpeed(BACKWARDS, sly, -slx);
-    } else {               // Turn Right
-      if (slx <= sly) setSpeed (TURNLEFT, sly, sly-slx);
-      else setSpeed(BACKWARDS, sly, slx);
-    }
-  } else stopTheCar();*/
+    } else if (sly > 2) {    
+        if (slx <= 0) {
+          
+            if (slx <= -100) setSpeed(TURNRIGHT , 30, 30);
+            else if (slx <= -20) setSpeed(BACKWARDS , 30, 40);
+            else setSpeed(BACKWARDS , 25, 25);
+        
+        } else {
+        
+            if (slx >= 100) setSpeed(TURNLEFT, 30, 30);
+            else if (slx >= 20) setSpeed(BACKWARDS , 40, 30);
+            else setSpeed(BACKWARDS , 25, 25);
+        }
+    } else stopTheCar();
 }
 
 /******************* (C) COPYRIGHT 2016 Yuuki_Dach *************END OF FILE****/
