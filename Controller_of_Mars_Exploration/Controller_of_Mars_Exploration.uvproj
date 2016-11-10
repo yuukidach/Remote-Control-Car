@@ -82,6 +82,8 @@
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
+            <nStopA1X>0</nStopA1X>
+            <nStopA2X>0</nStopA2X>
           </AfterMake>
           <SelectedForBatchBuild>0</SelectedForBatchBuild>
           <SVCSIdString></SVCSIdString>
@@ -359,11 +361,13 @@
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
             <useXO>0</useXO>
+            <v6Lang>0</v6Lang>
+            <v6LangP>0</v6LangP>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_HD</Define>
               <Undefine></Undefine>
-              <IncludePath>.\CMSIS;.\USER;.\FWlib\src;.\FWlib\inc</IncludePath>
+              <IncludePath>.\CMSIS;.\USER;.\FWlib\src;.\FWlib\inc;.\WinterSky</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -452,11 +456,6 @@
               <FilePath>.\USER\main.c</FilePath>
             </File>
             <File>
-              <FileName>usart1.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\usart1.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f10x_it.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\USER\stm32f10x_it.c</FilePath>
@@ -505,6 +504,61 @@
               <FileName>stm32f10x_i2c.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\FWlib\src\stm32f10x_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>misc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FWlib\src\misc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FWlib\src\stm32f10x_adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FWlib\src\stm32f10x_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FWlib\src\stm32f10x_flash.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>WinterSky</GroupName>
+          <Files>
+            <File>
+              <FileName>ADCConfig.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\WinterSky\ADCConfig.c</FilePath>
+            </File>
+            <File>
+              <FileName>AutoControl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\WinterSky\AutoControl.c</FilePath>
+            </File>
+            <File>
+              <FileName>LedConf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\WinterSky\LedConf.c</FilePath>
+            </File>
+            <File>
+              <FileName>SysConfig.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\WinterSky\SysConfig.c</FilePath>
+            </File>
+            <File>
+              <FileName>UsartConf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\WinterSky\UsartConf.c</FilePath>
+            </File>
+            <File>
+              <FileName>WifiControl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\WinterSky\WifiControl.c</FilePath>
             </File>
           </Files>
         </Group>
