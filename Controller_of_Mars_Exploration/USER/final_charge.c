@@ -27,7 +27,10 @@ void correctDir(uint8_t dir) {
     
     last_time = Ten_Times_Trig (middle_trigger);
     
-    setSpeed (TURNLEFT, 25, 0);                             // Deside whether to turn left or turn right.
+    if (dir) 
+        setSpeed (TURNRIGHT, TURN_PWM, TURN_PWM);                             // Deside whether to turn left or turn right.
+    else 
+        setSpeed (TURNLEFT , TURN_PWM, TURN_PWM);
     delay_ms (INTERVAL << 1);
     tryLeft = Ten_Times_Trig(middle_trigger);               // Insure the data is right.
     tryLeft = Ten_Times_Trig(middle_trigger);
@@ -37,20 +40,20 @@ void correctDir(uint8_t dir) {
     
     do {
         if (dir) 
-            setSpeed (TURNLEFT , 25, 20);
+            setSpeed (TURNRIGHT, TURN_PWM, TURN_PWM);
         else
-            setSpeed (TURNRIGHT, 20, 25);
+            setSpeed (TURNLEFT, TURN_PWM, TURN_PWM);
         delay_ms ( INTERVAL ) ;
         stopTheCar();
-        now = Ten_Times_Trig ( middle_trigger ) ;
+        now = Ten_Times_Trig (inner_trigger) ;
         
 #if (__DEBUG__ == __ON__)
         printf ( "Correct Direction : now = %u\r\n" , now ) ;
+        printf ( "Correct Direction : late_time = %u\r\n" , now ) ;
 #endif
         
-        if (last_time > now)
-            last_time = now ;
-    } while ( last_time == now ) ;
+        if (last_time < now + 2000) last_time = now;
+    } while ( last_time == now) ;
 }
 
 
@@ -61,7 +64,7 @@ void turnInner(uint8_t dir) {
         else
             setSpeed (TURNRIGHT, 20, 20);
         delay_ms(INNER_TIME);
-        stopTheCar();
+        //stopTheCar();
         now = Ten_Times_Trig (middle_trigger) ;
 
 #if (__DEBUG__ == __ON__)
@@ -69,16 +72,20 @@ void turnInner(uint8_t dir) {
 #endif 
         
     } while (now < INNER_DIS) ;                         // Make sure the car has turned over the slope.
+    if (dir)
+            setSpeed (TURNRIGHT, 20, 20);
+        else
+            setSpeed (TURNLEFT , 20, 20);
+        delay_ms(INNER_TIME);
 }
 
 
 void forwardToSlope(void) {
     setSpeed (FORWARDS, 15, 15);
     delay_ms (FORWARD_I_TIME);
-    delay_ms (FORWARD_I_TIME);
-    stopTheCar();
+    //stopTheCar();
     do {
-        setSpeed (FORWARDS, 17, 17);
+        setSpeed (FORWARDS, 10, 10);
         delay_ms ( INTERVAL ) ;
         stopTheCar();
         now = Ten_Times_Trig (outer_trigger);
@@ -93,52 +100,60 @@ void forwardToSlope(void) {
 
 void turnOuter(uint8_t dir) {
     if (dir)
-        setSpeed ( TURNRIGHT , 30 , 30 ) ;
+        setSpeed (TURNRIGHT, TURN_PWM, TURN_PWM) ;
     else
-        setSpeed ( TURNLEFT , 30 , 30 ) ;
-    delay_ms (OUTER_TIME_I) ;
-    stopTheCar ( ) ;
+        setSpeed (TURNLEFT , TURN_PWM, TURN_PWM) ;
+    delay_ms (OUTER_TIME_I);
+    //stopTheCar ( ) ;
     last_time = Ten_Times_Trig (inner_trigger) ;
     do {
         if (dir)
-            setSpeed ( TURNRIGHT, 30, 30);
+            setSpeed (TURNRIGHT, TURN_PWM, TURN_PWM);
         else
-            setSpeed ( TURNLEFT , 30, 30);
+            setSpeed (TURNLEFT , TURN_PWM, TURN_PWM);
         delay_ms ( INTERVAL ) ;
-        stopTheCar ( ) ;
+        //stopTheCar () ;
         now = Ten_Times_Trig (inner_trigger);
     
 #if (__DEBUG__ == __ON__)
         printf ( "Turn Outer : now = %u\r\n" , now );
+        printf ("Turn Outer : last_time = %u\r\n", last_time);
 #endif
         
-        if ( last_time > now )
-            last_time = now ;
+        if (last_time > now + 1000 || last_time < now + 1000) last_time = now;
+        if (now > 65530) break;
     } while ( last_time == now ) ;
-    
-    if (dir)                                        // Turn slightly to insure the car can go up the slope smoothly.
-        setSpeed(TURNRIGHT, 30, 30);
+    if (dir)
+        setSpeed (TURNRIGHT, TURN_PWM, TURN_PWM) ;
     else
-        setSpeed(TURNLEFT , 30, 30);
-    delay_ms (OUTER_TIME_II) ;
-    stopTheCar() ;
+        setSpeed (TURNLEFT , TURN_PWM, TURN_PWM) ;
+    delay_ms (INTERVAL+10);
 }
 
 
 void upwardSlope(void) {
-    setSpeed (FORWARDS, 60, 60) ;
+    setSpeed (FORWARDS, 40, 40);
     delay_ms (FORWARD_II_TIME) ;
-    do {
-        setSpeed (FORWARDS, 20, 20) ;
-        delay_ms (INTERVAL) ;
-        stopTheCar();
-        now = Ten_Times_Trig (middle_trigger);
-        
-#if (__DEBUG__ == __ON__)
-        printf ( "Forward II : now = %u\r\n" , now );
-#endif
-        
-    } while (now > FORWARD_II_DIS) ;
+    setSpeed (FORWARDS, 10, 10);
+    delay_ms (300);
+    stopTheCar();
+    now = Ten_Times_Trig (middle_trigger);
+    if (now > FORWARD_II_DIS) {
+        do {
+            setSpeed(FORWARDS, 4, 4);
+            delay_ms(INTERVAL - 10);
+            stopTheCar();
+            now = Ten_Times_Trig(middle_trigger);   
+        } while (now > FORWARD_II_DIS);
+    } else if (now < FORWARD_II_DIS) {
+        do {
+            setSpeed(BACKWARDS, 4, 4);
+            delay_ms(INTERVAL - 10);
+            stopTheCar();
+            now = Ten_Times_Trig(middle_trigger);   
+        } while (now < FORWARD_II_DIS);
+    }
+    
 }
 
 
@@ -149,7 +164,7 @@ void Final_Charge (uint8_t _direction) {
     turnInner(_direction);
     forwardToSlope();
     turnOuter(_direction);
-    correctDir(_direction);
+    //correctDir(_direction);
     upwardSlope();
     
     while(1);
