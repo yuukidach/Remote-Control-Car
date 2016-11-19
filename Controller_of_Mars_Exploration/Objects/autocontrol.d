@@ -17,7 +17,14 @@
 .\objects\autocontrol.o: .\FWlib\inc\stm32f10x_usart.h
 .\objects\autocontrol.o: .\FWlib\inc\misc.h
 .\objects\autocontrol.o: USER\ADCConfig.h
-.\objects\autocontrol.o: USER\WifiControl.h
+.\objects\autocontrol.o: USER\precompile.h
+.\objects\autocontrol.o: D:\Keil\ARM\ARMCC\Bin\..\include\string.h
+.\objects\autocontrol.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\autocontrol.o: USER\delay.h
 .\objects\autocontrol.o: USER\movement.h
-.\objects\autocontrol.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\autocontrol.o: USER\controller.h
+.\objects\autocontrol.o: USER\tim.h
+.\objects\autocontrol.o: USER\precompile.h
+.\objects\autocontrol.o: USER\ultrasonic.h
+.\objects\autocontrol.o: USER\final_charge.h
+.\objects\autocontrol.o: USER\WifiControl.h

@@ -24,14 +24,12 @@
 #include "SysConfig.h"
 #include "WIFIControl.h"
 #include "ADCConfig.h"
-#include "AutoControl.h"
+#include "mpu6050.h"
+//#include "AutoControl.h"
 #include "precompile.h"
 
-#define __ON__           1
-#define __OFF__          0
-#define __DEBUG__        (__ON__)
-
 uint8_t dir = PART3LEFT;
+float lastYaw, yaw;
 
 int main(void) {
     delay_init(72);
@@ -39,7 +37,8 @@ int main(void) {
     Controller_Config();
     Tire_Config();
     Arm_Config();
-    AutoControlConfig();
+    ADC_Config();
+    MPU_Init();
 
 #if (__DEBUG__ == __ON__)
     USART1_Config();
@@ -55,11 +54,13 @@ int main(void) {
     putArmHigh();
 
     while(1){
-        if(!isAutoControl()){
-            carGo(getButtonData());
+        if (!isAutoControl()) {
+            carGo (getButtonData ());
           
 #if (__DEBUG__ == __ON__)          
-           uint8_t mode = getButtonData ( ) ;
+            uint8_t mode = getButtonData () ;
+            printf("sonic: %5d\n", Ultrasonic_Trig(GPIO_Pin_7));
+            delay_ms(100);
             if ( mode == PSB_START )
                 printf ( "7 : %u\r\n" , Ultrasonic_Trig ( GPIO_Pin_7 ) ) ;
             else if ( mode == PSB_L2 )
@@ -71,8 +72,8 @@ int main(void) {
             //armControl(getButtonData());  
             dir = getPart3Direction();
             
-        } else if (isAutoControl()){
-            Final_Charge (PART3RIGHT); // dir == PART3LEFT(0) or PART3RIGHT(1)
+        } else if (isAutoControl()) {
+            Final_Charge (dir); // dir == PART3LEFT(0) or PART3RIGHT(1)
         } 
     }
 }

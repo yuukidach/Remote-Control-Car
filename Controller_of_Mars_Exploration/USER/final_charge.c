@@ -64,7 +64,6 @@ void turnInner(uint8_t dir) {
         else
             setSpeed (TURNRIGHT, 20, 20);
         delay_ms(INNER_TIME);
-        //stopTheCar();
         now = Ten_Times_Trig (middle_trigger) ;
 
 #if (__DEBUG__ == __ON__)
@@ -73,22 +72,26 @@ void turnInner(uint8_t dir) {
         
     } while (now < INNER_DIS) ;                         // Make sure the car has turned over the slope.
     if (dir)
-            setSpeed (TURNRIGHT, 20, 20);
+            setSpeed (TURNLEFT, 20, 20);
         else
-            setSpeed (TURNLEFT , 20, 20);
+            setSpeed (TURNRIGHT , 20, 20);
         delay_ms(INNER_TIME);
 }
 
 
-void forwardToSlope(void) {
+void forwardToSlope(uint8_t dir) {
     setSpeed (FORWARDS, 15, 15);
     delay_ms (FORWARD_I_TIME);
-    //stopTheCar();
+    if (dir)
+            setSpeed (TURNRIGHT, 20, 20);
+        else
+            setSpeed (TURNLEFT , 20, 20);
+        delay_ms((INNER_TIME << 1) + 10);
     do {
         setSpeed (FORWARDS, 10, 10);
         delay_ms ( INTERVAL ) ;
         stopTheCar();
-        now = Ten_Times_Trig (outer_trigger);
+        now = Ten_Times_Trig (middle_trigger);
     
 #if (__DEBUG__ == __ON__)
         printf ( "Forward I : now = %u\r\n" , now ) ;
@@ -104,7 +107,6 @@ void turnOuter(uint8_t dir) {
     else
         setSpeed (TURNLEFT , TURN_PWM, TURN_PWM) ;
     delay_ms (OUTER_TIME_I);
-    //stopTheCar ( ) ;
     last_time = Ten_Times_Trig (inner_trigger) ;
     do {
         if (dir)
@@ -112,7 +114,6 @@ void turnOuter(uint8_t dir) {
         else
             setSpeed (TURNLEFT , TURN_PWM, TURN_PWM);
         delay_ms ( INTERVAL ) ;
-        //stopTheCar () ;
         now = Ten_Times_Trig (inner_trigger);
     
 #if (__DEBUG__ == __ON__)
@@ -120,7 +121,7 @@ void turnOuter(uint8_t dir) {
         printf ("Turn Outer : last_time = %u\r\n", last_time);
 #endif
         
-        if (last_time > now + 1000 || last_time < now + 1000) last_time = now;
+        if (last_time > now + 800 || last_time < now + 800) last_time = now;
         if (now > 65530) break;
     } while ( last_time == now ) ;
     if (dir)
@@ -131,27 +132,46 @@ void turnOuter(uint8_t dir) {
 }
 
 
-void upwardSlope(void) {
-    setSpeed (FORWARDS, 40, 40);
-    delay_ms (FORWARD_II_TIME) ;
-    setSpeed (FORWARDS, 10, 10);
-    delay_ms (300);
+void upwardSlope(uint8_t dir) {             
+    if (dir)                                           // Adjust the direction
+        setSpeed (TURNLEFT, TURN_PWM, TURN_PWM);
+    else
+        setSpeed (TURNRIGHT, TURN_PWM, TURN_PWM);
+    delay_ms (INTERVAL + 30);
+    
+    setSpeed(FORWARDS, 40, 40);
+    delay_ms(FORWARD_II_TIME) ;
+    setSpeed(FORWARDS, 10, 10);
+    delay_ms(300);
     stopTheCar();
+    
     now = Ten_Times_Trig (middle_trigger);
-    if (now > FORWARD_II_DIS) {
-        do {
-            setSpeed(FORWARDS, 4, 4);
-            delay_ms(INTERVAL - 10);
-            stopTheCar();
-            now = Ten_Times_Trig(middle_trigger);   
-        } while (now > FORWARD_II_DIS);
-    } else if (now < FORWARD_II_DIS) {
-        do {
-            setSpeed(BACKWARDS, 4, 4);
-            delay_ms(INTERVAL - 10);
-            stopTheCar();
-            now = Ten_Times_Trig(middle_trigger);   
-        } while (now < FORWARD_II_DIS);
+    while (now >= FORWARD_II_DIS + 50 || now <= FORWARD_II_DIS - 50) {
+        if (now > FORWARD_II_DIS) {                         // Insure the car stop at the right position
+            do {
+                setSpeed(FORWARDS, 10, 10);
+                delay_ms(INTERVAL >> 1);
+                stopTheCar();
+                now = Ten_Times_Trig (middle_trigger);
+
+#if (__DEBUG__ == __ON__)
+                printf("upwardSlope : now = %u\r\n [bigger]", now);
+#endif
+            
+            } while (now > FORWARD_II_DIS);
+        } else if (now < FORWARD_II_DIS) {
+            do {
+                setSpeed(BACKWARDS, 10, 10);
+                delay_ms(INTERVAL >> 1);
+                stopTheCar();
+                now = Ten_Times_Trig (middle_trigger); 
+            
+#if (__DEBUG__ == __ON__)
+                printf("upwardSlope : now = %u\r\n [smaller]", now);
+#endif          
+            
+            } while (now < FORWARD_II_DIS);
+        }
     }
     
 }
@@ -162,10 +182,15 @@ void Final_Charge (uint8_t _direction) {
     pinsDef(_direction);
     
     turnInner(_direction);
-    forwardToSlope();
-    turnOuter(_direction);
-    //correctDir(_direction);
-    upwardSlope();
+    forwardToSlope(_direction);
+    //turnOuter(_direction);
+    if (_direction)
+        setSpeed(TURNRIGHT, 95, 95);
+    else
+        setSpeed(TURNLEFT , 95, 95);
+    delay_ms(200);
+    
+    upwardSlope(_direction);
     
     while(1);
 }
