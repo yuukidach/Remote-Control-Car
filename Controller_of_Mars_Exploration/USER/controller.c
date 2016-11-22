@@ -265,8 +265,8 @@ void PS2_Vibration(u8 motor1, u8 motor2){
 
 
 uint8_t isAutoControl(void) {
-    if(getButtonData() == PSB_START) {
-        for (int i = 0; i < 50; ++i) while(getButtonData() == PSB_START);
+    if(getButtonData() == PSB_L1) {
+        for (int i = 0; i < 50; ++i) while(getButtonData() == PSB_L1);
             ++cnt;
     }
     if (cnt & 0x1) {

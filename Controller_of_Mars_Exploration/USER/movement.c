@@ -116,12 +116,12 @@ void stopTheCar(void) {
 
 void carGo(uint8_t dir){
     switch (dir) {      
-        case PSB_PAD_UP   : setSpeed(FORWARDS , 25, 25); break;
-        case PSB_PAD_DOWN : setSpeed(BACKWARDS, 25, 25); break;
+        case PSB_PAD_UP   : setSpeed(FORWARDS , 30, 30); break;
+        case PSB_PAD_DOWN : setSpeed(BACKWARDS, 30, 30); break;
         case PSB_PAD_RIGHT: setSpeed(TURNRIGHT, 60, 60); break;
         case PSB_PAD_LEFT : setSpeed(TURNLEFT , 60, 60); break;
-        case PSB_CIRCLE   : setSpeed(TURNRIGHT, 25, 25); break;
-        case PSB_SQUARE   : setSpeed(TURNLEFT , 25, 25); break;
+        case PSB_CIRCLE   : setSpeed(TURNRIGHT, 37, 37); break;
+        case PSB_SQUARE   : setSpeed(TURNLEFT , 37, 37); break;
         default: stopTheCar();
     }
 }

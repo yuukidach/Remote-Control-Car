@@ -26,3 +26,8 @@
 .\objects\final_charge.o: USER\precompile.h
 .\objects\final_charge.o: USER\ultrasonic.h
 .\objects\final_charge.o: USER\final_charge.h
+.\objects\final_charge.o: .\USER\MPU6050\mpu6050.h
+.\objects\final_charge.o: .\USER\MPU6050\mpuiic.h
+.\objects\final_charge.o: .\USER\MPU6050\sys.h
+.\objects\final_charge.o: .\USER\MPU6050\eMPL\inv_mpu.h
+.\objects\final_charge.o: .\USER\MPU6050\eMPL\inv_mpu_dmp_motion_driver.h

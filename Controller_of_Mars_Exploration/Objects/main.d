@@ -28,6 +28,8 @@
 .\objects\main.o: .\USER\MPU6050\mpu6050.h
 .\objects\main.o: .\USER\MPU6050\mpuiic.h
 .\objects\main.o: .\USER\MPU6050\sys.h
+.\objects\main.o: .\USER\MPU6050\eMPL\inv_mpu.h
+.\objects\main.o: .\USER\MPU6050\eMPL\inv_mpu_dmp_motion_driver.h
 .\objects\main.o: USER\precompile.h
 .\objects\main.o: D:\Keil\ARM\ARMCC\Bin\..\include\string.h
 .\objects\main.o: USER\tim.h

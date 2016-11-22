@@ -25,6 +25,9 @@
 #include "WIFIControl.h"
 #include "ADCConfig.h"
 #include "mpu6050.h"
+#include "mpuiic.h"
+#include "inv_mpu.h"
+#include "inv_mpu_dmp_motion_driver.h"
 //#include "AutoControl.h"
 #include "precompile.h"
 
@@ -39,6 +42,7 @@ int main(void) {
     Arm_Config();
     ADC_Config();
     MPU_Init();
+    while(mpu_dmp_init());
 
 #if (__DEBUG__ == __ON__)
     USART1_Config();
@@ -59,7 +63,6 @@ int main(void) {
           
 #if (__DEBUG__ == __ON__)          
             uint8_t mode = getButtonData () ;
-            printf("sonic: %5d\n", Ultrasonic_Trig(GPIO_Pin_7));
             delay_ms(100);
             if ( mode == PSB_START )
                 printf ( "7 : %u\r\n" , Ultrasonic_Trig ( GPIO_Pin_7 ) ) ;

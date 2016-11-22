@@ -3,7 +3,9 @@
 
 #include "precompile.h"
 
-#define TURN_PWM 18       // When the power of the battery if full even 20 may seem to be too fast.
+#define MIDDLE_TRIGGER GPIO_Pin_7
+
+#define TURN_PWM 60
 
 #define INNER_TIME 100
 #define FORWARD_I_TIME 700
@@ -17,12 +19,10 @@
 
 #define INTERVAL 85
 
-void pinDef(uint8_t dir);
-void correctDir(uint8_t dir);
-void turnInner(uint8_t dir);
-void fowardToSlope(uint8_t dir);
-void turnOuter(uint8_t dir);
-void upwardSlope(uint8_t dir);
+void dirDef(uint8_t dir);
+void turnInner(void);
+void turnOuter(void);
+void upwardSlope(void);
 void Final_Charge (uint8_t _direction);
 
 #endif
