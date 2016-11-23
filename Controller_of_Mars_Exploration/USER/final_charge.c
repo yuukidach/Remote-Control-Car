@@ -1,3 +1,19 @@
+/**
+  ******************************************************************************
+  * @author        Yuuki_Dach
+  * @version       V1.0.0
+  * @date          23-November-2016
+  * @description   Functions to finish part3
+  ******************************************************************************
+  * @attention
+  *
+  * THIS IS THE FINAL PART OF OUR COMPETITION. ALL WE NEED TO DO IS GOING UP A 
+  * SLOPE WHICH HAS A INCLINATION OF 30 DEGREE.
+  *
+  * <h2><center>&copy; COPYRIGHT 2016 Yuuki_Dach</center></h2>
+  ******************************************************************************
+  */
+
 #include "final_charge.h"
 
 #include "mpu6050.h"
@@ -11,11 +27,11 @@ uint8_t inner_turn, outer_turn;
 
 void dirDef(uint8_t dir) {
     if (dir) {
-        inner_turn = TURNRIGHT;
-        outer_turn = TURNLEFT;
-    } else {
         inner_turn = TURNLEFT;
         outer_turn = TURNRIGHT;
+    } else {
+        inner_turn = TURNRIGHT;
+        outer_turn = TURNLEFT;
     }
 }
 
@@ -24,7 +40,7 @@ void turnInner(void) {
     while(getYaw(&last_yaw));
     setSpeed(inner_turn, TURN_PWM, TURN_PWM);
     now_yaw = 0;
-    while (now_yaw < 85) {
+    while (now_yaw < 82) {
         while(getYaw(&now_yaw));
         now_yaw = now_yaw > last_yaw ? now_yaw-last_yaw : last_yaw - now_yaw;
 
@@ -41,7 +57,7 @@ void turnOuter(void) {
     while(getYaw(&last_yaw));
     setSpeed(outer_turn, TURN_PWM, TURN_PWM);
     now_yaw = 0;
-    while (now_yaw < 85) {
+    while (now_yaw < 80) {
         while(getYaw(&now_yaw));
         now_yaw = now_yaw > last_yaw ? now_yaw-last_yaw : last_yaw - now_yaw;
     } 
@@ -50,26 +66,41 @@ void turnOuter(void) {
 
 
 void upwardSlope(void) {             
-    setSpeed(FORWARDS, 60, 60);
-    delay_ms(850);
+    setSpeed(FORWARDS, 80, 80);
+    delay_ms(1200);
     stopTheCar();
     now_sonic = Ten_Times_Trig(MIDDLE_TRIGGER);
-    while (now_sonic < 4000 && now_sonic > 4100) {
-        if (now_sonic < 4000) {
-            setSpeed(BACKWARDS, 15, 15);
+
+#if (__DEBUG__ == __ON__)
+    printf("sonic: %5d\r\n", now_sonic);
+#endif
+    
+    while (now_sonic < 2200 || now_sonic > 2700) {
+        if (now_sonic < 2200) {
+            setSpeed(BACKWARDS, 40, 40);
             delay_ms(10);
             now_sonic = Ten_Times_Trig(MIDDLE_TRIGGER);
-        } else if (now_sonic > 4100) {
-            setSpeed(FORWARDS, 15, 15);
+
+#if (__DEBUG__ == __ON__)
+            printf("sonic: %5d\r\n", now_sonic);
+#endif
+            
+        } else if (now_sonic > 2700) {
+            setSpeed(FORWARDS, 40, 40);
             delay_ms(10);
             now_sonic = Ten_Times_Trig(MIDDLE_TRIGGER);
+
+#if (__DEBUG__ == __ON__)
+            printf("sonic: %5d\r\n", now_sonic);
+#endif
+            
         }
     }
 }
 
 
-void Final_Charge (uint8_t _direction) { 
-    dirDef(_direction);
+void finshPart3(uint8_t _dir) { 
+    dirDef(_dir);
     
     turnInner();
 
@@ -85,7 +116,7 @@ void Final_Charge (uint8_t _direction) {
     
     do {
         setSpeed(FORWARDS, 22, 22);
-    } while (Ten_Times_Trig(MIDDLE_TRIGGER) > 2000);
+    } while (Ten_Times_Trig(MIDDLE_TRIGGER) > 1500);
     
     turnOuter();
     
@@ -95,3 +126,5 @@ void Final_Charge (uint8_t _direction) {
     
     while(1);
 }
+
+/******************* (C) COPYRIGHT 2016 Yuuki_Dach *************END OF FILE****/
