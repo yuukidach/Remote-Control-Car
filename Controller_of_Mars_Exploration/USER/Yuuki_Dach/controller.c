@@ -286,10 +286,20 @@ uint8_t isAutoControl(void) {
  *         PART3LEFT  (0): Means turning left at part 3
  */
 uint8_t getPart3Direction(void) {
-    if (getButtonData() == PSB_L2) {
-        for (int i = 0; i < 10; ++i) while(getButtonData() == PSB_L2);
+    uint8_t i = 0;
+    for (i = 0; i < 10; ++i) while(getButtonData() == PSB_L2);
+    if (i == 10 && getButtonData() == PSB_L2) {        
         part3Dir = PART3RIGHT;
     }
     return part3Dir;
 }
 /******************* (C) COPYRIGHT 2016 Yuuki_Dach *************END OF FILE****/
+
+
+
+
+
+
+
+
+

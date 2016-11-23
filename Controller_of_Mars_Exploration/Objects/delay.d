@@ -1,10 +1,10 @@
-.\objects\delay.o: USER\delay.c
-.\objects\delay.o: USER\delay.h
+.\objects\delay.o: USER\Yuuki_Dach\delay.c
+.\objects\delay.o: USER\Yuuki_Dach\delay.h
 .\objects\delay.o: .\CMSIS\stm32f10x.h
 .\objects\delay.o: .\CMSIS\core_cm3.h
 .\objects\delay.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\delay.o: .\CMSIS\system_stm32f10x.h
-.\objects\delay.o: .\USER\stm32f10x_conf.h
+.\objects\delay.o: .\USER\Yuuki_Dach\stm32f10x_conf.h
 .\objects\delay.o: .\FWlib\inc\stm32f10x_adc.h
 .\objects\delay.o: .\CMSIS\stm32f10x.h
 .\objects\delay.o: .\FWlib\inc\stm32f10x_dma.h

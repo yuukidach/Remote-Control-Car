@@ -4,7 +4,7 @@
 .\objects\misc.o: .\CMSIS\core_cm3.h
 .\objects\misc.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\misc.o: .\CMSIS\system_stm32f10x.h
-.\objects\misc.o: .\USER\stm32f10x_conf.h
+.\objects\misc.o: .\USER\Yuuki_Dach\stm32f10x_conf.h
 .\objects\misc.o: .\FWlib\inc\stm32f10x_adc.h
 .\objects\misc.o: .\CMSIS\stm32f10x.h
 .\objects\misc.o: .\FWlib\inc\stm32f10x_dma.h

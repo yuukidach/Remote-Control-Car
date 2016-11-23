@@ -34,11 +34,12 @@
 
 #define INTERVAL 85
 
+void correctDir(float part2yaw);
 void dirDef(uint8_t dir);
 void turnInner(void);
 void turnOuter(void);
 void upwardSlope(void);
-void finishPart3(uint8_t _dir);
+void finishPart3(uint8_t _dir, float part2yaw);
 
 #endif /* __FINAL_CHARGE_H */
 

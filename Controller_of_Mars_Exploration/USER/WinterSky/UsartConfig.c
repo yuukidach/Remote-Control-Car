@@ -1,6 +1,4 @@
- /******************** (C) COPYRIGHT 2012 WildFire Team ***************************
-**********************************************************************************/
-#include "UsartConf.h"
+#include "UsartConfig.h"
 #include <stdarg.h>
 
 u8 RcvBuf[256] = {'0'};

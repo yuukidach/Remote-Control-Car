@@ -8,7 +8,7 @@
 .\objects\inv_mpu_dmp_motion_driver.o: .\CMSIS\stm32f10x.h
 .\objects\inv_mpu_dmp_motion_driver.o: .\CMSIS\core_cm3.h
 .\objects\inv_mpu_dmp_motion_driver.o: .\CMSIS\system_stm32f10x.h
-.\objects\inv_mpu_dmp_motion_driver.o: .\USER\stm32f10x_conf.h
+.\objects\inv_mpu_dmp_motion_driver.o: .\USER\Yuuki_Dach\stm32f10x_conf.h
 .\objects\inv_mpu_dmp_motion_driver.o: .\FWlib\inc\stm32f10x_adc.h
 .\objects\inv_mpu_dmp_motion_driver.o: .\CMSIS\stm32f10x.h
 .\objects\inv_mpu_dmp_motion_driver.o: .\FWlib\inc\stm32f10x_dma.h
@@ -23,4 +23,4 @@
 .\objects\inv_mpu_dmp_motion_driver.o: USER\MPU6050\eMPL\inv_mpu_dmp_motion_driver.h
 .\objects\inv_mpu_dmp_motion_driver.o: USER\MPU6050\eMPL\dmpKey.h
 .\objects\inv_mpu_dmp_motion_driver.o: USER\MPU6050\eMPL\dmpmap.h
-.\objects\inv_mpu_dmp_motion_driver.o: .\USER\delay.h
+.\objects\inv_mpu_dmp_motion_driver.o: .\USER\Yuuki_Dach\delay.h

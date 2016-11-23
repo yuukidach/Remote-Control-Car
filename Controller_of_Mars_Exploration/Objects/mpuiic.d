@@ -5,7 +5,7 @@
 .\objects\mpuiic.o: .\CMSIS\core_cm3.h
 .\objects\mpuiic.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\mpuiic.o: .\CMSIS\system_stm32f10x.h
-.\objects\mpuiic.o: .\USER\stm32f10x_conf.h
+.\objects\mpuiic.o: .\USER\Yuuki_Dach\stm32f10x_conf.h
 .\objects\mpuiic.o: .\FWlib\inc\stm32f10x_adc.h
 .\objects\mpuiic.o: .\CMSIS\stm32f10x.h
 .\objects\mpuiic.o: .\FWlib\inc\stm32f10x_dma.h
@@ -17,4 +17,4 @@
 .\objects\mpuiic.o: .\FWlib\inc\stm32f10x_tim.h
 .\objects\mpuiic.o: .\FWlib\inc\stm32f10x_usart.h
 .\objects\mpuiic.o: .\FWlib\inc\misc.h
-.\objects\mpuiic.o: .\USER\delay.h
+.\objects\mpuiic.o: .\USER\Yuuki_Dach\delay.h
