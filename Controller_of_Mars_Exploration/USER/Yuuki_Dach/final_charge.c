@@ -16,6 +16,7 @@
 
 #include "final_charge.h"
 
+#include "mechanical_arm.h"
 #include "mpu6050.h"
 #include "mpuiic.h"
 #include "inv_mpu.h"
@@ -33,6 +34,21 @@ void dirDef(uint8_t dir) {
         inner_turn = TURNRIGHT;
         outer_turn = TURNLEFT;
     }
+}
+
+void correctDir(float part2yaw) {
+    if (part2yaw > 0) {
+        setSpeed(TURNRIGHT, TURN_PWM, TURN_PWM);
+        while (part2yaw > 0) getYaw(&part2yaw);
+    } else if (part2yaw < 0) {
+        setSpeed(TURNLEFT , TURN_PWM, TURN_PWM);
+        while (part2yaw < 0) getYaw(&part2yaw);
+    }
+    stopTheCar();
+    
+    setSpeed(FORWARDS, 20, 20);
+    delay_ms(200);
+    stopTheCar();
 }
 
 
@@ -75,8 +91,8 @@ void upwardSlope(void) {
     printf("sonic: %5d\r\n", now_sonic);
 #endif
     
-    while (now_sonic < 2200 || now_sonic > 2700) {
-        if (now_sonic < 2200) {
+    while (now_sonic < 2050 || now_sonic > 2300) {
+        if (now_sonic < 2050) {
             setSpeed(BACKWARDS, 40, 40);
             delay_ms(10);
             now_sonic = Ten_Times_Trig(MIDDLE_TRIGGER);
@@ -85,7 +101,7 @@ void upwardSlope(void) {
             printf("sonic: %5d\r\n", now_sonic);
 #endif
             
-        } else if (now_sonic > 2700) {
+        } else if (now_sonic > 2300) {
             setSpeed(FORWARDS, 40, 40);
             delay_ms(10);
             now_sonic = Ten_Times_Trig(MIDDLE_TRIGGER);
@@ -99,9 +115,9 @@ void upwardSlope(void) {
 }
 
 
-void finshPart3(uint8_t _dir) { 
+void finishPart3(uint8_t _dir, float part2yaw) { 
+    correctDir(part2yaw);
     dirDef(_dir);
-    
     turnInner();
 
     setSpeed(FORWARDS, 22, 22);
@@ -116,14 +132,12 @@ void finshPart3(uint8_t _dir) {
     
     do {
         setSpeed(FORWARDS, 22, 22);
-    } while (Ten_Times_Trig(MIDDLE_TRIGGER) > 1500);
+    } while (Ten_Times_Trig(MIDDLE_TRIGGER) > 1400);
     
-    turnOuter();
-    
-    upwardSlope();
-    
+    turnOuter();   
+    upwardSlope();    
     stopTheCar();
-    
+    putArmLow();
     while(1);
 }
 

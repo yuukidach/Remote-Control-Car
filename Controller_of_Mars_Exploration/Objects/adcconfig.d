@@ -1,10 +1,10 @@
-.\objects\adcconfig.o: USER\ADCConfig.c
-.\objects\adcconfig.o: USER\ADCConfig.h
+.\objects\adcconfig.o: USER\WinterSky\ADCConfig.c
+.\objects\adcconfig.o: USER\WinterSky\ADCConfig.h
 .\objects\adcconfig.o: .\CMSIS\stm32f10x.h
 .\objects\adcconfig.o: .\CMSIS\core_cm3.h
 .\objects\adcconfig.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\adcconfig.o: .\CMSIS\system_stm32f10x.h
-.\objects\adcconfig.o: .\USER\stm32f10x_conf.h
+.\objects\adcconfig.o: .\USER\Yuuki_Dach\stm32f10x_conf.h
 .\objects\adcconfig.o: .\FWlib\inc\stm32f10x_adc.h
 .\objects\adcconfig.o: .\CMSIS\stm32f10x.h
 .\objects\adcconfig.o: .\FWlib\inc\stm32f10x_dma.h
@@ -16,6 +16,5 @@
 .\objects\adcconfig.o: .\FWlib\inc\stm32f10x_tim.h
 .\objects\adcconfig.o: .\FWlib\inc\stm32f10x_usart.h
 .\objects\adcconfig.o: .\FWlib\inc\misc.h
-.\objects\adcconfig.o: USER\delay.h
+.\objects\adcconfig.o: .\USER\Yuuki_Dach\delay.h
 .\objects\adcconfig.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\adcconfig.o: USER\WifiControl.h

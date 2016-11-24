@@ -1,10 +1,10 @@
-.\objects\sysconfig.o: USER\SysConfig.c
-.\objects\sysconfig.o: USER\SysConfig.h
+.\objects\sysconfig.o: USER\WinterSky\SysConfig.c
+.\objects\sysconfig.o: USER\WinterSky\SysConfig.h
 .\objects\sysconfig.o: .\CMSIS\stm32f10x.h
 .\objects\sysconfig.o: .\CMSIS\core_cm3.h
 .\objects\sysconfig.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\sysconfig.o: .\CMSIS\system_stm32f10x.h
-.\objects\sysconfig.o: .\USER\stm32f10x_conf.h
+.\objects\sysconfig.o: .\USER\Yuuki_Dach\stm32f10x_conf.h
 .\objects\sysconfig.o: .\FWlib\inc\stm32f10x_adc.h
 .\objects\sysconfig.o: .\CMSIS\stm32f10x.h
 .\objects\sysconfig.o: .\FWlib\inc\stm32f10x_dma.h

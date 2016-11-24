@@ -1,25 +1,25 @@
 #include "ADCConfig.h"
 
 #include "delay.h"
-
 #include <stdio.h>
 
-#include "WifiControl.h"
 
-
-u16 AD_Value[10] = {0};
+u16 AD_Value[12] = {0};
 
 void ADC_Config(void) {
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOC, ENABLE);
 	
 	GPIO_InitTypeDef GPIO_InitStructure;
 	
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_4;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_4 | GPIO_Pin_5;
 	GPIO_Init(GPIOC, &GPIO_InitStructure);
+
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1;
+	GPIO_Init(GPIOB, &GPIO_InitStructure);
 	
 	//ADC1 and GPIOC clock
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE);
@@ -32,19 +32,21 @@ void ADC_Config(void) {
 	ADC_InitStructure.ADC_ContinuousConvMode = ENABLE;
 	ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;	  
 	ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
-	ADC_InitStructure.ADC_NbrOfChannel = 10;	  
+	ADC_InitStructure.ADC_NbrOfChannel = 12;
 	ADC_Init(ADC1, &ADC_InitStructure);		
 	
-	ADC_RegularChannelConfig(ADC1, ADC_Channel_1, 1, ADC_SampleTime_239Cycles5);
-	ADC_RegularChannelConfig(ADC1, ADC_Channel_2, 2, ADC_SampleTime_239Cycles5);
-	ADC_RegularChannelConfig(ADC1, ADC_Channel_3, 3, ADC_SampleTime_239Cycles5);
-	ADC_RegularChannelConfig(ADC1, ADC_Channel_4, 4, ADC_SampleTime_239Cycles5);
-	ADC_RegularChannelConfig(ADC1, ADC_Channel_10, 5, ADC_SampleTime_239Cycles5);
-	ADC_RegularChannelConfig(ADC1, ADC_Channel_11, 6, ADC_SampleTime_239Cycles5);
-	ADC_RegularChannelConfig(ADC1, ADC_Channel_12, 7, ADC_SampleTime_239Cycles5);
-	ADC_RegularChannelConfig(ADC1, ADC_Channel_13, 8, ADC_SampleTime_239Cycles5);
-	ADC_RegularChannelConfig(ADC1, ADC_Channel_14, 9, ADC_SampleTime_239Cycles5);
-	ADC_RegularChannelConfig(ADC1, ADC_Channel_15, 10, ADC_SampleTime_239Cycles5);
+	ADC_RegularChannelConfig(ADC1, ADC_Channel_1 , 1 , ADC_SampleTime_239Cycles5);
+	ADC_RegularChannelConfig(ADC1, ADC_Channel_2 , 2 , ADC_SampleTime_239Cycles5);
+	ADC_RegularChannelConfig(ADC1, ADC_Channel_3 , 3 , ADC_SampleTime_239Cycles5);
+	ADC_RegularChannelConfig(ADC1, ADC_Channel_4 , 4 , ADC_SampleTime_239Cycles5);
+	ADC_RegularChannelConfig(ADC1, ADC_Channel_10, 5 , ADC_SampleTime_239Cycles5);
+	ADC_RegularChannelConfig(ADC1, ADC_Channel_11, 6 , ADC_SampleTime_239Cycles5);
+	ADC_RegularChannelConfig(ADC1, ADC_Channel_12, 7 , ADC_SampleTime_239Cycles5);
+	ADC_RegularChannelConfig(ADC1, ADC_Channel_13, 8 , ADC_SampleTime_239Cycles5);
+	ADC_RegularChannelConfig(ADC1, ADC_Channel_5 , 9 , ADC_SampleTime_239Cycles5);
+	ADC_RegularChannelConfig(ADC1, ADC_Channel_6 , 10, ADC_SampleTime_239Cycles5);
+	ADC_RegularChannelConfig(ADC1, ADC_Channel_8 , 11, ADC_SampleTime_239Cycles5);
+	ADC_RegularChannelConfig(ADC1, ADC_Channel_15, 12, ADC_SampleTime_239Cycles5);
 	
 	ADC_DMACmd(ADC1, ENABLE);
 	
@@ -73,7 +75,7 @@ void ADC_Config(void) {
 	DMA_InitStructure.DMA_PeripheralBaseAddr = (u32)&ADC1->DR;
 	DMA_InitStructure.DMA_MemoryBaseAddr = (u32)&AD_Value; 
 	DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC; 
-	DMA_InitStructure.DMA_BufferSize = 10; 
+	DMA_InitStructure.DMA_BufferSize = 12; 
 	DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable; 
 	DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;
 	DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_HalfWord;
@@ -88,55 +90,9 @@ void ADC_Config(void) {
 }
 
 
-u32 nTemp[10];
-
-void ADC_Check(void) {
-	for(int i = 0; i < 10; i++)
-		nTemp[i] = 0;
-	
-	for(int i = 0; i < 256; i++) {
-		for(int j = 0; j < 10; j++) {
-			nTemp[j] += AD_Value[j];
-		}
-		delay_us(500);
-	}
-	
-	char buf[70] = "value:";
-	char* ptr = buf + 6;
-	int value = 0;
-	
-	for(int i = 0; i < 10; i++) {
-		value = nTemp[i]/256;
-		
-		for(int j = 1000; j > 0; j/=10) {
-			*ptr++ = value/j + '0';
-			value %= j;
-		}
-		*ptr++ = ',';
-	}
-	*ptr-- = 0;
-	*ptr = '\n';
-	printf("%s", buf);
-}
-
-
 void ADC_PrintValue(void) {
-	char buf[70] = "value:";
-	char* ptr = buf + 6;
-	int value = 0;
-	
-	for(int i = 0; i < 10; i++) {
-		value = AD_Value[i];
-		
-		for(int j = 1000; j > 0; j/=10) {
-			*ptr++ = value/j + '0';
-			value %= j;
-		}
-		*ptr++ = ',';
-	}
-	*ptr-- = 0;
-	*ptr = '\n';
-	printf("%s", buf);
+	printf("value: front %4d, %4d, %4d, %4d\n", AD_Value[0], AD_Value[1], AD_Value[2], AD_Value[3]);
+	printf("       back  %4d, %4d, %4d, %4d\n", AD_Value[4], AD_Value[5], AD_Value[6], AD_Value[7]);
+	printf("       L/R/B %4d, %4d, %4d, color %4d\n", AD_Value[10], AD_Value[11], AD_Value[8], AD_Value[9]);
 }
-
 

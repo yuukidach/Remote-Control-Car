@@ -8,7 +8,7 @@
 .\objects\inv_mpu.o: .\CMSIS\stm32f10x.h
 .\objects\inv_mpu.o: .\CMSIS\core_cm3.h
 .\objects\inv_mpu.o: .\CMSIS\system_stm32f10x.h
-.\objects\inv_mpu.o: .\USER\stm32f10x_conf.h
+.\objects\inv_mpu.o: .\USER\Yuuki_Dach\stm32f10x_conf.h
 .\objects\inv_mpu.o: .\FWlib\inc\stm32f10x_adc.h
 .\objects\inv_mpu.o: .\CMSIS\stm32f10x.h
 .\objects\inv_mpu.o: .\FWlib\inc\stm32f10x_dma.h
@@ -24,4 +24,4 @@
 .\objects\inv_mpu.o: .\USER\MPU6050\mpu6050.h
 .\objects\inv_mpu.o: .\USER\MPU6050\mpuiic.h
 .\objects\inv_mpu.o: .\USER\MPU6050\sys.h
-.\objects\inv_mpu.o: .\USER\delay.h
+.\objects\inv_mpu.o: .\USER\Yuuki_Dach\delay.h

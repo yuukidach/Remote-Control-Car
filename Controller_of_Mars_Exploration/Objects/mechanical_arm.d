@@ -1,11 +1,11 @@
-.\objects\mechanical_arm.o: USER\mechanical_arm.c
-.\objects\mechanical_arm.o: USER\mechanical_arm.h
-.\objects\mechanical_arm.o: USER\pca9685.h
+.\objects\mechanical_arm.o: USER\Yuuki_Dach\mechanical_arm.c
+.\objects\mechanical_arm.o: USER\Yuuki_Dach\mechanical_arm.h
+.\objects\mechanical_arm.o: USER\Yuuki_Dach\pca9685.h
 .\objects\mechanical_arm.o: .\CMSIS\stm32f10x.h
 .\objects\mechanical_arm.o: .\CMSIS\core_cm3.h
 .\objects\mechanical_arm.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\mechanical_arm.o: .\CMSIS\system_stm32f10x.h
-.\objects\mechanical_arm.o: .\USER\stm32f10x_conf.h
+.\objects\mechanical_arm.o: .\USER\Yuuki_Dach\stm32f10x_conf.h
 .\objects\mechanical_arm.o: .\FWlib\inc\stm32f10x_adc.h
 .\objects\mechanical_arm.o: .\CMSIS\stm32f10x.h
 .\objects\mechanical_arm.o: .\FWlib\inc\stm32f10x_dma.h
@@ -17,5 +17,5 @@
 .\objects\mechanical_arm.o: .\FWlib\inc\stm32f10x_tim.h
 .\objects\mechanical_arm.o: .\FWlib\inc\stm32f10x_usart.h
 .\objects\mechanical_arm.o: .\FWlib\inc\misc.h
-.\objects\mechanical_arm.o: USER\controller.h
-.\objects\mechanical_arm.o: USER\delay.h
+.\objects\mechanical_arm.o: USER\Yuuki_Dach\controller.h
+.\objects\mechanical_arm.o: USER\Yuuki_Dach\delay.h
