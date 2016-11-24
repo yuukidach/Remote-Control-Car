@@ -31,7 +31,7 @@
 //#include "AutoControl.h"
 #include "precompile.h"
 
-uint8_t dir = PART3LEFT;
+uint8_t dir_in3 = PART3LEFT;
 float lastYaw, yaw;
 
 int main(void) {
@@ -50,7 +50,7 @@ int main(void) {
     delay_ms(100);
     WIFI_ConnectToServer();
     delay_ms(100);
-    printf("\nis connected!\n");
+    printf("\nThe car is connected!\n");
 #endif
 
     Ultrasonic_Init();
@@ -62,21 +62,17 @@ int main(void) {
             carGo (getButtonData ());
           
 #if (__DEBUG__ == __ON__)          
-            uint8_t mode = getButtonData () ;
-            delay_ms(100);
+            uint8_t mode = getButtonData();
             if ( mode == PSB_START )
-                printf ( "7 : %u\r\n" , Ultrasonic_Trig ( GPIO_Pin_7 ) ) ;
-            else if ( mode == PSB_L2 )
-                printf ( "8 : %u\r\n" , Ultrasonic_Trig ( GPIO_Pin_8 ) ) ;
-            else if ( mode == PSB_R2 )
-                printf ( "9 : %u\r\n" , Ultrasonic_Trig ( GPIO_Pin_9 ) ) ;
+                printf("7 : %u\r\n", Ultrasonic_Trig(GPIO_Pin_7));
+            //printf("dir is: %5d \n", dir_in3);
 #endif
   
-            //armControl(getButtonData());  
-            dir = getPart3Direction();
+            armControl(getButtonData());  
+            dir_in3 = getPart3Direction();
             
         } else if (isAutoControl()) {
-            Final_Charge (dir); // dir == PART3LEFT(0) or PART3RIGHT(1)
+            finishPart3(dir_in3); // dir == PART3LEFT(0) or PART3RIGHT(1)
         } 
     }
 }
