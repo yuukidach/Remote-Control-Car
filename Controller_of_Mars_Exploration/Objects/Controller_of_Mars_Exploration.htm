@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\Controller_of_Mars_Exploration.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Controller_of_Mars_Exploration.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Thu Nov 24 11:41:29 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Sat Nov 26 13:09:14 2016
 <BR><P>
-<H3>Maximum Stack Usage =        368 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        344 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; AutoControl &rArr; Seeking &rArr; Finding &rArr; getYaw &rArr; atan2 &rArr; atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 <P>
@@ -667,7 +667,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[7a]"></a>AutoControl</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, autocontrol.o(i.AutoControl))
-<BR><BR>[Stack]<UL><LI>Max Depth = 368<LI>Call Chain = AutoControl &rArr; Seeking &rArr; Finding &rArr; getYaw &rArr; atan2 &rArr; atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+<BR><BR>[Stack]<UL><LI>Max Depth = 344<LI>Call Chain = AutoControl &rArr; Seeking &rArr; Finding &rArr; getYaw &rArr; atan2 &rArr; atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Seeking
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PreDeal
@@ -711,7 +711,7 @@ Global Symbols
 <P><STRONG><a name="[7]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f10x_it.o(i.DebugMon_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[85]"></a>Finding</STRONG> (Thumb, 346 bytes, Stack size 16 bytes, autocontrol.o(i.Finding))
+<P><STRONG><a name="[85]"></a>Finding</STRONG> (Thumb, 344 bytes, Stack size 16 bytes, autocontrol.o(i.Finding))
 <BR><BR>[Stack]<UL><LI>Max Depth = 328<LI>Call Chain = Finding &rArr; getYaw &rArr; atan2 &rArr; atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stopTheCar
@@ -847,7 +847,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCA9685_I2C_Write
 </UL>
 
-<P><STRONG><a name="[bb]"></a>LightCheck</STRONG> (Thumb, 122 bytes, Stack size 8 bytes, autocontrol.o(i.LightCheck))
+<P><STRONG><a name="[bb]"></a>LightCheck</STRONG> (Thumb, 176 bytes, Stack size 8 bytes, autocontrol.o(i.LightCheck))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = LightCheck
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Seeking
@@ -1226,7 +1226,7 @@ Global Symbols
 <P><STRONG><a name="[8]"></a>PendSV_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f10x_it.o(i.PendSV_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[7b]"></a>PreDeal</STRONG> (Thumb, 66 bytes, Stack size 8 bytes, autocontrol.o(i.PreDeal))
+<P><STRONG><a name="[7b]"></a>PreDeal</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, autocontrol.o(i.PreDeal))
 <BR><BR>[Stack]<UL><LI>Max Depth = 328<LI>Call Chain = PreDeal &rArr; Tracking &rArr; getYaw &rArr; atan2 &rArr; atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stopTheCar
@@ -1281,8 +1281,8 @@ Global Symbols
 <P><STRONG><a name="[6]"></a>SVC_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f10x_it.o(i.SVC_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[7c]"></a>Seeking</STRONG> (Thumb, 488 bytes, Stack size 32 bytes, autocontrol.o(i.Seeking))
-<BR><BR>[Stack]<UL><LI>Max Depth = 360<LI>Call Chain = Seeking &rArr; Finding &rArr; getYaw &rArr; atan2 &rArr; atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+<P><STRONG><a name="[7c]"></a>Seeking</STRONG> (Thumb, 428 bytes, Stack size 8 bytes, autocontrol.o(i.Seeking))
+<BR><BR>[Stack]<UL><LI>Max Depth = 336<LI>Call Chain = Seeking &rArr; Finding &rArr; getYaw &rArr; atan2 &rArr; atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stopTheCar
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ten_Times_Trig
@@ -1599,7 +1599,6 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;upwardSlope
-<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnInner
 <LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;finishPart3
 <LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIFI_ConnectToServer
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_PrintValue
@@ -1715,7 +1714,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Controller_Config
 </UL>
 
-<P><STRONG><a name="[ff]"></a>correctDir</STRONG> (Thumb, 106 bytes, Stack size 8 bytes, final_charge.o(i.correctDir))
+<P><STRONG><a name="[ff]"></a>correctDir</STRONG> (Thumb, 108 bytes, Stack size 8 bytes, final_charge.o(i.correctDir))
 <BR><BR>[Stack]<UL><LI>Max Depth = 320<LI>Call Chain = correctDir &rArr; getYaw &rArr; atan2 &rArr; atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stopTheCar
@@ -2045,7 +2044,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 220 bytes, Stack size 0 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 368<LI>Call Chain = main &rArr; AutoControl &rArr; Seeking &rArr; Finding &rArr; getYaw &rArr; atan2 &rArr; atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+<BR><BR>[Stack]<UL><LI>Max Depth = 344<LI>Call Chain = main &rArr; AutoControl &rArr; Seeking &rArr; Finding &rArr; getYaw &rArr; atan2 &rArr; atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putArmHigh
 <LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_init
@@ -2503,7 +2502,7 @@ Global Symbols
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Finding
 </UL>
 
-<P><STRONG><a name="[11d]"></a>turnInner</STRONG> (Thumb, 114 bytes, Stack size 8 bytes, final_charge.o(i.turnInner))
+<P><STRONG><a name="[11d]"></a>turnInner</STRONG> (Thumb, 108 bytes, Stack size 8 bytes, final_charge.o(i.turnInner))
 <BR><BR>[Stack]<UL><LI>Max Depth = 320<LI>Call Chain = turnInner &rArr; getYaw &rArr; atan2 &rArr; atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stopTheCar
@@ -2512,7 +2511,6 @@ Global Symbols
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;finishPart3
 </UL>
