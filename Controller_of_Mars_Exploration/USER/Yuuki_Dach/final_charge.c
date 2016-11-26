@@ -47,7 +47,7 @@ void correctDir(float part2yaw) {
     stopTheCar();
     
     setSpeed(FORWARDS, 20, 20);
-    delay_ms(200);
+    delay_ms(250);
     stopTheCar();
 }
 
@@ -83,7 +83,7 @@ void turnOuter(void) {
 
 void upwardSlope(void) {             
     setSpeed(FORWARDS, 80, 80);
-    delay_ms(1200);
+    delay_ms(1250);
     stopTheCar();
     now_sonic = Ten_Times_Trig(MIDDLE_TRIGGER);
 
@@ -91,8 +91,8 @@ void upwardSlope(void) {
     printf("sonic: %5d\r\n", now_sonic);
 #endif
     
-    while (now_sonic < 2050 || now_sonic > 2300) {
-        if (now_sonic < 2050) {
+    while (now_sonic < 1950 || now_sonic > 2150) {
+        if (now_sonic < 1950) {
             setSpeed(BACKWARDS, 40, 40);
             delay_ms(10);
             now_sonic = Ten_Times_Trig(MIDDLE_TRIGGER);
@@ -101,7 +101,7 @@ void upwardSlope(void) {
             printf("sonic: %5d\r\n", now_sonic);
 #endif
             
-        } else if (now_sonic > 2300) {
+        } else if (now_sonic > 2150) {
             setSpeed(FORWARDS, 40, 40);
             delay_ms(10);
             now_sonic = Ten_Times_Trig(MIDDLE_TRIGGER);
@@ -121,7 +121,7 @@ void finishPart3(uint8_t _dir, float part2yaw) {
     turnInner();
 
     setSpeed(FORWARDS, 22, 22);
-    delay_ms(700);
+    delay_ms(690);
     stopTheCar();
     
 #if (__DEBUG__ == __ON__)
@@ -132,7 +132,7 @@ void finishPart3(uint8_t _dir, float part2yaw) {
     
     do {
         setSpeed(FORWARDS, 22, 22);
-    } while (Ten_Times_Trig(MIDDLE_TRIGGER) > 1400);
+    } while (Ten_Times_Trig(MIDDLE_TRIGGER) > 1300);
     
     turnOuter();   
     upwardSlope();    

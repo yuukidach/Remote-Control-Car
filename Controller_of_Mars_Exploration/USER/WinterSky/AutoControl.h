@@ -18,7 +18,7 @@
 
 
 #define ONE 250
-#define DISTANCE 2000
+#define DISTANCE 2200
 
 #define DS1 15
 #define DS2 20

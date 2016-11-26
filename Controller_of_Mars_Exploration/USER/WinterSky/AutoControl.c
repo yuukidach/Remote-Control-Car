@@ -442,7 +442,7 @@ void Finding(u8 _nD, u8 _nT) {
 	printf("light is finded\n");
 	bFind = 0;
 	
-	delay_ms(50);
+	delay_ms(100);
 }
 
 
