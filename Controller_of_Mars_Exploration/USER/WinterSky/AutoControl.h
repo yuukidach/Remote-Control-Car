@@ -17,13 +17,13 @@
 #define TRACK_L4 GPIO_Pin_11
 
 
-#define ONE 250
-#define DISTANCE 2000
+#define ONE 350
+#define DISTANCE 2200
 
-#define DS1 15
-#define DS2 20
+#define DS1 20
+#define DS2 22
 #define TS1 22
-#define TS2 80
+#define TS2 90
 
 
 extern float yaw, dYaw, target;

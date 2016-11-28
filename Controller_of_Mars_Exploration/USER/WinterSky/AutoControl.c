@@ -160,7 +160,7 @@ void PreDeal(void) {
 	while(getYaw(&dYaw));
 	setSpeed(0, DS2, DS2);
 	
-	TaskStart(1000);
+	TaskStart(800);
 	while(Tasking()) {
 		Tracking(0);
 		LightCheck();
@@ -200,7 +200,7 @@ void Finding(u8 _nD, u8 _nT) {
 	}
 	
 	setSpeed(1, DS1, DS1);
-	delay_ms(900);
+	delay_ms(600);
 	
 	setSpeed(0, DS1, DS1);
 	delay_ms(150);
@@ -239,39 +239,42 @@ void Seeking(void) {
 	
 	if(nToward == 2) {
 		printf(":NO LIGHT\n");
+
+#if (__DEBUG__ == __ON__)
 		ADC_PrintValue();
+#endif 
+        
 		Tracking(0);
 		
 		u32 iDistance = Ten_Times_Trig(GPIO_Pin_7);
 		printf("::DISTANCE %u\n", iDistance);
 		
-		if(Ten_Times_Trig(GPIO_Pin_7) > 1 && Ten_Times_Trig(GPIO_Pin_7) < DISTANCE) {
-			LightCheck();
-			if(nToward == 2) {
-				stopTheCar();
-				bSeek = 0;
-				printf("distance limit\n");
-			}
-		}
-		
-		if(AD_Value[9] > 1250 && iDistance > 1 && iDistance < 10000) {
-			bSeek = 0;
-			stopTheCar();
-			printf("color limit\n");
-		}
+		if(AD_Value[9] > 1250) {
+            while(iDistance > 65530 && iDistance < 2) {
+                iDistance = Ten_Times_Trig(GPIO_Pin_7);
+            }
+            
+            if(iDistance > 1 && iDistance < 10000) {
+                bSeek = 0;
+                stopTheCar();
+                printf("color limit\n");
+            }
+		} else if(iDistance > 1 && iDistance < DISTANCE) {
+            stopTheCar();
+            printf("Is Door Opend ?\n");
+        }
 		
 		return;
 	}
 	
 	if(nToward)
-		printf(":BACK  ");
+		printf(":BACK\n");
 	else
-		printf(":FRONT ");
+		printf(":FRONT\n");
 	
 	Tracking(nToward);
 	
-	printf("%4d, %4d, %4d, %4d - %4d, %4d, %4d, %4d\n", AD_Value[0], AD_Value[1], AD_Value[2], AD_Value[3], AD_Value[4], AD_Value[5], AD_Value[6], AD_Value[7]);
-	printf("       left    %4d, right   %4d\n", AD_Value[10], AD_Value[11]);
+    ADC_PrintValue();
 	
 	if(AD_Value[10] < 1600) {
 		bFind = 1;
