@@ -30,6 +30,42 @@ void Arm_Config(void) {
 }
 
 
+void handGrab(void) {
+    PCA9685_SetOutput(PCA_ADDRESS, 1, 0, 125); 
+}
+
+
+void handOpen(void) {
+    PCA9685_SetOutput(PCA_ADDRESS, 1, 0, 250);
+}
+
+
+void putArmLow(void) {
+    handOpen();
+    PCA9685_SetOutput(PCA_ADDRESS, 0, 0, 140);
+}
+
+
+void putArmHigh(void) {
+    handGrab();
+    PCA9685_SetOutput(PCA_ADDRESS, 0, 0, 510);
+}
+
+
+void armControl(uint8_t cmd) {
+    switch (cmd) {
+        case PSB_CROSS    : putArmHigh(); break;
+        case PSB_TRIANGLE : putArmLow() ; break;
+        case PSB_R1       : handGrab()  ; break;
+        case PSB_R2       : handOpen()  ; break;
+    }
+}
+
+
+/**
+  * This functions are written for our first arm with 4 servos. I decide 
+  * to keep them there beacause maybe we need to use the arm again.
+
 void putArmHigh(void) {
     PCA9685_SetOutput(PCA_ADDRESS, 0, 0, 130); 
     delay_ms(1000);
@@ -56,23 +92,6 @@ void putArmLow(void) {
     PCA9685_SetOutput(PCA_ADDRESS, 1, 0, 250); //add the pwm will put the arm lower
     PCA9685_SetOutput(PCA_ADDRESS, 2, 0, 495);
 }
-
-
-void handGrab(void) {
-    PCA9685_SetOutput(PCA_ADDRESS, 3, 0, 125); 
-}
-
-
-void handOpen(void) {
-    PCA9685_SetOutput(PCA_ADDRESS, 3, 0, 270);
-}
-
-void armControl(uint8_t cmd) {
-    switch (cmd) {
-        case PSB_CROSS    : putArmHigh(); break;
-        case PSB_TRIANGLE : putArmLow() ; break;
-        case PSB_R1       : handGrab()  ; break;
-        case PSB_R2       : handOpen()  ; break;
-    }
-}
+ */
+ 
 /******************* (C) COPYRIGHT 2016 Yuuki_Dach *************END OF FILE****/

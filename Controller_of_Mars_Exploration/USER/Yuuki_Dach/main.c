@@ -62,10 +62,7 @@ int main(void) {
         if (!isAutoControl()) {
             carGo(getButtonData());
           
-#if (__DEBUG__ == __ON__)          
-            //uint8_t mode = getButtonData();
-            //if (mode == PSB_START)
-            //    printf("7 : %u\r\n", Ultrasonic_Trig(GPIO_Pin_7));
+#if (__DEBUG__ == __ON__)
             if (dir_in3) {
                 ++cnt_part3;
                 if (cnt_part3 > 250) cnt_part3 = 2;
