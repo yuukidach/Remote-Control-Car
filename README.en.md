@@ -15,7 +15,7 @@ This project is my entry for the Yuyuan Cup, which is a important competition in
 
 2. Grab things with the mechanical arm;
   
-  Here we need to fetch 2 cubes whose side length is 3cm and a ball with a diameter of 5cm.
+  Here we need to fetch 2 cubes whose side length is 5cm and a ball with a diameter of 5cm.
 
 3. Black line tracking;
 
@@ -30,11 +30,11 @@ This project is my entry for the Yuyuan Cup, which is a important competition in
 
 3. L298N
 
-4. DC motor x 2 
+4. DC motor - 25GA370
 
 5. Battery 11.1V
 
-6. DuPont line x n
+6. DuPont line
 
 7. Breadboard
 
@@ -53,3 +53,5 @@ This project is my entry for the Yuyuan Cup, which is a important competition in
 14. Ultrasonic modules
 
 15. Stabilizer
+
+16. MPU6050

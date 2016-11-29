@@ -28,6 +28,7 @@ void putArmLow(void);
 void handGrab(void);
 void handOpen(void);
 void armControl(uint8_t cmd);
+void putBallDown(void);
 
 #endif /* __MECHANICAL_ARM_H */
 

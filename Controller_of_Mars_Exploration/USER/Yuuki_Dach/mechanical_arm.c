@@ -62,6 +62,11 @@ void armControl(uint8_t cmd) {
 }
 
 
+void putBallDown(void) {
+    PCA9685_SetOutput(PCA_ADDRESS, 0, 0, 140);
+    delay_ms(50);
+    handOpen();
+}
 /**
   * This functions are written for our first arm with 4 servos. I decide 
   * to keep them there beacause maybe we need to use the arm again.

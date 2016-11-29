@@ -132,7 +132,7 @@ void finishPart3(uint8_t _dir, float part2yaw) {
     turnOuter();   
     upwardSlope();    
     stopTheCar();
-    putArmLow();
+    putBallDown();
     while(1);
 }
 

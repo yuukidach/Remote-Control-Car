@@ -74,6 +74,7 @@ int main(void) {
 				printf("::%u\n", Ten_Times_Trig(GPIO_Pin_7));
 				while(getButtonData() == PSB_START);
 			}
+
 #endif
   
             armControl(getButtonData());  

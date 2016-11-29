@@ -12,7 +12,7 @@ language: [English](https://github.com/yuukidach/Remote-Control-Car/blob/master/
 
 2. 通过机械臂进行物体的抓取;
   
-  这里抓取的物体为2个边长为3cm的方形物块和一个直径为5cm的圆形物快。
+  这里抓取的物体为2个边长为5cm的方形物块和一个直径为5cm的圆形物快。
 
 3. 黑线循迹;
 
@@ -27,7 +27,7 @@ language: [English](https://github.com/yuukidach/Remote-Control-Car/blob/master/
 
 3. L298N
 
-4. 直流电机
+4. 直流电机-25GA370
 
 5. 电池 11.1V
 
@@ -50,3 +50,5 @@ language: [English](https://github.com/yuukidach/Remote-Control-Car/blob/master/
 14. 超声波模块
 
 15. 稳压器
+
+16. MPU6050
