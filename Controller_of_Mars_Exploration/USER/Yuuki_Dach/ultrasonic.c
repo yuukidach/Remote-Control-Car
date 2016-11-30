@@ -64,12 +64,12 @@ uint32_t Ultrasonic_Trig ( uint32_t _line )
 uint32_t Ten_Times_Trig ( uint32_t _line )
 {
     uint32_t sum = 0 , now ;
-    for ( uint8_t i = 0 ; i < 10 ; i ++ )
+    for (uint8_t i = 0; i < 10; ++i)
     {
-        now = Ultrasonic_Trig ( _line ) ;
-        if ( now == 1 || now == 0 )
+        now = Ultrasonic_Trig(_line) ;
+        if (now == 1 || now == 0)
             return 0xFFFF ;
         sum += now ;
     }
-    return ( sum / 10 ) ;
+    return (sum / 10 );
 }

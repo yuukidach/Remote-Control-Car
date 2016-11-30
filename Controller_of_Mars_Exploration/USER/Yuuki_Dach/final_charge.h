@@ -39,6 +39,7 @@ void dirDef(uint8_t dir);
 void turnInner(void);
 void turnOuter(void);
 void upwardSlope(void);
+uint32_t clrSonic(void);
 void finishPart3(uint8_t _dir, float part2yaw);
 
 #endif /* __FINAL_CHARGE_H */

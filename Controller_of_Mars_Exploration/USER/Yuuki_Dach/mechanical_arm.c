@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @author  			 Yuuki_Dach
-  * @version 			 V1.0.1
-  * @date          3-November-2016
+  * @author        Yuuki_Dach
+  * @version       V1.1.0
+  * @date          29-November-2016
   * @description   Functions of the mechanical arm
   ******************************************************************************
   * @attention
