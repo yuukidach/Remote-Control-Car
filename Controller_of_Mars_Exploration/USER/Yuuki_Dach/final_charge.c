@@ -78,7 +78,7 @@ void turnOuter(void) {
 
 void upwardSlope(void) {             
     setSpeed(FORWARDS, 80, 80);
-    delay_ms(900);
+    delay_ms(1000);
     stopTheCar();
     now_sonic = Ten_Times_Trig(MIDDLE_TRIGGER);
     
@@ -127,7 +127,7 @@ void finishPart3(uint8_t _dir, float part2yaw) {
     turnInner();
 
     setSpeed(FORWARDS, 90, 90);
-    delay_ms(400);
+    delay_ms(420);
     stopTheCar();
     
 #if (__DEBUG__ == __ON__)
@@ -137,7 +137,7 @@ void finishPart3(uint8_t _dir, float part2yaw) {
     turnOuter();
     
     uint32_t tmp_dis = Ten_Times_Trig(MIDDLE_TRIGGER);
-    while (tmp_dis > 2000) {
+    while (tmp_dis > 1500) {
         tmp_dis = Ten_Times_Trig(MIDDLE_TRIGGER);
         if (tmp_dis > 65530) tmp_dis = clrSonic();
         setSpeed(FORWARDS, 25, 25);
