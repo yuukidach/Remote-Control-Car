@@ -94,4 +94,3 @@ void ADC_PrintValue(void) {
 	printf("       back  %4d, %4d, %4d, %4d\n", AD_Value[4], AD_Value[5], AD_Value[6], AD_Value[7]);
 	printf("       color %4d, %4d\n", AD_Value[8], AD_Value[9]);
 }
-
