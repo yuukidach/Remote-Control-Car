@@ -1,9 +1,12 @@
 #include "AutoControl.h"
 
 #include "ADCConfig.h"
+#include "TrackControl.h"
 #include "delay.h"
 #include "movement.h"
 #include "ultrasonic.h"
+#include "BuzzerControl.h"
+#include "GrayscaleControl.h"
 #include <stdio.h>
 
 #include "mpu6050.h" 
@@ -17,46 +20,11 @@ float yaw = 0, dYaw = 0, target;	//欧拉角
 u8 bStrat = 0, bSeek = 0, bFind;
 u8 nToward = 2, nTurn = 2;
 
-u8 nColorF = 0, nColorB = 0;
+u8 nGrayF = 0, nGrayB = 0;
 
 void AutoControlConfig(void) {
-	GPIO_InitTypeDef GPIO_InitStructure;
-	
-	RCC_APB2PeriphClockCmd(TRACK_RCC, ENABLE);
-	//配置GPIO为浮空输入
-	GPIO_InitStructure.GPIO_Pin = TRACK_L1 | TRACK_L2 | TRACK_L3 | TRACK_L4;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
-	GPIO_Init(TRACK_GPIO, &GPIO_InitStructure);
-	
-	RCC_APB2PeriphClockCmd(CHECK_RCC, ENABLE);
-	
-	GPIO_InitStructure.GPIO_Pin = CHECK_L1 | CHECK_L2 | CHECK_L3 | CHECK_L4;
-	GPIO_Init(CHECK_GPIO, &GPIO_InitStructure);
-}
-
-
-u8 TrackCheck(void) {
-	u8 re = 0;
-	re += GPIO_ReadInputDataBit(TRACK_GPIO, TRACK_L1);
-	re += GPIO_ReadInputDataBit(TRACK_GPIO, TRACK_L4)<<1;
-	re += GPIO_ReadInputDataBit(TRACK_GPIO, TRACK_L3)<<2;
-	re += GPIO_ReadInputDataBit(TRACK_GPIO, TRACK_L2)<<3;
-	return re;
-}
-
-
-u8 getLeft(void) {
-	return 1 - GPIO_ReadInputDataBit(CHECK_GPIO, CHECK_L1);
-}
-
-
-u8 getRight(void) {
-	return 1 - GPIO_ReadInputDataBit(CHECK_GPIO, CHECK_L4);
-}
-
-
-u8 getBottom(void) {
-	return GPIO_ReadInputDataBit(CHECK_GPIO, CHECK_L2);
+	TrackConfig();
+	BuzzerConfig();
 }
 
 
@@ -120,58 +88,6 @@ void TaskClose(void) {
 		SysTick->CTRL=0x00;       //关闭计数器
 		SysTick->VAL =0X00;       //清空计数器
 		bTaskOn = 0;
-	}
-}
-
-void Tracking(u8 _nD) {
-	if(_nD) {
-		switch(TrackCheck()) {
-			case 0:
-				setSpeed(1, DS2, DS2);
-				break;
-			
-			case 6:
-				stopTheCar();
-				while(getYaw(&dYaw));
-			case 4:
-				setSpeed(2, TS2, TS2);
-				break;
-			
-			case 9:
-				stopTheCar();
-				while(getYaw(&dYaw));
-			case 8:
-				setSpeed(3, TS2, TS2);
-				break;
-			
-			default:
-				setSpeed(1, DS2, DS2);
-				break;
-		}
-	} else {
-		switch(TrackCheck()) {
-			case 0:
-				setSpeed(0, DS2, DS2);
-				break;
-			
-			case 9:
-				stopTheCar();
-				while(getYaw(&dYaw));
-			case 1:
-				setSpeed(2, TS2, TS2);
-				break;
-			
-			case 6:
-				stopTheCar();
-				while(getYaw(&dYaw));
-			case 2:
-				setSpeed(3, TS2, TS2);
-				break;
-			
-			default:
-				setSpeed(0, DS2, DS2);
-				break;
-		}	
 	}
 }
 
@@ -265,15 +181,15 @@ void Finding(u8 _nD, u8 _nT) {
 void Seeking(void) {
 	LightCheck();
 	
-	if(AD_Value[8] > COLOR_F) {
-		if(nColorF < 20) nColorF++;
+	if(AD_Value[8] > iGrayF) {
+		if(nGrayF < 20) nGrayF++;
 	} else {
-		nColorF = 0;
+		nGrayF = 0;
 	}
-	if(AD_Value[9] > COLOR_B) {
-		if(nColorB < 20) nColorB++;
+	if(AD_Value[9] > iGrayB) {
+		if(nGrayB < 20) nGrayB++;
 	} else {
-		nColorB = 0;
+		nGrayB = 0;
 	}
 		
 	if(nToward == 2) {
@@ -286,34 +202,10 @@ void Seeking(void) {
 		printf("::DISTANCE %u\n", iDistance);
 #endif
 		
-		if(nColorF > 10) {
+		if(nGrayF > 10) {
 			bSeek = 0;
 			while(AD_Value[8] > 900);
 		}
-		
-		/*
-		if(nColorF > 5 && nColorB < 5) {
-            while(iDistance > 65530 || iDistance < 2) {
-                iDistance = Ten_Times_Trig(GPIO_Pin_7);
-            }
-			if(iDistance < 2000) {
-				stopTheCar();
-#ifdef _DEBUG_MODE
-				printf("door is not open\n");
-#endif
-			}
-		}
-		
-		if(nColorB > 5) {
-            while(iDistance > 65530 || iDistance < 2) {
-                iDistance = Ten_Times_Trig(GPIO_Pin_7);
-            }
-            if(iDistance < 10000) {
-                bSeek = 0;
-                stopTheCar();
-            }
-		}
-		*/
 		
 		return;
 	}
@@ -344,8 +236,8 @@ void Seeking(void) {
 		}
 	}
 	
-	if(nToward == 0 && nColorF > 5) {
-		nColorF = 0;
+	if(nToward == 0 && nGrayF > 5) {
+		nGrayF = 0;
 		if(AD_Value[0] > 1000 && AD_Value[0] > AD_Value[3]) {
 			bFind = 1;
 			nTurn = 1;
@@ -357,14 +249,18 @@ void Seeking(void) {
 			setSpeed(1, DS2, DS2);
 			delay_ms(100);
 		}
-	} else if(nToward == 1 && nColorB > 5) {
-		nColorB = 0;
+	} else if(nToward == 1 && nGrayB > 5) {
+		nGrayB = 0;
 		if(AD_Value[4] > 1000 && AD_Value[4] > AD_Value[7]) {
 			bFind = 1;
 			nTurn = 0;
+			setSpeed(1, DS2, DS2);
+			delay_ms(10);
 		} else if(AD_Value[7] > 1000 && AD_Value[7] > AD_Value[4]) {
 			bFind = 1;
 			nTurn = 1;
+			setSpeed(1, DS2, DS2);
+			delay_ms(10);
 		}
 	}
 	
