@@ -80,7 +80,7 @@ void upwardSlope(void) {
     setSpeed(FORWARDS, 80, 80);
     delay_ms(985);
     stopTheCar();
-    now_sonic = Ten_Times_Trig(MIDDLE_TRIGGER);
+    now_sonic = multiTrig(MIDDLE_TRIGGER);
     
     if (now_sonic > 65530) now_sonic = clrSonic();
 
@@ -92,7 +92,7 @@ void upwardSlope(void) {
         if (now_sonic < 2200) {
             setSpeed(BACKWARDS, 40, 40);
             delay_ms(10);
-            now_sonic = Ten_Times_Trig(MIDDLE_TRIGGER);
+            now_sonic = multiTrig(MIDDLE_TRIGGER);
             if (now_sonic > 65530) now_sonic = clrSonic();
             
 #if (__DEBUG__ == __ON__)
@@ -102,7 +102,7 @@ void upwardSlope(void) {
         } else if (now_sonic > 2450) {
             setSpeed(FORWARDS, 40, 40);
             delay_ms(10);
-            now_sonic = Ten_Times_Trig(MIDDLE_TRIGGER);
+            now_sonic = multiTrig(MIDDLE_TRIGGER);
             if (now_sonic > 65530) now_sonic = clrSonic();
 
 #if (__DEBUG__ == __ON__)
@@ -117,7 +117,7 @@ void upwardSlope(void) {
 uint32_t clrSonic(void) {
     stopTheCar();
     delay_ms(20);
-    return Ten_Times_Trig(MIDDLE_TRIGGER);
+    return multiTrig(MIDDLE_TRIGGER);
 }
 
 
@@ -136,9 +136,9 @@ void finishPart3(uint8_t _dir, float part2yaw) {
     
     turnOuter();
     
-    uint32_t tmp_dis = Ten_Times_Trig(MIDDLE_TRIGGER);
+    uint32_t tmp_dis = multiTrig(MIDDLE_TRIGGER);
     while (tmp_dis > 1500) {
-        tmp_dis = Ten_Times_Trig(MIDDLE_TRIGGER);
+        tmp_dis = multiTrig(MIDDLE_TRIGGER);
         if (tmp_dis > 65530) tmp_dis = clrSonic();
         setSpeed(FORWARDS, 25, 25);
     }

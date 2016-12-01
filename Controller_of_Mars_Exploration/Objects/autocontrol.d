@@ -17,6 +17,7 @@
 .\objects\autocontrol.o: .\FWlib\inc\stm32f10x_usart.h
 .\objects\autocontrol.o: .\FWlib\inc\misc.h
 .\objects\autocontrol.o: USER\WinterSky\ADCConfig.h
+.\objects\autocontrol.o: USER\WinterSky\TrackControl.h
 .\objects\autocontrol.o: .\USER\Yuuki_Dach\delay.h
 .\objects\autocontrol.o: .\USER\Yuuki_Dach\movement.h
 .\objects\autocontrol.o: .\USER\Yuuki_Dach\ultrasonic.h
@@ -28,6 +29,8 @@
 .\objects\autocontrol.o: .\USER\Yuuki_Dach\precompile.h
 .\objects\autocontrol.o: .\USER\Yuuki_Dach\ultrasonic.h
 .\objects\autocontrol.o: .\USER\Yuuki_Dach\final_charge.h
+.\objects\autocontrol.o: USER\WinterSky\BuzzerControl.h
+.\objects\autocontrol.o: USER\WinterSky\GrayscaleControl.h
 .\objects\autocontrol.o: .\USER\MPU6050\mpu6050.h
 .\objects\autocontrol.o: .\USER\MPU6050\mpuiic.h
 .\objects\autocontrol.o: .\USER\MPU6050\sys.h

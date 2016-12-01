@@ -1,5 +1,5 @@
-.\objects\tim.o: USER\Yuuki_Dach\TIM.C
-.\objects\tim.o: USER\Yuuki_Dach\TIM.H
+.\objects\tim.o: USER\Yuuki_Dach\tim.c
+.\objects\tim.o: USER\Yuuki_Dach\tim.h
 .\objects\tim.o: USER\Yuuki_Dach\precompile.h
 .\objects\tim.o: D:\Keil\ARM\ARMCC\Bin\..\include\string.h
 .\objects\tim.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdio.h

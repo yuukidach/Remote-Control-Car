@@ -194,7 +194,7 @@ void Seeking(void) {
 		
 	if(nToward == 2) {
 		Tracking(0);
-		u32 iDistance = Ten_Times_Trig(GPIO_Pin_7);
+		u32 iDistance = multiTrig(GPIO_Pin_7);
 		
 #ifdef _DEBUG_MODE
 		printf(":NO LIGHT\n");

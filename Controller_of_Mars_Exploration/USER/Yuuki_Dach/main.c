@@ -71,7 +71,7 @@ int main(void) {
             
             if(getButtonData() == PSB_START) {
 				ADC_PrintValue();
-				printf("::%u\n", Ten_Times_Trig(GPIO_Pin_7));
+				printf("::%u\n", multiTrig(GPIO_Pin_7));
 				while(getButtonData() == PSB_START);
 			}
 
