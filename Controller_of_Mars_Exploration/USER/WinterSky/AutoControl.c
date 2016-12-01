@@ -17,6 +17,7 @@ float yaw = 0, dYaw = 0, target;	//Å·À­½Ç
 u8 bStrat = 0, bSeek = 0, bFind;
 u8 nToward = 2, nTurn = 2;
 
+u8 nColorF = 0, nColorB = 0;
 
 void AutoControlConfig(void) {
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -37,9 +38,9 @@ void AutoControlConfig(void) {
 u8 TrackCheck(void) {
 	u8 re = 0;
 	re += GPIO_ReadInputDataBit(TRACK_GPIO, TRACK_L1);
-	re += GPIO_ReadInputDataBit(TRACK_GPIO, TRACK_L2)<<1;
+	re += GPIO_ReadInputDataBit(TRACK_GPIO, TRACK_L4)<<1;
 	re += GPIO_ReadInputDataBit(TRACK_GPIO, TRACK_L3)<<2;
-	re += GPIO_ReadInputDataBit(TRACK_GPIO, TRACK_L4)<<3;
+	re += GPIO_ReadInputDataBit(TRACK_GPIO, TRACK_L2)<<3;
 	return re;
 }
 
@@ -176,13 +177,11 @@ void Tracking(u8 _nD) {
 
 
 void PreDeal(void) {
-	/*
+	
 	stopTheCar();
 	while(getYaw(&dYaw));
-	setSpeed(0, DS2, DS2);
-	*/
 	
-	TaskStart(800);
+	TaskStart(400);
 	while(Tasking()) {
 		Tracking(0);
 		LightCheck();
@@ -207,7 +206,7 @@ void Finding(u8 _nD, u8 _nT) {
 	
 	switch(_nT) {
 		case 1:
-			target = dYaw + 90 - dAngle;
+			target = dYaw + 90 - 10;
 			while(getYaw(&yaw));
 			while(yaw < target) {
 				getYaw(&yaw);
@@ -215,7 +214,7 @@ void Finding(u8 _nD, u8 _nT) {
 			break;
 			
 		case 0:
-			target = dYaw - 90 + dAngle;
+			target = dYaw - 90 + 10;
 			while(getYaw(&yaw));
 			while(yaw > target) {
 				getYaw(&yaw);
@@ -225,9 +224,11 @@ void Finding(u8 _nD, u8 _nT) {
 	
 	setSpeed(1, DS1, DS1);
 	delay_ms(600);
+    setSpeed(1, 16, 16);
+    delay_ms(200);
 	
 	setSpeed(0, DS1, DS1);
-	delay_ms(150);
+	delay_ms(200);
 	while(!getBottom());
 	
 	setSpeed(2+_nT, TS2, TS2);
@@ -264,6 +265,17 @@ void Finding(u8 _nD, u8 _nT) {
 void Seeking(void) {
 	LightCheck();
 	
+	if(AD_Value[8] > COLOR_F) {
+		if(nColorF < 20) nColorF++;
+	} else {
+		nColorF = 0;
+	}
+	if(AD_Value[9] > COLOR_B) {
+		if(nColorB < 20) nColorB++;
+	} else {
+		nColorB = 0;
+	}
+		
 	if(nToward == 2) {
 		Tracking(0);
 		u32 iDistance = Ten_Times_Trig(GPIO_Pin_7);
@@ -274,11 +286,17 @@ void Seeking(void) {
 		printf("::DISTANCE %u\n", iDistance);
 #endif
 		
-		if(AD_Value[8] > COLOR_F) {
-            while(iDistance > 65530 && iDistance < 2) {
+		if(nColorF > 10) {
+			bSeek = 0;
+			while(AD_Value[8] > 900);
+		}
+		
+		/*
+		if(nColorF > 5 && nColorB < 5) {
+            while(iDistance > 65530 || iDistance < 2) {
                 iDistance = Ten_Times_Trig(GPIO_Pin_7);
             }
-			if(iDistance < 3000) {
+			if(iDistance < 2000) {
 				stopTheCar();
 #ifdef _DEBUG_MODE
 				printf("door is not open\n");
@@ -286,8 +304,8 @@ void Seeking(void) {
 			}
 		}
 		
-		if(AD_Value[9] > COLOR_B) {
-            while(iDistance > 65530 && iDistance < 2) {
+		if(nColorB > 5) {
+            while(iDistance > 65530 || iDistance < 2) {
                 iDistance = Ten_Times_Trig(GPIO_Pin_7);
             }
             if(iDistance < 10000) {
@@ -295,6 +313,7 @@ void Seeking(void) {
                 stopTheCar();
             }
 		}
+		*/
 		
 		return;
 	}
@@ -310,22 +329,36 @@ void Seeking(void) {
 #endif
 	
 	if(getLeft()) {
-		bFind = 1;
-		nTurn = 0;
-	} else if(getRight()) {
-		bFind = 1;
-		nTurn = 1;
-	}
-	
-	if(nToward == 0 && AD_Value[8] > COLOR_F) {
-		if(AD_Value[0] > 1000 && AD_Value[0] > AD_Value[3]) {
-			bFind = 1;
-			nTurn = 1;
-		} else if(AD_Value[3] > 1000 && AD_Value[3] > AD_Value[0]) {
+		stopTheCar();
+		delay_ms(5);
+		if(getLeft()) {
 			bFind = 1;
 			nTurn = 0;
 		}
-	} else if(nToward == 1 && AD_Value[9] > COLOR_B) {
+	} else if(getRight()) {
+		stopTheCar();
+		delay_ms(5);
+		if(getRight()) {
+			bFind = 1;
+			nTurn = 1;
+		}
+	}
+	
+	if(nToward == 0 && nColorF > 5) {
+		nColorF = 0;
+		if(AD_Value[0] > 1000 && AD_Value[0] > AD_Value[3]) {
+			bFind = 1;
+			nTurn = 1;
+			setSpeed(1, DS2, DS2);
+			delay_ms(100);
+		} else if(AD_Value[3] > 1000 && AD_Value[3] > AD_Value[0]) {
+			bFind = 1;
+			nTurn = 0;
+			setSpeed(1, DS2, DS2);
+			delay_ms(100);
+		}
+	} else if(nToward == 1 && nColorB > 5) {
+		nColorB = 0;
 		if(AD_Value[4] > 1000 && AD_Value[4] > AD_Value[7]) {
 			bFind = 1;
 			nTurn = 0;

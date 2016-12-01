@@ -42,6 +42,7 @@ void handOpen(void) {
 
 void putArmLow(void) {
     handOpen();
+    delay_ms(50);
     PCA9685_SetOutput(PCA_ADDRESS, 0, 0, 140);
 }
 

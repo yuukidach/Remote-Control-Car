@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\Controller_of_Mars_Exploration.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Controller_of_Mars_Exploration.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Wed Nov 30 23:02:03 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Thu Dec 01 09:13:53 2016
 <BR><P>
 <H3>Maximum Stack Usage =        344 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -710,7 +710,7 @@ Global Symbols
 <P><STRONG><a name="[7]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f10x_it.o(i.DebugMon_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[85]"></a>Finding</STRONG> (Thumb, 332 bytes, Stack size 16 bytes, autocontrol.o(i.Finding))
+<P><STRONG><a name="[85]"></a>Finding</STRONG> (Thumb, 348 bytes, Stack size 16 bytes, autocontrol.o(i.Finding))
 <BR><BR>[Stack]<UL><LI>Max Depth = 328<LI>Call Chain = Finding &rArr; getYaw &rArr; atan2 &rArr; atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stopTheCar
@@ -1229,10 +1229,11 @@ Global Symbols
 <P><STRONG><a name="[8]"></a>PendSV_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f10x_it.o(i.PendSV_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[7b]"></a>PreDeal</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, autocontrol.o(i.PreDeal))
+<P><STRONG><a name="[7b]"></a>PreDeal</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, autocontrol.o(i.PreDeal))
 <BR><BR>[Stack]<UL><LI>Max Depth = 328<LI>Call Chain = PreDeal &rArr; Tracking &rArr; getYaw &rArr; atan2 &rArr; atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stopTheCar
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getYaw
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tracking
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tasking
@@ -1282,10 +1283,12 @@ Global Symbols
 <P><STRONG><a name="[6]"></a>SVC_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f10x_it.o(i.SVC_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[7c]"></a>Seeking</STRONG> (Thumb, 370 bytes, Stack size 8 bytes, autocontrol.o(i.Seeking))
+<P><STRONG><a name="[7c]"></a>Seeking</STRONG> (Thumb, 438 bytes, Stack size 8 bytes, autocontrol.o(i.Seeking))
 <BR><BR>[Stack]<UL><LI>Max Depth = 336<LI>Call Chain = Seeking &rArr; Finding &rArr; getYaw &rArr; atan2 &rArr; atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stopTheCar
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setSpeed
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ten_Times_Trig
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRight
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getLeft
@@ -1743,7 +1746,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[87]"></a>delay_ms</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, delay.o(i.delay_ms))
-<BR><BR>[Called By]<UL><LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putBallDown
+<BR><BR>[Called By]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putArmLow
+<LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putBallDown
 <LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;upwardSlope
 <LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;correctDir
 <LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clrSonic
@@ -1751,6 +1755,7 @@ Global Symbols
 <LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIFI_ConnectToServer
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Init
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Seeking
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PreDeal
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Finding
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sensors
@@ -2035,6 +2040,7 @@ Global Symbols
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnInner
 <LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;correctDir
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tracking
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PreDeal
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Finding
 </UL>
 
@@ -2387,11 +2393,12 @@ Global Symbols
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[fb]"></a>putArmLow</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, mechanical_arm.o(i.putArmLow))
+<P><STRONG><a name="[fb]"></a>putArmLow</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, mechanical_arm.o(i.putArmLow))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = putArmLow &rArr; handOpen &rArr; PCA9685_SetOutput &rArr; PCA9685_I2C_Write &rArr; I2C_CheckEvent
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PCA9685_SetOutput
 <LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;handOpen
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;armControl
 </UL>
@@ -2492,6 +2499,7 @@ Global Symbols
 <LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;finishPart3
 <LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;carGo
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tracking
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Seeking
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Finding
 </UL>
 

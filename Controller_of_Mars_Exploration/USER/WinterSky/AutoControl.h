@@ -21,8 +21,8 @@
 
 #define ONE 350
 #define DISTANCE 2200
-#define COLOR_F 1300
-#define COLOR_B 1250
+#define COLOR_F 900
+#define COLOR_B 900
 
 #define DS1 20
 #define DS2 22

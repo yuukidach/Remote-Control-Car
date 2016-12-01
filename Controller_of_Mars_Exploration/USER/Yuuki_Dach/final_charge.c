@@ -39,10 +39,10 @@ void dirDef(uint8_t dir) {
 void correctDir(float part2yaw) {
     if (part2yaw > 0) {
         setSpeed(TURNRIGHT, TURN_PWM, TURN_PWM);
-        while (part2yaw > 0) getYaw(&part2yaw);
+        while (part2yaw > 5) getYaw(&part2yaw);
     } else if (part2yaw < 0) {
         setSpeed(TURNLEFT , TURN_PWM, TURN_PWM);
-        while (part2yaw < 0) getYaw(&part2yaw);
+        while (part2yaw < -5) getYaw(&part2yaw);
     }
     stopTheCar();
     
@@ -78,7 +78,7 @@ void turnOuter(void) {
 
 void upwardSlope(void) {             
     setSpeed(FORWARDS, 80, 80);
-    delay_ms(1000);
+    delay_ms(985);
     stopTheCar();
     now_sonic = Ten_Times_Trig(MIDDLE_TRIGGER);
     
@@ -90,7 +90,7 @@ void upwardSlope(void) {
     
     while (now_sonic < 2200 || now_sonic > 2450) {
         if (now_sonic < 2200) {
-            setSpeed(BACKWARDS, 20, 20);
+            setSpeed(BACKWARDS, 40, 40);
             delay_ms(10);
             now_sonic = Ten_Times_Trig(MIDDLE_TRIGGER);
             if (now_sonic > 65530) now_sonic = clrSonic();
@@ -100,7 +100,7 @@ void upwardSlope(void) {
 #endif
             
         } else if (now_sonic > 2450) {
-            setSpeed(FORWARDS, 20, 20);
+            setSpeed(FORWARDS, 40, 40);
             delay_ms(10);
             now_sonic = Ten_Times_Trig(MIDDLE_TRIGGER);
             if (now_sonic > 65530) now_sonic = clrSonic();
