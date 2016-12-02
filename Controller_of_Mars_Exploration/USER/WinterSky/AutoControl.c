@@ -14,10 +14,12 @@
 #include "inv_mpu.h"
 #include "inv_mpu_dmp_motion_driver.h"
 
+#define _DEBUG_MODE
+
 
 float yaw = 0, dYaw = 0, target;	//Å·À­½Ç
 
-u8 bStrat = 0, bSeek = 0, bFind;
+u8 bStrat = 0, bSeek = 0, bFind, bPreEnd = 0, bEnd = 0;
 u8 nToward = 2, nTurn = 2;
 
 u8 nGrayF = 0, nGrayB = 0;
@@ -28,32 +30,29 @@ void AutoControlConfig(void) {
 }
 
 
+#define iInfrared    1000
+#define iInfraredOut 3000
+#define iInfraredIn  1000
+
 void LightCheck(void) {
-	int flag = 0;
-	for(int i = 0; i < 8; i++) {
-		if(AD_Value[i] > ONE) flag++;
+	u8 nF = 0, nB = 0;
+	for(int i = 0; i < 4; i++) {
+		if(AD_Value[i] > iInfrared) nF++;
 	}
-	if(!flag) {
-		nToward = 2;
-		nTurn = 2;
-		return;
+	for(int i = 4; i < 8; i++) {
+		if(AD_Value[i] > iInfrared) nB++;
 	}
-	
-	u16 front = AD_Value[0] + AD_Value[1] + AD_Value[2] + AD_Value[3];
-	u16 back = AD_Value[4] + AD_Value[5] + AD_Value[6] + AD_Value[7];
-	
-	if(AD_Value[0] + AD_Value[3] + AD_Value[4] + AD_Value[7] > 1000) {
-		if(front > back + 500) {
+	if(nF*nB > 0) {
+		if(AD_Value[0] > iInfraredOut || AD_Value[3] > iInfraredOut) {
 			nToward = 0;
-		} else if(back > front + 1000) {
+		}
+		if(AD_Value[4] > iInfraredOut || AD_Value[7] > iInfraredOut) {
 			nToward = 1;
 		}
-	} else {
-		if(front > back) {
-			nToward = 0;
-		} else if(back > front) {
-			nToward = 1;
-		}
+	} else if(nF > 0) {
+		nToward = 0;
+	} else if(nB > 0) {
+		nToward = 1;
 	}
 }
 
@@ -97,7 +96,7 @@ void PreDeal(void) {
 	stopTheCar();
 	while(getYaw(&dYaw));
 	
-	TaskStart(400);
+	TaskStart(450);
 	while(Tasking()) {
 		Tracking(0);
 		LightCheck();
@@ -118,11 +117,12 @@ void Finding(u8 _nD, u8 _nT) {
 	delay_ms(50);
 	setSpeed(3-_nT, TS2, TS2);
 	
-	#define dAngle 7
+	#define dAngleO 10
+	#define dAngleI 7
 	
 	switch(_nT) {
 		case 1:
-			target = dYaw + 90 - 10;
+			target = dYaw + 90 - dAngleO;
 			while(getYaw(&yaw));
 			while(yaw < target) {
 				getYaw(&yaw);
@@ -130,7 +130,7 @@ void Finding(u8 _nD, u8 _nT) {
 			break;
 			
 		case 0:
-			target = dYaw - 90 + 10;
+			target = dYaw - 90 + dAngleO;
 			while(getYaw(&yaw));
 			while(yaw > target) {
 				getYaw(&yaw);
@@ -145,13 +145,22 @@ void Finding(u8 _nD, u8 _nT) {
 	
 	setSpeed(0, DS1, DS1);
 	delay_ms(200);
-	while(!getBottom());
+	
+	u8 bTimeOut = 0;
+	TaskStart(500);
+	while(!getBottom()) {
+		if(!Tasking()) {
+			bTimeOut = 1;
+			break;
+		}
+	}
+	TaskClose();
 	
 	setSpeed(2+_nT, TS2, TS2);
 	
 	switch(_nT) {
 		case 1:
-			target = dYaw + dAngle;
+			target = dYaw + dAngleI;
 			while(getYaw(&yaw));
 			while(yaw > target) {
 				getYaw(&yaw);
@@ -159,12 +168,16 @@ void Finding(u8 _nD, u8 _nT) {
 			break;
 		
 		case 0:
-			target = dYaw - dAngle;
+			target = dYaw - dAngleI;
 			while(getYaw(&yaw));
 			while(yaw < target) {
 				getYaw(&yaw);
 			}
 			break;
+	}
+	
+	if(bTimeOut) {
+		
 	}
 	
 	stopTheCar();
@@ -173,6 +186,9 @@ void Finding(u8 _nD, u8 _nT) {
 #ifdef _DEBUG_MODE
 	printf("light is finded\n");
 #endif
+	
+	nToward = nTurn = 2;
+	nGrayF = nGrayB = 0;
 	
 	delay_ms(50);
 }
@@ -193,8 +209,11 @@ void Seeking(void) {
 	}
 		
 	if(nToward == 2) {
-		Tracking(0);
-		u32 iDistance = multiTrig(GPIO_Pin_7);
+		if(!bPreEnd || bEnd) Tracking(0);
+		
+		u32 iDistance = 1;
+		
+		if(bPreEnd && !bEnd) iDistance = multiTrig(MIDDLE_TRIGGER);
 		
 #ifdef _DEBUG_MODE
 		printf(":NO LIGHT\n");
@@ -202,13 +221,45 @@ void Seeking(void) {
 		printf("::DISTANCE %u\n", iDistance);
 #endif
 		
-		if(nGrayF > 10) {
+		if(!bPreEnd && nGrayF > 10) {
+			bPreEnd = 1;
+            setSpeed(1, DS2, DS2);
+            delay_ms(50);
+            stopTheCar();
+            iDistance = multiTrig(MIDDLE_TRIGGER);
+            
+#ifdef _DEBUG_MODE
+            printf("PreEnd\r\n");
+#endif
+            
+		}
+		if(bPreEnd && !bEnd) {
+			if(iDistance < 1000) {
+				stopTheCar();
+                
+#ifdef _DEBUG_MODE
+                printf("Door is not open\r\n");
+#endif
+                
+			} else {
+				bEnd = 1;
+				TaskStart(1000);
+                
+#ifdef _DEBUG_MODE
+                printf("End\r\n");
+#endif
+                
+			}
+		}
+		if(bEnd && (AD_Value[8] < iGrayF || !Tasking())) {
 			bSeek = 0;
-			while(AD_Value[8] > 900);
+			TaskClose();
 		}
 		
 		return;
 	}
+	bPreEnd = 0;
+	bEnd = 0;
 	
 	Tracking(nToward);
 	
@@ -237,7 +288,6 @@ void Seeking(void) {
 	}
 	
 	if(nToward == 0 && nGrayF > 5) {
-		nGrayF = 0;
 		if(AD_Value[0] > 1000 && AD_Value[0] > AD_Value[3]) {
 			bFind = 1;
 			nTurn = 1;
@@ -250,7 +300,6 @@ void Seeking(void) {
 			delay_ms(100);
 		}
 	} else if(nToward == 1 && nGrayB > 5) {
-		nGrayB = 0;
 		if(AD_Value[4] > 1000 && AD_Value[4] > AD_Value[7]) {
 			bFind = 1;
 			nTurn = 0;

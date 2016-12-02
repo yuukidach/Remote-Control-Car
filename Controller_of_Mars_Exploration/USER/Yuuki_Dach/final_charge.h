@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
   * @author  	   Yuuki_Dach
-  * @version       V1.0.0
-  * @date          23-November-2016
+  * @version       V1.1.0
+  * @date          02-December-2016
   * @description   Header file of final_charge.c 
   ******************************************************************************
   * @attention
@@ -34,10 +34,12 @@
 
 #define INTERVAL 85
 
-void correctDir(float part2yaw);
 void dirDef(uint8_t dir);
-void turnInner(void);
-void turnOuter(void);
+void calibrateDir(float part2yaw);
+void getDirRight(float forward_yaw);
+void turnInner(float forward_yaw);
+void turnOuter1(float forward_yaw);
+void turnOuter2(float forward_yaw);
 void upwardSlope(void);
 uint32_t clrSonic(void);
 void finishPart3(uint8_t _dir, float part2yaw);

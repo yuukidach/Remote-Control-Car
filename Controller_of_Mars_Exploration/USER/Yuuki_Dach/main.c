@@ -29,8 +29,11 @@
 #include "inv_mpu.h"
 #include "inv_mpu_dmp_motion_driver.h"
 #include "autocontrol.h"
+#include "grayscalecontrol.h"
+#include "buzzercontrol.h"
 
 uint8_t dir_in3 = PART3LEFT;
+uint8_t cnt_dir = 0;
 
 #if (__DEBUG__ == __ON__)
     uint8_t cnt_part3 = 0;
@@ -44,6 +47,7 @@ int main(void) {
     Arm_Config();
     Ultrasonic_Init();
     ADC_Config();
+    AutoControlConfig();
     MPU_Init();
     while(mpu_dmp_init());
 
@@ -57,6 +61,7 @@ int main(void) {
 #endif
 
     putArmHigh();
+    grayLoadValue();
 
     while(1){
         if (!isAutoControl()) {
@@ -79,11 +84,22 @@ int main(void) {
   
             armControl(getButtonData());  
             dir_in3 = getPart3Direction();
+            if (dir_in3 == PART3RIGHT) {
+                if (!cnt_dir) {
+                    for (uint8_t i = 0; i < 5; ++i) {
+                        BuzzerOn(); delay_ms(30); BuzzerOff(); delay_ms(20);
+                    }
+                    cnt_dir = 1;
+                }
+            }
             
             
         } else if (isAutoControl()) {
-            float part2yaw = AutoControl();
-            finishPart3(dir_in3, part2yaw);                // dir == PART3LEFT(0) or PART3RIGHT(1)
+            BuzzerOn();
+            delay_ms(100);
+            BuzzerOff();
+            float forward_yaw = AutoControl();
+            finishPart3(dir_in3, forward_yaw);                // dir == PART3LEFT(0) or PART3RIGHT(1)
         } 
     }
 }

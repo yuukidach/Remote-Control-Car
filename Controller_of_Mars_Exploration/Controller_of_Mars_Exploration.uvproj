@@ -597,14 +597,14 @@
               <FilePath>.\USER\Yuuki_Dach\stm32f10x_it.c</FilePath>
             </File>
             <File>
-              <FileName>TIM.C</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\Yuuki_Dach\TIM.C</FilePath>
-            </File>
-            <File>
               <FileName>ultrasonic.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\USER\Yuuki_Dach\ultrasonic.c</FilePath>
+            </File>
+            <File>
+              <FileName>tim.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\Yuuki_Dach\tim.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -692,9 +692,24 @@
               <FilePath>.\USER\WinterSky\UsartConfig.c</FilePath>
             </File>
             <File>
+              <FileName>GrayscaleControl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\WinterSky\GrayscaleControl.c</FilePath>
+            </File>
+            <File>
+              <FileName>BuzzerControl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\WinterSky\BuzzerControl.c</FilePath>
+            </File>
+            <File>
               <FileName>WifiControl.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\USER\WinterSky\WifiControl.c</FilePath>
+            </File>
+            <File>
+              <FileName>TrackControl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\WinterSky\TrackControl.c</FilePath>
             </File>
           </Files>
         </Group>

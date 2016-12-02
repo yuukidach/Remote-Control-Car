@@ -37,3 +37,5 @@
 .\objects\main.o: .\USER\MPU6050\eMPL\inv_mpu.h
 .\objects\main.o: .\USER\MPU6050\eMPL\inv_mpu_dmp_motion_driver.h
 .\objects\main.o: .\USER\WinterSky\autocontrol.h
+.\objects\main.o: .\USER\WinterSky\grayscalecontrol.h
+.\objects\main.o: .\USER\WinterSky\buzzercontrol.h

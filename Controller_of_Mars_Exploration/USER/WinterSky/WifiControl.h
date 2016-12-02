@@ -3,8 +3,9 @@
 
 #include <stm32f10x.h>
 
-//#define _HOST "10.18.196.202"
-#define _HOST "172.16.9.33"
+//#define _HOST "115.25.162.130"
+#define _HOST "10.18.196.202"
+//#define _HOST "172.16.9.33"
 //#define _HOST "10.18.75.217"
 //#define _HOST "172.16.9.18"
 

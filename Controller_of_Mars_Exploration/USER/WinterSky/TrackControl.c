@@ -21,8 +21,6 @@ void TrackConfig(void) {
 	
 	GPIO_InitStructure.GPIO_Pin = CHECK_L1 | CHECK_L2 | CHECK_L3 | CHECK_L4;
 	GPIO_Init(CHECK_GPIO, &GPIO_InitStructure);
-	
-	
 }
 
 
@@ -50,54 +48,89 @@ u8 getBottom(void) {
 	return GPIO_ReadInputDataBit(CHECK_GPIO, CHECK_L2);
 }
 
+
+u8 bYawCalibration = 0;
+
 void Tracking(u8 _nD) {
 	if(_nD) {
 		switch(TrackCheck()) {
 			case 0:
 				setSpeed(1, DS2, DS2);
+				bYawCalibration = 0;
+				break;
+			
+			case 4:
+				setSpeed(2, TS2, TS2);
+				bYawCalibration = 0;
 				break;
 			
 			case 6:
-				stopTheCar();
-				while(getYaw(&dYaw));
-			case 4:
+				if(!bYawCalibration) {
+					stopTheCar();
+					while(getYaw(&dYaw));
+					bYawCalibration = 1;
+				}
 				setSpeed(2, TS2, TS2);
 				break;
 			
-			case 9:
-				stopTheCar();
-				while(getYaw(&dYaw));
 			case 8:
+				setSpeed(3, TS2, TS2);
+				bYawCalibration = 0;
+				break;
+			
+			case 9:
+				if(!bYawCalibration) {
+					stopTheCar();
+					while(getYaw(&dYaw));
+					bYawCalibration = 1;
+				}
 				setSpeed(3, TS2, TS2);
 				break;
 			
 			default:
 				setSpeed(1, DS2, DS2);
+				bYawCalibration = 0;
 				break;
 		}
 	} else {
 		switch(TrackCheck()) {
 			case 0:
 				setSpeed(0, DS2, DS2);
+				bYawCalibration = 0;
+				break;
+			
+			case 1:
+				setSpeed(2, TS2, TS2);
+				bYawCalibration = 0;
 				break;
 			
 			case 9:
-				stopTheCar();
-				while(getYaw(&dYaw));
-			case 1:
+				if(!bYawCalibration) {
+					stopTheCar();
+					while(getYaw(&dYaw));
+					bYawCalibration = 1;
+				}
 				setSpeed(2, TS2, TS2);
 				break;
 			
-			case 6:
-				stopTheCar();
-				while(getYaw(&dYaw));
 			case 2:
+				setSpeed(3, TS2, TS2);
+				bYawCalibration = 0;
+				break;
+			
+			case 6:
+				if(!bYawCalibration) {
+					stopTheCar();
+					while(getYaw(&dYaw));
+					bYawCalibration = 1;
+				}
 				setSpeed(3, TS2, TS2);
 				break;
 			
 			default:
 				setSpeed(0, DS2, DS2);
+				bYawCalibration = 0;
 				break;
-		}	
+		}
 	}
 }

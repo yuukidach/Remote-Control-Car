@@ -78,7 +78,6 @@ void WIFI_ConnectToServer(void) {
 	bATOk = 0;
 	while(!bATOk)
 	{
-		//printf("AT+CIPSTART=\"TCP\",\"172.16.9.18\",5432\r\n");
 		printf("AT+CIPSTART=\"TCP\",\"%s\",%d\r\n", _HOST, _PORT);
 		for(int i = 0; !bATOk && i < 100; i++) {
 			delay_ms(10);
