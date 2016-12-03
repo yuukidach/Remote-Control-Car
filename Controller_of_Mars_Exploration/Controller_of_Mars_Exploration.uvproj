@@ -692,6 +692,11 @@
               <FilePath>.\USER\WinterSky\UsartConfig.c</FilePath>
             </File>
             <File>
+              <FileName>WifiControl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\WinterSky\WifiControl.c</FilePath>
+            </File>
+            <File>
               <FileName>GrayscaleControl.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\USER\WinterSky\GrayscaleControl.c</FilePath>
@@ -700,11 +705,6 @@
               <FileName>BuzzerControl.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\USER\WinterSky\BuzzerControl.c</FilePath>
-            </File>
-            <File>
-              <FileName>WifiControl.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\WinterSky\WifiControl.c</FilePath>
             </File>
             <File>
               <FileName>TrackControl.c</FileName>

@@ -65,7 +65,7 @@ void armControl(uint8_t cmd) {
 
 void putBallDown(void) {
     PCA9685_SetOutput(PCA_ADDRESS, 0, 0, 140);
-    delay_ms(50);
+    delay_ms(80);
     handOpen();
 }
 /**

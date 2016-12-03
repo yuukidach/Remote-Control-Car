@@ -14,7 +14,7 @@
 #include "inv_mpu.h"
 #include "inv_mpu_dmp_motion_driver.h"
 
-#define _DEBUG_MODE
+//#define _DEBUG_MODE
 
 
 float yaw = 0, dYaw = 0, target;	//Å·À­½Ç
@@ -117,12 +117,14 @@ void Finding(u8 _nD, u8 _nT) {
 	delay_ms(50);
 	setSpeed(3-_nT, TS2, TS2);
 	
-	#define dAngleO 10
-	#define dAngleI 7
+    #define dAngleOL 8
+    #define dAngleOR 8
+	#define dAngleIL 6
+	#define dAngleIR 6
 	
 	switch(_nT) {
 		case 1:
-			target = dYaw + 90 - dAngleO;
+			target = dYaw + 90 - dAngleOL;
 			while(getYaw(&yaw));
 			while(yaw < target) {
 				getYaw(&yaw);
@@ -130,7 +132,7 @@ void Finding(u8 _nD, u8 _nT) {
 			break;
 			
 		case 0:
-			target = dYaw - 90 + dAngleO;
+			target = dYaw - 90 + dAngleOR;
 			while(getYaw(&yaw));
 			while(yaw > target) {
 				getYaw(&yaw);
@@ -147,7 +149,7 @@ void Finding(u8 _nD, u8 _nT) {
 	delay_ms(200);
 	
 	u8 bTimeOut = 0;
-	TaskStart(500);
+	TaskStart(600);
 	while(!getBottom()) {
 		if(!Tasking()) {
 			bTimeOut = 1;
@@ -160,7 +162,7 @@ void Finding(u8 _nD, u8 _nT) {
 	
 	switch(_nT) {
 		case 1:
-			target = dYaw + dAngleI;
+			target = dYaw + dAngleIR;
 			while(getYaw(&yaw));
 			while(yaw > target) {
 				getYaw(&yaw);
@@ -168,7 +170,7 @@ void Finding(u8 _nD, u8 _nT) {
 			break;
 		
 		case 0:
-			target = dYaw - dAngleI;
+			target = dYaw - dAngleIL;
 			while(getYaw(&yaw));
 			while(yaw < target) {
 				getYaw(&yaw);
@@ -303,13 +305,13 @@ void Seeking(void) {
 		if(AD_Value[4] > 1000 && AD_Value[4] > AD_Value[7]) {
 			bFind = 1;
 			nTurn = 0;
-			setSpeed(1, DS2, DS2);
-			delay_ms(10);
+			setSpeed(0, DS2, DS2);
+			delay_ms(50);
 		} else if(AD_Value[7] > 1000 && AD_Value[7] > AD_Value[4]) {
 			bFind = 1;
 			nTurn = 1;
-			setSpeed(1, DS2, DS2);
-			delay_ms(10);
+			setSpeed(0, DS2, DS2);
+			delay_ms(50);
 		}
 	}
 	

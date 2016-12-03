@@ -3,7 +3,7 @@
 
 #define __ON__           1
 #define __OFF__          0
-#define __DEBUG__        (__ON__)
+#define __DEBUG__        (__OFF__)
 
 #define byte unsigned char
 #define uchar unsigned char

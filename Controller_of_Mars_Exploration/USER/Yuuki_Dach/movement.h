@@ -34,19 +34,19 @@
 #define RIGHT1_TIRE_CLK_GPIO  RCC_APB2Periph_GPIOD
 #define RIGHT2_TIRE_CLK_GPIO  RCC_APB2Periph_GPIOD
 
-#define LEFT1_TIRE_ENA    4
+#define LEFT1_TIRE_ENA    8
 #define LEFT1_TIRE_IN1    GPIO_Pin_0
 #define LEFT1_TIRE_IN2    GPIO_Pin_1
 
-#define LEFT2_TIRE_ENA    5
+#define LEFT2_TIRE_ENA    9
 #define LEFT2_TIRE_IN1    GPIO_Pin_2
 #define LEFT2_TIRE_IN2    GPIO_Pin_3
 
-#define RIGHT1_TIRE_ENA   6
+#define RIGHT1_TIRE_ENA   10
 #define RIGHT1_TIRE_IN1   GPIO_Pin_4
 #define RIGHT1_TIRE_IN2	  GPIO_Pin_5
 
-#define RIGHT2_TIRE_ENA   7
+#define RIGHT2_TIRE_ENA   11
 #define RIGHT2_TIRE_IN1   GPIO_Pin_6
 #define RIGHT2_TIRE_IN2	  GPIO_Pin_7
 

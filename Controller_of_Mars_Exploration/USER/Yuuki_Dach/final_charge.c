@@ -60,12 +60,16 @@ void calibrateDir(float forward_yaw) {
     }
     stopTheCar();
     
-    uint32_t dis_from_slop = multiTrig(MIDDLE_TRIGGER);
-    while (dis_from_slop > 350) {
+    uint32_t dis_from_slope = multiTrig(MIDDLE_TRIGGER);
+    if (dis_from_slope > 65530 ) {
         setSpeed(FORWARDS, 30, 30);
-        dis_from_slop = multiTrig(MIDDLE_TRIGGER);
+        delay_ms(300);
     }
-    //delay_ms(200);
+    while (dis_from_slope > 330 && dis_from_slope < 65530) {
+        setSpeed(FORWARDS, 30, 30);
+        dis_from_slope = multiTrig(MIDDLE_TRIGGER);
+    }
+    
     stopTheCar();
 
 #if (__DEBUG__ == __ON__)
@@ -102,7 +106,7 @@ void turnInner(float forward_yaw) {
 #if (__DEBUG__ == __ON__)
     printf("turnInner end part 1. \r\n");
 #endif 
-    
+/*    
     uint32_t dir_after_turn = multiTrig(MIDDLE_TRIGGER);            
     if (dir_after_turn < 3300) {                                    // If the car turn to a wrong direction
         dir_at_part3 = 1 - dir_at_part3;
@@ -114,7 +118,7 @@ void turnInner(float forward_yaw) {
 #endif 
         
     }
-    
+*/    
     stopTheCar();
 }
 
@@ -144,7 +148,7 @@ void turnOuter2(float forward_yaw) {
 
 void upwardSlope(void) {             
     setSpeed(FORWARDS, 80, 80);
-    delay_ms(1000);
+    delay_ms(1100);
     stopTheCar();
     now_sonic = multiTrig(MIDDLE_TRIGGER);
     
@@ -194,7 +198,7 @@ void finishPart3(uint8_t _dir, float forward_yaw) {
     turnInner(forward_yaw);
 
     setSpeed(FORWARDS, 90, 90);
-    delay_ms(410);
+    delay_ms(430);
     stopTheCar();
     
 #if (__DEBUG__ == __ON__)
@@ -205,7 +209,7 @@ void finishPart3(uint8_t _dir, float forward_yaw) {
     
     setSpeed(FORWARDS, 30, 30);
     uint32_t tmp_dis = multiTrig(MIDDLE_TRIGGER);
-    while (tmp_dis > 360) {
+    while (tmp_dis > 350) {
         tmp_dis = multiTrig(MIDDLE_TRIGGER);
         if (tmp_dis > 65530) tmp_dis = clrSonic();
         

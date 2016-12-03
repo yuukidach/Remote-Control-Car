@@ -652,8 +652,8 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\USER\WinterSky\GrayscaleControl.c</PathWithFileName>
-      <FilenameWithoutPath>GrayscaleControl.c</FilenameWithoutPath>
+      <PathWithFileName>.\USER\WinterSky\WifiControl.c</PathWithFileName>
+      <FilenameWithoutPath>WifiControl.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -665,8 +665,8 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\USER\WinterSky\BuzzerControl.c</PathWithFileName>
-      <FilenameWithoutPath>BuzzerControl.c</FilenameWithoutPath>
+      <PathWithFileName>.\USER\WinterSky\GrayscaleControl.c</PathWithFileName>
+      <FilenameWithoutPath>GrayscaleControl.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -678,8 +678,8 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\USER\WinterSky\WifiControl.c</PathWithFileName>
-      <FilenameWithoutPath>WifiControl.c</FilenameWithoutPath>
+      <PathWithFileName>.\USER\WinterSky\BuzzerControl.c</PathWithFileName>
+      <FilenameWithoutPath>BuzzerControl.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
