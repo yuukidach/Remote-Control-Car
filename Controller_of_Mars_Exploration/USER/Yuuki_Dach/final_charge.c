@@ -209,7 +209,7 @@ void finishPart3(uint8_t _dir, float forward_yaw) {
     
     setSpeed(FORWARDS, 30, 30);
     uint32_t tmp_dis = multiTrig(MIDDLE_TRIGGER);
-    while (tmp_dis > 350) {
+    while (tmp_dis > 340) {
         tmp_dis = multiTrig(MIDDLE_TRIGGER);
         if (tmp_dis > 65530) tmp_dis = clrSonic();
         

@@ -215,7 +215,7 @@ I (.\USER\MPU6050\mpuiic.h)(0x58306018)
 I (.\USER\MPU6050\sys.h)(0x58303449)
 I (.\USER\MPU6050\eMPL\inv_mpu.h)(0x58329DBF)
 I (.\USER\MPU6050\eMPL\inv_mpu_dmp_motion_driver.h)(0x50CA9A0C)
-I (.\USER\WinterSky\autocontrol.h)(0x58429985)
+I (.\USER\WinterSky\autocontrol.h)(0x5842E26F)
 I (.\USER\WinterSky\grayscalecontrol.h)(0x584079AC)
 I (.\USER\WinterSky\buzzercontrol.h)(0x584079AC)
 F (.\USER\Yuuki_Dach\precompile.h)(0x5841B216)()
@@ -255,7 +255,7 @@ I (.\FWlib\inc\stm32f10x_rcc.h)(0x4D783BB4)
 I (.\FWlib\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (.\FWlib\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (.\FWlib\inc\misc.h)(0x4D783BB4)
-F (.\USER\Yuuki_Dach\final_charge.c)(0x5842A50D)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I.\USER\Yuuki_Dach -I.\CMSIS -I.\USER -I.\FWlib\src -I.\FWlib\inc -I.\USER\MPU6050 -I.\USER\MPU6050\eMPL -I.\USER\WinterSky -I.\USER\Yuuki_Dach-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="514" -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\final_charge.o --omf_browse .\objects\final_charge.crf --depend .\objects\final_charge.d)
+F (.\USER\Yuuki_Dach\final_charge.c)(0x5842CD87)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I.\USER\Yuuki_Dach -I.\CMSIS -I.\USER -I.\FWlib\src -I.\FWlib\inc -I.\USER\MPU6050 -I.\USER\MPU6050\eMPL -I.\USER\WinterSky -I.\USER\Yuuki_Dach-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="514" -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\final_charge.o --omf_browse .\objects\final_charge.crf --depend .\objects\final_charge.d)
 I (USER\Yuuki_Dach\final_charge.h)(0x5841241A)
 I (USER\Yuuki_Dach\precompile.h)(0x5841B216)
 I (D:\Keil\ARM\ARMCC\include\string.h)(0x5475F300)
@@ -287,7 +287,7 @@ I (.\USER\MPU6050\mpuiic.h)(0x58306018)
 I (.\USER\MPU6050\sys.h)(0x58303449)
 I (.\USER\MPU6050\eMPL\inv_mpu.h)(0x58329DBF)
 I (.\USER\MPU6050\eMPL\inv_mpu_dmp_motion_driver.h)(0x50CA9A0C)
-F (.\USER\Yuuki_Dach\mechanical_arm.c)(0x5842A433)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I.\USER\Yuuki_Dach -I.\CMSIS -I.\USER -I.\FWlib\src -I.\FWlib\inc -I.\USER\MPU6050 -I.\USER\MPU6050\eMPL -I.\USER\WinterSky -I.\USER\Yuuki_Dach-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="514" -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\mechanical_arm.o --omf_browse .\objects\mechanical_arm.crf --depend .\objects\mechanical_arm.d)
+F (.\USER\Yuuki_Dach\mechanical_arm.c)(0x5842D602)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I.\USER\Yuuki_Dach -I.\CMSIS -I.\USER -I.\FWlib\src -I.\FWlib\inc -I.\USER\MPU6050 -I.\USER\MPU6050\eMPL -I.\USER\WinterSky -I.\USER\Yuuki_Dach-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="514" -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\mechanical_arm.o --omf_browse .\objects\mechanical_arm.crf --depend .\objects\mechanical_arm.d)
 I (USER\Yuuki_Dach\mechanical_arm.h)(0x583D8C01)
 I (USER\Yuuki_Dach\pca9685.h)(0x580F5AA7)
 I (.\CMSIS\stm32f10x.h)(0x4F34BA32)
@@ -307,7 +307,7 @@ I (.\FWlib\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (.\FWlib\inc\misc.h)(0x4D783BB4)
 I (USER\Yuuki_Dach\controller.h)(0x58210D17)
 I (USER\Yuuki_Dach\delay.h)(0x57C8D103)
-F (.\USER\Yuuki_Dach\movement.c)(0x5842A236)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I.\USER\Yuuki_Dach -I.\CMSIS -I.\USER -I.\FWlib\src -I.\FWlib\inc -I.\USER\MPU6050 -I.\USER\MPU6050\eMPL -I.\USER\WinterSky -I.\USER\Yuuki_Dach-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="514" -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\movement.o --omf_browse .\objects\movement.crf --depend .\objects\movement.d)
+F (.\USER\Yuuki_Dach\movement.c)(0x5842D468)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I.\USER\Yuuki_Dach -I.\CMSIS -I.\USER -I.\FWlib\src -I.\FWlib\inc -I.\USER\MPU6050 -I.\USER\MPU6050\eMPL -I.\USER\WinterSky -I.\USER\Yuuki_Dach-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="514" -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\movement.o --omf_browse .\objects\movement.crf --depend .\objects\movement.d)
 I (USER\Yuuki_Dach\movement.h)(0x58429FB6)
 I (.\CMSIS\stm32f10x.h)(0x4F34BA32)
 I (.\CMSIS\core_cm3.h)(0x4D523B58)
@@ -433,8 +433,8 @@ I (.\FWlib\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (.\FWlib\inc\misc.h)(0x4D783BB4)
 I (.\USER\Yuuki_Dach\delay.h)(0x57C8D103)
 I (D:\Keil\ARM\ARMCC\include\stdio.h)(0x5475F300)
-F (.\USER\WinterSky\AutoControl.c)(0x58429D0E)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I.\USER\WinterSky -I.\CMSIS -I.\USER -I.\FWlib\src -I.\FWlib\inc -I.\USER\MPU6050 -I.\USER\MPU6050\eMPL -I.\USER\WinterSky -I.\USER\Yuuki_Dach-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="514" -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\autocontrol.o --omf_browse .\objects\autocontrol.crf --depend .\objects\autocontrol.d)
-I (USER\WinterSky\AutoControl.h)(0x58429985)
+F (.\USER\WinterSky\AutoControl.c)(0x5842D0C8)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I.\USER\WinterSky -I.\CMSIS -I.\USER -I.\FWlib\src -I.\FWlib\inc -I.\USER\MPU6050 -I.\USER\MPU6050\eMPL -I.\USER\WinterSky -I.\USER\Yuuki_Dach-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="514" -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\autocontrol.o --omf_browse .\objects\autocontrol.crf --depend .\objects\autocontrol.d)
+I (USER\WinterSky\AutoControl.h)(0x5842E26F)
 I (.\CMSIS\stm32f10x.h)(0x4F34BA32)
 I (.\CMSIS\core_cm3.h)(0x4D523B58)
 I (D:\Keil\ARM\ARMCC\include\stdint.h)(0x5475F300)
@@ -585,7 +585,7 @@ I (.\FWlib\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (.\FWlib\inc\misc.h)(0x4D783BB4)
 I (.\USER\Yuuki_Dach\movement.h)(0x58429FB6)
 I (.\USER\Yuuki_Dach\delay.h)(0x57C8D103)
-I (USER\WinterSky\AutoControl.h)(0x58429985)
+I (USER\WinterSky\AutoControl.h)(0x5842E26F)
 I (.\USER\MPU6050\mpu6050.h)(0x58303194)
 I (.\USER\MPU6050\mpuiic.h)(0x58306018)
 I (.\USER\MPU6050\sys.h)(0x58303449)

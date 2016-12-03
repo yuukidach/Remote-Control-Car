@@ -9,7 +9,7 @@
 #define COLOR_B 900
 
 #define DS1 20
-#define DS2 22
+#define DS2 24
 #define TS1 22
 #define TS2 90
 

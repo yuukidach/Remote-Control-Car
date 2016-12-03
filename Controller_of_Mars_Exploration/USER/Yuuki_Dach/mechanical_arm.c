@@ -36,7 +36,7 @@ void handGrab(void) {
 
 
 void handOpen(void) {
-    PCA9685_SetOutput(PCA_ADDRESS, 1, 0, 250);
+    PCA9685_SetOutput(PCA_ADDRESS, 1, 0, 200);
 }
 
 
@@ -101,3 +101,5 @@ void putArmLow(void) {
  */
  
 /******************* (C) COPYRIGHT 2016 Yuuki_Dach *************END OF FILE****/
+
+

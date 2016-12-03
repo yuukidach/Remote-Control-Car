@@ -19,7 +19,7 @@
 
 float yaw = 0, dYaw = 0, target;	//Å·À­½Ç
 
-u8 bStrat = 0, bSeek = 0, bFind, bPreEnd = 0, bEnd = 0;
+u8 bStrat = 0, bSeek = 0, bFind, bPreEnd = 0;
 u8 nToward = 2, nTurn = 2;
 
 u8 nGrayF = 0, nGrayB = 0;
@@ -209,59 +209,27 @@ void Seeking(void) {
 	} else {
 		nGrayB = 0;
 	}
-		
+	
 	if(nToward == 2) {
-		if(!bPreEnd || bEnd) Tracking(0);
-		
-		u32 iDistance = 1;
-		
-		if(bPreEnd && !bEnd) iDistance = multiTrig(MIDDLE_TRIGGER);
+        Tracking(0);
 		
 #ifdef _DEBUG_MODE
 		printf(":NO LIGHT\n");
 		ADC_PrintValue();
-		printf("::DISTANCE %u\n", iDistance);
 #endif
 		
 		if(!bPreEnd && nGrayF > 10) {
 			bPreEnd = 1;
-            setSpeed(1, DS2, DS2);
-            delay_ms(50);
-            stopTheCar();
-            iDistance = multiTrig(MIDDLE_TRIGGER);
-            
-#ifdef _DEBUG_MODE
-            printf("PreEnd\r\n");
-#endif
-            
+            TaskStart(1500);
 		}
-		if(bPreEnd && !bEnd) {
-			if(iDistance < 1000) {
-				stopTheCar();
-                
-#ifdef _DEBUG_MODE
-                printf("Door is not open\r\n");
-#endif
-                
-			} else {
-				bEnd = 1;
-				TaskStart(1000);
-                
-#ifdef _DEBUG_MODE
-                printf("End\r\n");
-#endif
-                
-			}
-		}
-		if(bEnd && (AD_Value[8] < iGrayF || !Tasking())) {
-			bSeek = 0;
-			TaskClose();
+		if(bPreEnd && (AD_Value[8] < iGrayF || !Tasking())) {
+            bSeek = 0;
+            TaskClose();
 		}
 		
 		return;
 	}
 	bPreEnd = 0;
-	bEnd = 0;
 	
 	Tracking(nToward);
 	
