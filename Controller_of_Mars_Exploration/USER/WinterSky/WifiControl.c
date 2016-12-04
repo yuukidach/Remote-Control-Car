@@ -63,7 +63,7 @@ void WIFI_ClientConfig(void) {
 	RcvBufClear();
 	while(!bATOk)
 	{
-		printf("AT+CWJAP=\"BUAA-WiFi\",\"\"\r\n");
+		printf("AT+CWJAP=\"chaoshou\",\"liugeliu\"\r\n");
 		for(int i = 0; !bATOk && i < 100; i++) {
 			delay_ms(10);
 			WIFI_Check();

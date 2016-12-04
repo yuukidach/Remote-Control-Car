@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\Controller_of_Mars_Exploration.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Controller_of_Mars_Exploration.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Sat Dec 03 23:19:19 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Sun Dec 04 17:07:42 2016
 <BR><P>
 <H3>Maximum Stack Usage =        352 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1632,12 +1632,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getYaw
 </UL>
 
-<P><STRONG><a name="[f2]"></a>calibrateDir</STRONG> (Thumb, 210 bytes, Stack size 16 bytes, final_charge.o(i.calibrateDir))
+<P><STRONG><a name="[f2]"></a>calibrateDir</STRONG> (Thumb, 160 bytes, Stack size 16 bytes, final_charge.o(i.calibrateDir))
 <BR><BR>[Stack]<UL><LI>Max Depth = 328<LI>Call Chain = calibrateDir &rArr; getYaw &rArr; atan2 &rArr; atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stopTheCar
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setSpeed
-<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;multiTrig
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getYaw
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
@@ -1647,7 +1646,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;finishPart3
 </UL>
 
-<P><STRONG><a name="[f4]"></a>carGo</STRONG> (Thumb, 120 bytes, Stack size 8 bytes, movement.o(i.carGo))
+<P><STRONG><a name="[f3]"></a>carGo</STRONG> (Thumb, 120 bytes, Stack size 8 bytes, movement.o(i.carGo))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = carGo &rArr; setSpeed &rArr; PCA9685_SetOutput &rArr; PCA9685_I2C_Write &rArr; I2C_CheckEvent
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stopTheCar
@@ -1662,11 +1661,11 @@ Global Symbols
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Controller_Config
 </UL>
 
-<P><STRONG><a name="[f5]"></a>clrSonic</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, final_charge.o(i.clrSonic))
+<P><STRONG><a name="[f4]"></a>clrSonic</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, final_charge.o(i.clrSonic))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = clrSonic &rArr; stopTheCar &rArr; PCA9685_SetOutput &rArr; PCA9685_I2C_Write &rArr; I2C_CheckEvent
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stopTheCar
-<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;multiTrig
+<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;multiTrig
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 </UL>
 <BR>[Called By]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;upwardSlope
@@ -1690,11 +1689,11 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putArmLow
 <LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putBallDown
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;upwardSlope
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clrSonic
+<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clrSonic
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calibrateDir
 <LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;grayLoadValue
 <LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;finishPart3
-<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;carGo
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;carGo
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Init
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Seeking
@@ -1900,13 +1899,13 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stopTheCar
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setSpeed
 <LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putBallDown
-<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;multiTrig
+<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;multiTrig
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;upwardSlope
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnOuter2
 <LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnOuter1
 <LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnInner
 <LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dirDef
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clrSonic
+<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clrSonic
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calibrateDir
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 </UL>
@@ -2056,7 +2055,7 @@ Global Symbols
 <LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;finishPart3
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_init
-<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;carGo
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;carGo
 <LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;armControl
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ultrasonic_Init
 <LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tire_Config
@@ -2336,14 +2335,13 @@ Global Symbols
 <LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
 </UL>
 
-<P><STRONG><a name="[f3]"></a>multiTrig</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, ultrasonic.o(i.multiTrig))
+<P><STRONG><a name="[f5]"></a>multiTrig</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, ultrasonic.o(i.multiTrig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = multiTrig &rArr; ultrasonicTrig
 </UL>
 <BR>[Calls]<UL><LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ultrasonicTrig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;upwardSlope
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clrSonic
-<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calibrateDir
+<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clrSonic
 <LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;finishPart3
 </UL>
 
@@ -2462,7 +2460,7 @@ Global Symbols
 <LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnInner
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calibrateDir
 <LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;finishPart3
-<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;carGo
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;carGo
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tracking
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Seeking
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Finding
@@ -2508,10 +2506,10 @@ Global Symbols
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnOuter2
 <LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnOuter1
 <LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnInner
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clrSonic
+<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clrSonic
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calibrateDir
 <LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;finishPart3
-<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;carGo
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;carGo
 <LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tire_Config
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tracking
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Seeking
@@ -2590,7 +2588,7 @@ Global Symbols
 <LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCounter
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;multiTrig
+<BR>[Called By]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;multiTrig
 </UL>
 
 <P><STRONG><a name="[116]"></a>upwardSlope</STRONG> (Thumb, 196 bytes, Stack size 8 bytes, final_charge.o(i.upwardSlope))
@@ -2598,8 +2596,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stopTheCar
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setSpeed
-<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;multiTrig
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clrSonic
+<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;multiTrig
+<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clrSonic
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 </UL>
 <BR>[Called By]<UL><LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;finishPart3

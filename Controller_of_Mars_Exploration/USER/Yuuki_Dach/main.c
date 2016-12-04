@@ -55,7 +55,8 @@ int main(void) {
     USART1_Config();
     NVIC_Config();
     delay_ms(100);
-    WIFI_ConnectToServer();
+    //WIFI_ClientConfig();
+    //WIFI_ConnectToServer();
     delay_ms(100);
     printf("\nThe car is connected!\n");
 #endif

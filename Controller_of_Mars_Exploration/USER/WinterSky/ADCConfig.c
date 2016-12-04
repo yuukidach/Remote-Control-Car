@@ -35,13 +35,13 @@ void ADC_Config(void) {
 	ADC_InitStructure.ADC_NbrOfChannel = 10;
 	ADC_Init(ADC1, &ADC_InitStructure);		
 	
-	ADC_RegularChannelConfig(ADC1, ADC_Channel_1 , 1 , ADC_SampleTime_239Cycles5);
-	ADC_RegularChannelConfig(ADC1, ADC_Channel_2 , 2 , ADC_SampleTime_239Cycles5);
+	ADC_RegularChannelConfig(ADC1, ADC_Channel_5 , 1 , ADC_SampleTime_239Cycles5);
+	ADC_RegularChannelConfig(ADC1, ADC_Channel_6 , 2 , ADC_SampleTime_239Cycles5);
 	ADC_RegularChannelConfig(ADC1, ADC_Channel_3 , 3 , ADC_SampleTime_239Cycles5);
 	ADC_RegularChannelConfig(ADC1, ADC_Channel_4 , 4 , ADC_SampleTime_239Cycles5);
 	ADC_RegularChannelConfig(ADC1, ADC_Channel_10, 5 , ADC_SampleTime_239Cycles5);
 	ADC_RegularChannelConfig(ADC1, ADC_Channel_11, 6 , ADC_SampleTime_239Cycles5);
-	ADC_RegularChannelConfig(ADC1, ADC_Channel_12, 7 , ADC_SampleTime_239Cycles5);
+	ADC_RegularChannelConfig(ADC1, ADC_Channel_1 , 7 , ADC_SampleTime_239Cycles5);
 	ADC_RegularChannelConfig(ADC1, ADC_Channel_13, 8 , ADC_SampleTime_239Cycles5);
 	
 	ADC_RegularChannelConfig(ADC1, ADC_Channel_8 , 9 , ADC_SampleTime_239Cycles5);

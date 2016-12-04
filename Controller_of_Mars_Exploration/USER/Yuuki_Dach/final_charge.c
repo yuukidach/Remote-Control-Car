@@ -60,15 +60,20 @@ void calibrateDir(float forward_yaw) {
     }
     stopTheCar();
     
-    uint32_t dis_from_slope = multiTrig(MIDDLE_TRIGGER);
-    if (dis_from_slope > 65530 ) {
-        setSpeed(FORWARDS, 30, 30);
-        delay_ms(300);
-    }
-    while (dis_from_slope > 330 && dis_from_slope < 65530) {
-        setSpeed(FORWARDS, 30, 30);
-        dis_from_slope = multiTrig(MIDDLE_TRIGGER);
-    }
+    //uint32_t dis_from_slope = multiTrig(MIDDLE_TRIGGER);
+    //if (dis_from_slope > 65530 || dis_from_slope < 180) {
+    setSpeed(FORWARDS, 30, 30);
+    delay_ms(390);
+    //}
+    //while (dis_from_slope > 285 && dis_from_slope < 65530) {
+    //    setSpeed(FORWARDS, 30, 30);
+    //    dis_from_slope = multiTrig(MIDDLE_TRIGGER);
+ 
+//#if (__DEBUG__ == __ON__)
+//        printf("Sonic before turn: %5d \r\n", dis_from_slope);
+//#endif 
+        
+    //}
     
     stopTheCar();
 
@@ -209,13 +214,12 @@ void finishPart3(uint8_t _dir, float forward_yaw) {
     
     setSpeed(FORWARDS, 30, 30);
     uint32_t tmp_dis = multiTrig(MIDDLE_TRIGGER);
-    while (tmp_dis > 340) {
+    while (tmp_dis > 300) {
         tmp_dis = multiTrig(MIDDLE_TRIGGER);
         if (tmp_dis > 65530) tmp_dis = clrSonic();
         
 #if (__DEBUG__ == __ON__)
-        printf("Sonic F: %5d", tmp_dis);
-        printf("Now the car is dashing to the slope. \r\n");
+        printf("Dashing...sonic F: %5d \r\n", tmp_dis);
 #endif
         
     }
