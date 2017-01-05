@@ -54,6 +54,7 @@ language: [English](https://github.com/yuukidach/Remote-Control-Car/blob/master/
 16. MPU6050
 
 ## 详细描述
+
 <center>![小车底盘](https://github.com/yuukidach/Remote-Control-Car/blob/master/Pictures/%E5%BA%95%E7%9B%98.jpg?raw=true)</center>
 
 小车底板定为常见的方形底板，最终结构为四层：</br>
