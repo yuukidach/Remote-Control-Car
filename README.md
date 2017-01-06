@@ -5,6 +5,11 @@ language: [English](https://github.com/yuukidach/Remote-Control-Car/blob/master/
 ## 概括
 这是我参加比赛的一个参赛作品，比赛要求能在“大赛要求.pdf”里看到
 
+## 视频
+[Youtobe](https://www.youtube.com/watch?v=TuZoL8VEveQ)</br>
+
+[Bilibili](http://www.bilibili.com/video/av7870024/)
+
 ## 功能
 1. 利用PS2控制小车行进方向;
 	

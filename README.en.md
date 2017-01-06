@@ -8,6 +8,11 @@ Remote Control Car
 
 This project is my entry for the Yuyuan Cup, which is a important competition in my school.    
 
+## Video
+[Youtobe](https://www.youtube.com/watch?v=TuZoL8VEveQ)</br>
+
+[Bilibili](http://www.bilibili.com/video/av7870024/)
+
 ## Functions
 1. Use PS2 to control the car's movement direction;
 	
