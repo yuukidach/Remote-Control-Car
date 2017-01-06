@@ -6,7 +6,7 @@ language: [English](https://github.com/yuukidach/Remote-Control-Car/blob/master/
 这是我参加比赛的一个参赛作品，比赛要求能在“大赛要求.pdf”里看到
 
 ## 视频
-[Youtobe](https://www.youtube.com/watch?v=TuZoL8VEveQ)</br>
+[Youtube](https://www.youtube.com/watch?v=TuZoL8VEveQ)</br>
 
 [Bilibili](http://www.bilibili.com/video/av7870024/)
 
