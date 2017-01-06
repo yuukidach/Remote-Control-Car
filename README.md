@@ -60,8 +60,7 @@ language: [English](https://github.com/yuukidach/Remote-Control-Car/blob/master/
 
 ## 详细描述
 <center>
-![小车底盘](https://github.com/yuukidach/Remote-Control-Car/blob/master/Pictures/%E5%BA%95%E7%9B%98.jpg?raw=true)
-</center>
+![小车底盘](https://github.com/yuukidach/Remote-Control-Car/blob/master/PicturesAndVideo/%E5%BA%95%E7%9B%98.jpg?raw=true)</center>
 
 小车底板定为常见的方形底板，最终结构为四层：</br>
 底  层：超声波、前灰度传感器、红外寻迹灯、后灰度传感器以及电机；</br>
@@ -70,6 +69,6 @@ language: [English](https://github.com/yuukidach/Remote-Control-Car/blob/master/
 第三层：寻迹模块、PCA模块、STM32、寻迹模块；</br>
 顶  层：燃料收纳槽。
 
-![](https://github.com/yuukidach/Remote-Control-Car/blob/master/Pictures/%E7%94%B5%E6%BA%90%E5%88%86%E9%85%8D%E5%9B%BE.jpg?raw=true)
+![](https://github.com/yuukidach/Remote-Control-Car/blob/master/PicturesAndVideo/%E7%94%B5%E6%BA%90%E5%88%86%E9%85%8D%E5%9B%BE.jpg?raw=true)
 
-![](https://github.com/yuukidach/Remote-Control-Car/blob/master/Pictures/%E7%B3%BB%E7%BB%9F%E4%BF%A1%E5%8F%B7%E5%9B%BE.jpg?raw=true)
+![](https://github.com/yuukidach/Remote-Control-Car/blob/master/PicturesAndVideo/%E7%B3%BB%E7%BB%9F%E4%BF%A1%E5%8F%B7%E5%9B%BE.jpg?raw=true)
